@@ -1,77 +1,148 @@
 <script lang="ts">
-    import favicon from '$lib/assets/favicon.svg';
-    let scrollY = $state(0);
+    import { onMount } from 'svelte';
+    import ArrowBack from '$lib/assets/svg/ArrowBack.svelte';
+    import ArrowForward from '$lib/assets/svg/ArrowForward.svelte';
 
-    const slides = [
-        { id: 1, title: 'News Slide 1', color: '#ff6b6b' },
-        { id: 2, title: 'News Slide 2', color: '#4ecdc4' },
-        { id: 3, title: 'Events Slide 1', color: '#45b7d1' },
-        { id: 4, title: 'Events Slide 2', color: '#96ceb4' }
+    let slides = [
+        { title: 'News Slide 1', color: '#D22730' },
+        { title: 'News Slide 2', color: '#82CCAE' },
+        { title: 'Events Slide 1', color: '#A60A3D' },
+        { title: 'Events Slide 2', color: '#dc4405' },
+        { title: 'Events Slide 2', color: '#643335' }
     ];
 
-    let carouselScroll = $state(0);
+    let slideCount = slides.length;
+    let slideIndex = 0;
+    let autoScrollInterval: ReturnType<typeof setInterval> | null = null;
+    let carouselListEl: HTMLElement | null = null;
 
-    const scrollCarousel = (direction: 'left' | 'right') => {
-        const carousel = document.getElementById('carousel');
-        if (carousel) {
-            const scrollAmount = 400;
-            carousel.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
-        }
+    const sliderSpeed = 6000;
+
+    const raiseLeft = () => {
+        slideIndex = (slideIndex + slideCount - 1) % slideCount;
+        updateZIndex();
     };
 
-    // TODO: Fix later
-    const handleCarouselScroll = (e: Event) => {
-        const carousel = e.target as HTMLElement;
-        const { scrollLeft, scrollWidth, clientWidth } = carousel;
+    const raiseRight = () => {
+        slideIndex = (slideIndex + 1) % slideCount;
+        updateZIndex();
+    };
 
-        // Wrap around logic
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            // Near the end, reset to beginning
-            setTimeout(() => {
-                carousel.scrollLeft = 0;
-            }, 50);
-        } else if (scrollLeft <= 0) {
-            // At the beginning, jump to end
-            if (carouselScroll > 0) {
-                setTimeout(() => {
-                    carousel.scrollLeft = scrollWidth - clientWidth;
-                }, 50);
+    const updateZIndex = () => {
+        if (!carouselListEl) return;
+
+        const items = carouselListEl.querySelectorAll('li');
+        items.forEach((item, i) => {
+            if (i === slideIndex) {
+                (item as HTMLElement).style.zIndex = '6';
+            } else {
+                (item as HTMLElement).style.zIndex = '2';
+            }
+        });
+    };
+
+    const moveRight = () => {
+        raiseRight();
+        if (carouselListEl) {
+            const firstChild = carouselListEl.firstElementChild;
+            if (firstChild) {
+                carouselListEl.appendChild(firstChild);
             }
         }
-
-        carouselScroll = scrollLeft;
     };
+
+    const moveLeft = () => {
+        raiseLeft();
+        if (carouselListEl) {
+            const lastChild = carouselListEl.lastElementChild;
+            if (lastChild) {
+                carouselListEl.insertBefore(lastChild, carouselListEl.firstElementChild);
+            }
+        }
+    };
+
+    const moveRightTimer = () => {
+        moveRight();
+        autoScrollInterval = setTimeout(() => {
+            moveRightTimer();
+        }, sliderSpeed);
+    };
+
+    const startAutoScroll = () => {
+        autoScrollInterval = setTimeout(() => {
+            moveRightTimer();
+        }, sliderSpeed);
+    };
+
+    const stopAutoScroll = () => {
+        if (autoScrollInterval) {
+            clearTimeout(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+    };
+
+    const handleMouseEnter = () => {
+        stopAutoScroll();
+    };
+
+    const handleMouseLeave = () => {
+        startAutoScroll();
+    };
+    // TODO: Fix this carousel logic. Bad animations and wrong logic for wrapping.
+    onMount(() => {
+        carouselListEl = document.querySelector('.carousel-list') as HTMLElement;
+        slideIndex = slideCount - 1;
+        raiseRight();
+        startAutoScroll();
+
+        return () => {
+            stopAutoScroll();
+        };
+    });
 </script>
 
 <!-- Hero Section with Carousel -->
 <section class="hero-section">
     <!-- Animated Logo -->
-    <div class="animated-logo" style="opacity: {Math.max(0, 1 - scrollY / 300)}">
+    <!-- <div class="animated-logo" style="opacity: {Math.max(0, 1 - scrollY / 300)}">
         <img src={favicon} alt="Logo" />
-    </div>
+    </div> -->
 
     <!-- Image Carousel Banner -->
-    <div class="carousel-wrapper">
-        <button class="carousel-btn carousel-btn-left" onclick={() => scrollCarousel('left')}>
-            ‹
+    <div
+        class="carousel-wrapper"
+        role="region"
+        aria-label="Carousel"
+        onmouseenter={handleMouseEnter}
+        onmouseleave={handleMouseLeave}
+    >
+        <button
+            class="carousel-btn carousel-btn-left"
+            onclick={() => moveLeft()}
+            aria-label="Previous image"
+        >
+            <ArrowBack />
         </button>
 
-        <div class="carousel" id="carousel" onscroll={handleCarouselScroll}>
-            {#each slides as slide (slide.id)}
-                <div class="carousel-slide" style="background-color: {slide.color}">
-                    <div class="slide-content">
-                        <h2>{slide.title}</h2>
-                        <p>Carousel content coming soon</p>
-                    </div>
-                </div>
-            {/each}
+        <div class="carousel" id="carousel">
+            <ul class="carousel-list">
+                {#each slides as slide}
+                    <li class="carousel-item" style="background-color: {slide.color}">
+                        <div class="slide-content">
+                            <h2>{slide.title}</h2>
+                            <p>Carousel content coming soon</p>
+                        </div>
+                    </li>
+                {/each}
+            </ul>
         </div>
 
-        <button class="carousel-btn carousel-btn-right" onclick={() => scrollCarousel('right')}>
-            ›
+        <button
+            class="carousel-btn carousel-btn-right"
+            onclick={() => moveRight()}
+            aria-label="Next image"
+        >
+            <ArrowForward />
         </button>
     </div>
 </section>
@@ -105,7 +176,7 @@
 </section>
 
 <style lang="scss">
-	@import '$lib/styles/globals.scss';
+    @import '$lib/styles/globals.scss';
     .hero-section {
         position: relative;
         height: calc(100vh - #{$navbar-height});
@@ -141,13 +212,10 @@
 
     .carousel {
         display: flex;
-        gap: 0;
         width: 100%;
         height: 100%;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
+        position: relative;
+        overflow: hidden;
 
         &::-webkit-scrollbar {
             height: 0;
@@ -162,11 +230,34 @@
         }
     }
 
-    .carousel-slide {
+    .carousel-list {
+        display: flex;
+        gap: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: relative;
+    }
+
+    .carousel-item {
         min-width: 100%;
         height: 100%;
-        scroll-snap-align: start;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         @include flex-center;
+        z-index: 2;
+        transition:
+            z-index 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+        opacity: 0;
+
+        &[style*='z-index: 6'] {
+            opacity: 1;
+        }
 
         .slide-content {
             text-align: center;

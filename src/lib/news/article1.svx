@@ -1,0 +1,16 @@
+---
+title: "Introducing SvelteKit 2.0"
+summary: "We're excited to announce the release of SvelteKit 2.0 with incredible new features and improvements."
+date: "2026-02-15"
+author: "John Developer"
+---
+
+# {title}
+
+SvelteKit 2.0 brings a host of new features and improvements to the framework. Learn about what's new and how to upgrade your projects.
+
+## Key Features
+
+- Improved performance
+- Better error handling
+- New developer tools

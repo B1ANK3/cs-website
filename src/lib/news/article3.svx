@@ -1,0 +1,16 @@
+---
+title: "TypeScript Tips and Tricks"
+summary: "Advanced TypeScript patterns to level up your development skills."
+date: "2026-02-01"
+author: "Mike Johnson"
+---
+
+# {title}
+
+TypeScript offers powerful type system features. Discover advanced patterns including generics, utility types, and type guards.
+
+## Advanced Topics
+
+- Conditional types
+- Mapped types
+- Type inference

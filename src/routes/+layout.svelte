@@ -1,6 +1,9 @@
 <script lang="ts">
+    import 'uno.css';
     import favicon from '$lib/assets/favicon.svg';
-    import logo from '$lib/assets/logo.svg';
+    import SULogo from '$lib/assets/svg/SULogo.svelte';
+    import Search from '$lib/assets/svg/Search.svelte';
+    import { resolve } from '$app/paths';
 
     let { children } = $props();
     let searchQuery = $state('');
@@ -9,6 +12,7 @@
         e.preventDefault();
         const form = e.currentTarget as HTMLFormElement;
         const query = new FormData(form).get('search');
+        form.reset();
         console.log('Search query:', query);
         // Add search functionality here
     };
@@ -21,18 +25,19 @@
 <div class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
-        <a href="/" class="logo">
-            <img src={logo} alt="Logo" class="logo-img" />
+        <a href={resolve('/')} class="logo">
+            <SULogo />
+            <!-- class="logo-img" -->
         </a>
 
         <!-- Navigation Links -->
         <nav class="nav-links">
-            <a href="/" class="nav-item">Home</a>
-            <a href="/news" class="nav-item">News</a>
-            <a href="/events" class="nav-item">Events</a>
-            <a href="/people" class="nav-item">People</a>
-            <a href="/research" class="nav-item">Research</a>
-            <a href="/contact" class="nav-item">Contact</a>
+            <a href={resolve('/')} class="nav-item">Home</a>
+            <a href={resolve('/news')} class="nav-item">News</a>
+            <a href={resolve('/events')} class="nav-item">Events</a>
+            <a href={resolve('/people')} class="nav-item">People</a>
+            <a href={resolve('/research')} class="nav-item">Research</a>
+            <a href={resolve('/contact')} class="nav-item">Contact</a>
 
             <!-- Search -->
             <form onsubmit={handleSearch} class="search-form">
@@ -43,7 +48,9 @@
                     class="search-input"
                     bind:value={searchQuery}
                 />
-                <button type="submit" class="search-btn">🔍</button>
+                <button type="submit" class="search-btn" aria-label="Search">
+                    <Search />
+                </button>
             </form>
         </nav>
     </div>
@@ -54,7 +61,7 @@
 </main>
 
 <style lang="scss">
-	@import '$lib/styles/globals.scss';
+    @import '$lib/styles/globals.scss';
     :global(body) {
         margin: 0;
         padding: 0;
@@ -67,7 +74,7 @@
     }
 
     .navbar {
-        background-color: #ffffff;
+        background-color: $primary-color;
         box-shadow: 0 2px 8px $shadow-color;
         position: sticky;
         top: 0;
@@ -87,14 +94,16 @@
         @include flex-center;
         text-decoration: none;
         flex-shrink: 0;
+        height: $logo-size;
+        max-height: 100%;
 
-        &:hover .logo-img {
+        &:hover :global(svg) {
             transform: scale(1.05);
         }
     }
 
     .logo-img {
-        height: $logo-size;
+        height: 100%;
         width: auto;
         @include smooth-transition(transform);
     }
@@ -108,14 +117,14 @@
 
     .nav-item {
         text-decoration: none;
-        color: $text-color;
+        color: $secondary-color;
         font-weight: 500;
         font-size: 15px;
         @include smooth-transition(color);
         position: relative;
 
         &:hover {
-            color: $primary-color;
+            color: $secondary-color;
 
             &::after {
                 width: 100%;
@@ -129,7 +138,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: $primary-color;
+            background-color: $secondary-color;
             @include smooth-transition(width, 0.3s);
         }
     }

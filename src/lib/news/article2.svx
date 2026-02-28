@@ -1,0 +1,16 @@
+---
+title: "Best Practices for Web Performance"
+summary: "Learn essential techniques to optimize your web applications for better performance."
+date: "2026-02-10"
+author: "Jane Smith"
+---
+
+# {title}
+
+Web performance is critical for user experience. In this article, we explore best practices including code splitting, lazy loading, and caching strategies.
+
+## Performance Metrics
+
+- Core Web Vitals
+- Lighthouse scores
+- Real User Monitoring

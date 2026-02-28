@@ -83,6 +83,7 @@
                             <p class="about-text">{member.about}</p>
                         </div>
 
+                        <!-- TODO: Fix research link when research page is done -->
                         <a href={member.research} class="research-link">View Research →</a>
                     </div>
                 </div>
@@ -92,7 +93,7 @@
 </section>
 
 <style lang="scss">
-	@import '$lib/styles/globals.scss';
+    @import '$lib/styles/globals.scss';
     .section {
         width: 100%;
         padding: 80px 20px;
