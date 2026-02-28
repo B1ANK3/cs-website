@@ -1,0 +1,20 @@
+---
+name: "Dr. Emily Rodriguez"
+title: "Lecturer"
+email: "emily.rodriguez@university.edu"
+about: "Passionate about robotics and autonomous systems. Mentors several doctoral students."
+image: "https://via.placeholder.com/200?text=Dr.+Emily+Rodriguez"
+type: "staff"
+---
+
+# {name}
+
+## About
+
+{about}
+
+## Expertise
+
+- Robotics
+- Autonomous Systems
+- Control Systems

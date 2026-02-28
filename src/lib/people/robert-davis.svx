@@ -1,0 +1,20 @@
+---
+name: "Dr. Robert Davis"
+title: "Senior Software Engineer (Former Ph.D. Student)"
+email: "robert.davis@company.com"
+about: "Completed Ph.D. in distributed systems. Now working at a major tech company."
+image: "https://via.placeholder.com/200?text=Dr.+Robert+Davis"
+type: "alumni"
+---
+
+# {name}
+
+## About
+
+{about}
+
+## Accomplishments
+
+- Published 5 papers on distributed consensus
+- Awarded Best Paper at SOSP 2024
+- Now leading infrastructure initiatives at tech company

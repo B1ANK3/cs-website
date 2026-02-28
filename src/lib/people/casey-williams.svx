@@ -1,0 +1,20 @@
+---
+name: "Casey Williams"
+title: "Ph.D. Student"
+email: "casey.williams@university.edu"
+about: "Exploring distributed systems and consensus algorithms."
+image: "https://via.placeholder.com/200?text=Casey+Williams"
+type: "student"
+---
+
+# {name}
+
+## About
+
+{about}
+
+## Research Interests
+
+- Distributed Systems
+- Consensus Algorithms
+- Blockchain Technology

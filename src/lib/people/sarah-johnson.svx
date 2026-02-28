@@ -1,0 +1,20 @@
+---
+name: "Dr. Sarah Johnson"
+title: "Associate Professor"
+email: "sarah.johnson@university.edu"
+about: "Expert in software engineering and program verification. Currently leading research on automated testing."
+image: "https://via.placeholder.com/200?text=Dr.+Sarah+Johnson"
+type: "staff"
+---
+
+# {name}
+
+## About
+
+{about}
+
+## Expertise
+
+- Software Engineering
+- Program Verification
+- Automated Testing

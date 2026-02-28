@@ -1,0 +1,20 @@
+---
+name: "Dr. James Wilson"
+title: "Research Fellow"
+email: "james.wilson@university.edu"
+about: "Specialist in broadband and mobile networks. Active contributor to network optimization research."
+image: "https://via.placeholder.com/200?text=Dr.+James+Wilson"
+type: "staff"
+---
+
+# {name}
+
+## About
+
+{about}
+
+## Expertise
+
+- Broadband Networks
+- Mobile Networks
+- Network Optimization

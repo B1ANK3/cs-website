@@ -1,99 +1,192 @@
 <script lang="ts">
-    // Sample staff data - replace with actual data
-    const staff = [
-        {
-            id: 1,
-            name: 'Dr. John Smith',
-            title: 'Professor of Computer Science',
-            email: 'john.smith@university.edu',
-            about: 'Specializes in machine learning and artificial intelligence with over 15 years of experience.',
-            image: 'https://via.placeholder.com/200?text=Dr.+John+Smith',
-            research: '#'
-        },
-        {
-            id: 2,
-            name: 'Dr. Sarah Johnson',
-            title: 'Associate Professor',
-            email: 'sarah.johnson@university.edu',
-            about: 'Expert in software engineering and program verification. Currently leading research on automated testing.',
-            image: 'https://via.placeholder.com/200?text=Dr.+Sarah+Johnson',
-            research: '#'
-        },
-        {
-            id: 3,
-            name: 'Prof. Michael Chen',
-            title: 'Senior Lecturer',
-            email: 'michael.chen@university.edu',
-            about: 'Focuses on natural language processing and computational linguistics with multiple publications.',
-            image: 'https://via.placeholder.com/200?text=Prof.+Michael+Chen',
-            research: '#'
-        },
-        {
-            id: 4,
-            name: 'Dr. Emily Rodriguez',
-            title: 'Lecturer',
-            email: 'emily.rodriguez@university.edu',
-            about: 'Passionate about robotics and autonomous systems. Mentors several doctoral students.',
-            image: 'https://via.placeholder.com/200?text=Dr.+Emily+Rodriguez',
-            research: '#'
-        },
-        {
-            id: 5,
-            name: 'Dr. James Wilson',
-            title: 'Research Fellow',
-            email: 'james.wilson@university.edu',
-            about: 'Specialist in broadband and mobile networks. Active contributor to network optimization research.',
-            image: 'https://via.placeholder.com/200?text=Dr.+James+Wilson',
-            research: '#'
-        },
-        {
-            id: 6,
-            name: 'Prof. Lisa Anderson',
-            title: 'Senior Researcher',
-            email: 'lisa.anderson@university.edu',
-            about: 'Expert in automata theory and formal languages. Published over 30 peer-reviewed papers.',
-            image: 'https://via.placeholder.com/200?text=Prof.+Lisa+Anderson',
-            research: '#'
-        }
-    ];
+    import { getPeopleByType, filterPeopleByName, type Person } from '$lib/people';
+
+    let searchQuery = '';
+
+    let staff = getPeopleByType('staff');
+    let students = getPeopleByType('student');
+    let alumni = getPeopleByType('alumni');
+
+    $: filteredStaff = filterPeopleByName(staff, searchQuery);
+    $: filteredStudents = filterPeopleByName(students, searchQuery);
+    $: filteredAlumni = filterPeopleByName(alumni, searchQuery);
+
+    function handleSearch(e: Event) {
+        const target = e.target as HTMLInputElement;
+        searchQuery = target.value;
+    }
 </script>
 
 <!-- Meet the Staff Section -->
 <section class="section">
     <div class="section-container">
-        <h1 class="section-heading">Meet the Staff</h1>
-
-        <div class="staff-grid">
-            {#each staff as member (member.id)}
-                <div class="staff-card">
-                    <div class="card-image">
-                        <img src={member.image} alt={member.name} />
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="staff-name">{member.name}</h2>
-                        <p class="staff-title">{member.title}</p>
-
-                        <div class="divider"></div>
-
-                        <a href="mailto:{member.email}" class="staff-email">{member.email}</a>
-
-                        <div class="about-section">
-                            <h3 class="about-heading">About</h3>
-                            <p class="about-text">{member.about}</p>
-                        </div>
-
-                        <!-- TODO: Fix research link when research page is done -->
-                        <a href={member.research} class="research-link">View Research →</a>
-                    </div>
+        <div class="people-layout">
+            <!-- Search Bar on Left -->
+            <aside class="search-sidebar">
+                <div class="search-container">
+                    <h3 class="search-title">Search</h3>
+                    <input
+                        type="text"
+                        placeholder="Search by name or title..."
+                        class="search-input"
+                        value={searchQuery}
+                        on:input={handleSearch}
+                    />
+                    <p class="search-hint">
+                        Showing {filteredStaff.length +
+                            filteredStudents.length +
+                            filteredAlumni.length} result(s)
+                    </p>
                 </div>
-            {/each}
+            </aside>
+
+            <!-- Main Content on Right -->
+            <main class="people-content">
+                <!-- Staff Section -->
+                <div class="people-section">
+                    <h2 class="section-subheading">Staff</h2>
+                    {#if filteredStaff.length > 0}
+                        <div class="staff-grid">
+                            {#each filteredStaff as member (member.slug)}
+                                <div class="staff-card">
+                                    <a href="/people/{member.slug}" class="card-link">
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+
+                                        <div class="card-content">
+                                            <h3 class="staff-name">{member.name}</h3>
+                                            <p class="staff-title">{member.title}</p>
+
+                                            <div class="divider"></div>
+
+                                            <span
+                                                class="staff-email"
+                                                role="button"
+                                                tabindex="0"
+                                                on:click|stopPropagation={() =>
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                on:keydown|stopPropagation={(e) =>
+                                                    e.key === 'Enter' &&
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                >{member.email}</span
+                                            >
+
+                                            <div class="about-section">
+                                                <h4 class="about-heading">About</h4>
+                                                <p class="about-text">{member.about}</p>
+                                            </div>
+
+                                            <span class="profile-link">View Profile →</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            {/each}
+                        </div>
+                    {:else}
+                        <p class="no-results">No staff members match your search.</p>
+                    {/if}
+                </div>
+
+                <!-- Students Section -->
+                <div class="people-section">
+                    <h2 class="section-subheading">Students</h2>
+                    {#if filteredStudents.length > 0}
+                        <div class="staff-grid">
+                            {#each filteredStudents as member (member.slug)}
+                                <div class="staff-card">
+                                    <a href="/people/{member.slug}" class="card-link">
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+
+                                        <div class="card-content">
+                                            <h3 class="staff-name">{member.name}</h3>
+                                            <p class="staff-title">{member.title}</p>
+
+                                            <div class="divider"></div>
+
+                                            <span
+                                                class="staff-email"
+                                                role="button"
+                                                tabindex="0"
+                                                on:click|stopPropagation={() =>
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                on:keydown|stopPropagation={(e) =>
+                                                    e.key === 'Enter' &&
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                >{member.email}</span
+                                            >
+
+                                            <div class="about-section">
+                                                <h4 class="about-heading">About</h4>
+                                                <p class="about-text">{member.about}</p>
+                                            </div>
+
+                                            <span class="profile-link">View Profile →</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            {/each}
+                        </div>
+                    {:else}
+                        <p class="no-results">No students match your search.</p>
+                    {/if}
+                </div>
+
+                <!-- Alumni Section -->
+                <div class="people-section">
+                    <h2 class="section-subheading">Alumni</h2>
+                    {#if filteredAlumni.length > 0}
+                        <div class="staff-grid">
+                            {#each filteredAlumni as member (member.slug)}
+                                <div class="staff-card">
+                                    <a href="/people/{member.slug}" class="card-link">
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+
+                                        <div class="card-content">
+                                            <h3 class="staff-name">{member.name}</h3>
+                                            <p class="staff-title">{member.title}</p>
+
+                                            <div class="divider"></div>
+
+                                            <span
+                                                class="staff-email"
+                                                role="button"
+                                                tabindex="0"
+                                                on:click|stopPropagation={() =>
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                on:keydown|stopPropagation={(e) =>
+                                                    e.key === 'Enter' &&
+                                                    (window.location.href = `mailto:${member.email}`)}
+                                                >{member.email}</span
+                                            >
+
+                                            <div class="about-section">
+                                                <h4 class="about-heading">About</h4>
+                                                <p class="about-text">{member.about}</p>
+                                            </div>
+
+                                            <span class="profile-link">View Profile →</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            {/each}
+                        </div>
+                    {:else}
+                        <p class="no-results">No alumni match your search.</p>
+                    {/if}
+                </div>
+            </main>
         </div>
     </div>
 </section>
 
 <style lang="scss">
     @import '$lib/styles/globals.scss';
+
     .section {
         width: 100%;
         padding: 80px 20px;
@@ -106,11 +199,82 @@
         width: 100%;
     }
 
-    .section-heading {
-        font-size: 48px;
-        margin: 0 0 50px 0;
+    .people-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+    }
+
+    .search-sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+    }
+
+    .search-container {
+        background-color: $light-bg;
+        border-radius: 8px;
+        padding: 20px;
+        border: 1px solid $border-color;
+    }
+
+    .search-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 15px 0;
         color: $text-color;
-        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: inherit;
+        @include smooth-transition(all);
+        background-color: $light-bg;
+        color: $text-color;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    .search-hint {
+        font-size: 12px;
+        color: #999;
+        margin: 12px 0 0 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .people-content {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .people-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section-subheading {
+        font-size: 32px;
+        margin: 0;
+        color: $text-color;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $border-color;
     }
 
     .staff-grid {
@@ -137,6 +301,14 @@
         }
     }
 
+    .card-link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+    }
+
     .card-image {
         width: 100%;
         height: 250px;
@@ -147,7 +319,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            @include smooth-transition(transform);
         }
+    }
+
+    .staff-card:hover .card-image img {
+        transform: scale(1.05);
     }
 
     .card-content {
@@ -210,7 +387,7 @@
         margin: 0;
     }
 
-    .research-link {
+    .profile-link {
         font-size: 14px;
         color: $primary-color;
         text-decoration: none;
@@ -218,23 +395,44 @@
         margin-top: 15px;
         @include smooth-transition(all);
         display: inline-block;
+    }
 
-        &:hover {
-            color: darken($primary-color, 10%);
-            transform: translateX(4px);
-        }
+    .staff-card:hover .profile-link {
+        color: darken($primary-color, 10%);
+        transform: translateX(4px);
+    }
+
+    .no-results {
+        font-size: 16px;
+        color: #999;
+        text-align: center;
+        padding: 40px 20px;
+        background-color: $light-bg;
+        border-radius: 8px;
     }
 
     // Responsive
     @media (max-width: $tablet-breakpoint) {
+        .people-layout {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .search-sidebar {
+            position: static;
+        }
+
         .staff-grid {
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
 
-        .section-heading {
-            font-size: 36px;
-            margin-bottom: 40px;
+        .section-subheading {
+            font-size: 24px;
+        }
+
+        .people-content {
+            gap: 50px;
         }
     }
 
@@ -248,9 +446,9 @@
             gap: 20px;
         }
 
-        .section-heading {
-            font-size: 28px;
-            margin-bottom: 30px;
+        .section-subheading {
+            font-size: 20px;
+            margin-bottom: 15px;
         }
 
         .card-content {
@@ -263,6 +461,18 @@
 
         .about-text {
             font-size: 13px;
+        }
+
+        .people-content {
+            gap: 40px;
+        }
+
+        .search-container {
+            padding: 15px;
+        }
+
+        .search-title {
+            font-size: 14px;
         }
     }
 </style>
