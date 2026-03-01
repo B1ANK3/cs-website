@@ -1,0 +1,49 @@
+---
+code: "CS403"
+title: "Natural Language Processing"
+type: "elective"
+programme: "undergraduate"
+stream: "AI & Machine Learning"
+link: "/courses/cs403"
+description: "Text processing, language models, sentiment analysis, and transformers for NLP tasks."
+professor: "Dr. Emily Rodriguez"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Explore the intersection of linguistics and machine learning. Learn to process, understand, and generate human language using modern NLP techniques and transformer models.
+
+## Learning Outcomes
+
+- Process and analyze textual data
+- Implement text classification and sentiment analysis
+- Work with word embeddings and language models
+- Apply transformer models to NLP tasks
+- Build end-to-end NLP applications
+
+## Topics Covered
+
+- Text preprocessing and tokenization
+- N-gram models and language modeling
+- Word embeddings: Word2Vec, GloVe
+- Text classification and sentiment analysis
+- Named Entity Recognition (NER)
+- Part-of-speech tagging
+- Sequence-to-sequence models
+- Attention mechanisms and Transformers
+- BERT, GPT, and modern language models
+- Question answering and chatbots
+
+## Prerequisites
+
+- CS401 or CS402
+
+## Assessment
+
+- NLP assignments (40%)
+- Final project (40%)
+- Midterm exam (15%)
+- Participation (5%)

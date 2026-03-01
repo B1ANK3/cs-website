@@ -1,6 +1,7 @@
 ---
 title: Research Showcase 2026
 description: Annual event showcasing student and faculty research projects across all CS disciplines.
+mainImage: "https://picsum.photos/seed/research-showcase-2026/1600/900"
 date: 2026-05-20
 endDate: 2026-05-21
 time: 10:00 AM - 5:00 PM

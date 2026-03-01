@@ -1,0 +1,49 @@
+---
+code: "CS433"
+title: "Data Visualization"
+type: "elective"
+programme: "undergraduate"
+stream: "Data Science"
+link: "/courses/cs433"
+description: "Visual design principles, interactive dashboards, and storytelling with data."
+professor: "Dr. Michelle Brown"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Learn to create effective and compelling data visualizations. This course combines design principles with technical skills to help you tell stories with data.
+
+## Learning Outcomes
+
+- Apply visualization design principles
+- Create interactive visualizations
+- Build comprehensive dashboards
+- Tell stories with data effectively
+- Choose appropriate visualization types
+
+## Topics Covered
+
+- Principles of visual perception and design
+- Chart types and when to use them
+- Color theory and accessibility
+- Interactive visualization techniques
+- D3.js and web-based visualizations
+- Tableau and Power BI
+- Python visualization: Matplotlib, Seaborn, Plotly
+- Dashboard design and composition
+- Geospatial visualization
+- Storytelling with data
+
+## Prerequisites
+
+- CS431 or data analysis experience
+
+## Assessment
+
+- Visualization assignments (35%)
+- Dashboard project (35%)
+- Design critique presentations (20%)
+- Participation (10%)

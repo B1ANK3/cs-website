@@ -1,0 +1,46 @@
+---
+code: "CS101"
+title: "Introduction to Programming"
+type: "core"
+programme: "undergraduate"
+link: "/courses/cs101"
+description: "Fundamentals of programming using Python. Variables, control flow, and data structures."
+professor: "Dr. Sarah Johnson"
+semester: "Fall & Spring"
+---
+
+# {title}
+
+## Course Overview
+
+This foundational course introduces students to the fundamental concepts of programming using Python. Students will learn to think algorithmically and solve problems efficiently through programming.
+
+## Learning Outcomes
+
+- Understand basic programming concepts including variables, data types, and operators
+- Master control flow structures (conditionals, loops)
+- Work with fundamental data structures (lists, dictionaries, tuples)
+- Develop problem-solving skills through coding exercises
+- Write clean, documented, and maintainable code
+
+## Topics Covered
+
+- Introduction to Python and programming environments
+- Variables, operators, and expressions
+- Control structures: if-else statements and loops
+- Functions and modular programming
+- Data structures: lists, tuples, dictionaries, sets
+- File I/O operations
+- Basic algorithms and problem-solving techniques
+- Debugging and testing strategies
+
+## Prerequisites
+
+None - This is an introductory course suitable for beginners.
+
+## Assessment
+
+- Weekly programming assignments (40%)
+- Midterm exam (25%)
+- Final project (25%)
+- Participation and quizzes (10%)

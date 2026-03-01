@@ -1,4 +1,4 @@
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export interface PersonMeta {
     name: string;
@@ -12,7 +12,7 @@ export interface PersonMeta {
 }
 
 export interface Person extends PersonMeta {
-    component: SvelteComponent;
+    component: Component;
 }
 
 // Dynamically import all .svx files from the people directory

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import { getGroupColor } from '$lib/research';
+    import { resolve } from '$app/paths';
 
     export let data: PageData;
 
@@ -41,7 +42,7 @@
 
         <!-- Research Groups -->
         <div class="research-groups">
-            {#each data.researchGroups as group, index}
+            {#each data.researchGroups as group, index (group.slug)}
                 {@const color = getGroupColor(index)}
                 <article
                     class="research-group"
@@ -72,7 +73,7 @@
                         <section class="group-section">
                             <h3>Real-World Applications</h3>
                             <div class="applications-list">
-                                {#each group.realWorldApplications as app}
+                                {#each group.realWorldApplications as app (app)}
                                     <div class="application-badge">
                                         <span class="badge-icon">→</span>
                                         {app}
@@ -85,13 +86,15 @@
                         <section class="group-section">
                             <h3>Research Members</h3>
                             <div class="members-grid">
-                                {#each group.members as memberName}
+                                {#each group.members as memberName (memberName)}
                                     {@const profile = getMemberProfile(memberName)}
                                     <a
                                         href={profile
-                                            ? `/people/${profile.title
-                                                  .toLowerCase()
-                                                  .replace(/\s+/g, '-')}`
+                                            ? resolve(
+                                                  `/people/${profile.title
+                                                      .toLowerCase()
+                                                      .replace(/\s+/g, '-')}`
+                                              )
                                             : '#'}
                                         class="member-card"
                                         class:no-profile={!profile}
@@ -129,7 +132,7 @@
                             <section class="group-section">
                                 <h3>More Information</h3>
                                 <div class="links-list">
-                                    {#each group.links as link}
+                                    {#each group.links as link (link.title)}
                                         <a
                                             href={link.url}
                                             target="_blank"

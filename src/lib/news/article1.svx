@@ -1,6 +1,7 @@
 ---
 title: "Introducing SvelteKit 2.0"
 summary: "We're excited to announce the release of SvelteKit 2.0 with incredible new features and improvements."
+mainImage: "https://picsum.photos/seed/news-article-1/1600/900"
 date: "2026-02-15"
 author: "John Developer"
 ---

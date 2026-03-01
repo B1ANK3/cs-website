@@ -1,0 +1,49 @@
+---
+code: "CS402"
+title: "Deep Learning & Neural Networks"
+type: "elective"
+programme: "undergraduate"
+stream: "AI & Machine Learning"
+link: "/courses/cs402"
+description: "Advanced neural network architectures, CNNs, RNNs, and modern deep learning frameworks."
+professor: "Dr. John Smith"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Dive deep into neural networks and modern deep learning architectures. Learn to build, train, and deploy deep learning models using industry-standard frameworks.
+
+## Learning Outcomes
+
+- Design and implement neural network architectures
+- Work with CNNs for computer vision tasks
+- Apply RNNs and LSTMs for sequence data
+- Use modern deep learning frameworks (TensorFlow, PyTorch)
+- Understand training optimization techniques
+
+## Topics Covered
+
+- Neural network fundamentals and backpropagation
+- Convolutional Neural Networks (CNNs)
+- Recurrent Neural Networks (RNNs) and LSTMs
+- Transfer learning and fine-tuning
+- Generative Adversarial Networks (GANs)
+- Attention mechanisms and Transformers
+- Deep learning frameworks: TensorFlow and PyTorch
+- GPU computing and optimization
+- Model deployment and serving
+- Ethics and limitations of deep learning
+
+## Prerequisites
+
+- CS401 or instructor permission
+
+## Assessment
+
+- Implementation assignments (35%)
+- Course project (40%)
+- Paper presentation (15%)
+- Final exam (10%)

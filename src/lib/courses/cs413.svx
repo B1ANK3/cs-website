@@ -1,0 +1,49 @@
+---
+code: "CS413"
+title: "Ethical Hacking & Penetration Testing"
+type: "elective"
+programme: "undergraduate"
+stream: "Cybersecurity"
+link: "/courses/cs413"
+description: "Vulnerability assessment, penetration testing methodologies, and ethical hacking techniques."
+professor: "Dr. James Wilson"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Learn ethical hacking techniques and penetration testing methodologies to identify and address security vulnerabilities. This hands-on course teaches responsible security testing practices.
+
+## Learning Outcomes
+
+- Conduct ethical penetration testing
+- Identify common security vulnerabilities
+- Use security testing tools and frameworks
+- Write comprehensive security reports
+- Understand legal and ethical considerations
+
+## Topics Covered
+
+- Ethics and legality in security testing
+- Reconnaissance and information gathering
+- Vulnerability scanning and analysis
+- Exploitation techniques and frameworks
+- Web application security testing
+- Password cracking and social engineering
+- Wireless network penetration testing
+- Post-exploitation and privilege escalation
+- Security tools: Metasploit, Nmap, Burp Suite
+- Report writing and remediation recommendations
+
+## Prerequisites
+
+- CS411 or instructor permission
+
+## Assessment
+
+- Lab exercises (40%)
+- Penetration testing project (35%)
+- Security report (15%)
+- Ethics exam (10%)

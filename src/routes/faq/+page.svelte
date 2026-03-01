@@ -1,6 +1,8 @@
+<!-- TODO: Remove legacy mode -->
 <script lang="ts">
     import type { PageData } from './$types';
     import { onMount } from 'svelte';
+    import { resolve } from '$app/paths';
 
     export let data: PageData;
 
@@ -64,7 +66,7 @@
                 <h2>Questions</h2>
                 <nav>
                     <ul class="toc-list">
-                        {#each data.faqs as faq, index}
+                        {#each data.faqs as faq, index (faq.slug)}
                             <li class="toc-item" class:active={activeSection === faq.slug}>
                                 <button
                                     on:click={() => scrollToSection(faq.slug || '')}
@@ -90,12 +92,12 @@
                 <p class="faq-intro">
                     Find answers to common questions about our Computer Science department,
                     programs, student life, and more. If you can't find what you're looking for,
-                    feel free to <a href="/contact">contact us</a>.
+                    feel free to <a href={resolve('/contact')}>contact us</a>.
                 </p>
             </header>
 
             <div class="faq-list">
-                {#each data.faqs as faq, index}
+                {#each data.faqs as faq, index (faq.slug)}
                     <article id={faq.slug} class="faq-item">
                         <div class="faq-question-header">
                             <span class="faq-number">{index + 1}</span>

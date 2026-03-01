@@ -1,0 +1,49 @@
+---
+code: "CS431"
+title: "Data Analytics"
+type: "elective"
+programme: "undergraduate"
+stream: "Data Science"
+link: "/courses/cs431"
+description: "Statistical analysis, data mining, exploratory data analysis, and business intelligence."
+professor: "Dr. Michael Chen"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Learn to extract insights from data using statistical analysis and data mining techniques. This course covers the complete data analytics pipeline from collection to visualization.
+
+## Learning Outcomes
+
+- Perform exploratory data analysis
+- Apply statistical methods to data
+- Use data mining techniques
+- Create compelling data visualizations
+- Communicate data-driven insights
+
+## Topics Covered
+
+- Data collection and cleaning
+- Exploratory data analysis (EDA)
+- Statistical inference and hypothesis testing
+- Correlation and regression analysis
+- Classification and clustering
+- Time series analysis
+- A/B testing and experimentation
+- Data visualization best practices
+- Business intelligence tools
+- Communicating with data
+
+## Prerequisites
+
+- CS101 and basic statistics
+
+## Assessment
+
+- Data analysis assignments (40%)
+- Analytics project (35%)
+- Midterm exam (15%)
+- Presentation (10%)

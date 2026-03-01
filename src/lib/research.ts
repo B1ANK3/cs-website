@@ -1,4 +1,4 @@
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export interface ResearchLink {
     title: string;
@@ -16,7 +16,7 @@ export interface ResearchMeta {
 }
 
 export interface ResearchGroup extends ResearchMeta {
-    component: SvelteComponent;
+    component: Component;
     colorIndex?: number;
 }
 

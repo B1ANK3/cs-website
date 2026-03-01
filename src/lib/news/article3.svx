@@ -1,6 +1,7 @@
 ---
 title: "TypeScript Tips and Tricks"
 summary: "Advanced TypeScript patterns to level up your development skills."
+mainImage: "https://picsum.photos/seed/news-article-3/1600/900"
 date: "2026-02-01"
 author: "Mike Johnson"
 ---

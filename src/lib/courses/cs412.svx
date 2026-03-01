@@ -1,0 +1,49 @@
+---
+code: "CS412"
+title: "Cryptography"
+type: "elective"
+programme: "undergraduate"
+stream: "Cybersecurity"
+link: "/courses/cs412"
+description: "Encryption algorithms, cryptographic protocols, and security mathematics."
+professor: "Dr. Robert Davis"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Study the mathematical foundations and practical implementations of cryptography. Learn classical and modern encryption techniques to secure data and communications.
+
+## Learning Outcomes
+
+- Understand cryptographic principles and algorithms
+- Implement symmetric and asymmetric encryption
+- Apply cryptographic hash functions
+- Design secure cryptographic protocols
+- Analyze cryptographic security
+
+## Topics Covered
+
+- Mathematical foundations: number theory, modular arithmetic
+- Classical cryptography: Caesar, Vigenère ciphers
+- Symmetric encryption: DES, AES
+- Asymmetric encryption: RSA, ECC
+- Cryptographic hash functions: SHA, MD5
+- Digital signatures and certificates
+- Key exchange protocols: Diffie-Hellman
+- Public Key Infrastructure (PKI)
+- Cryptanalysis techniques
+- Modern applications: blockchain, cryptocurrencies
+
+## Prerequisites
+
+- CS201 and discrete mathematics
+
+## Assessment
+
+- Problem sets (35%)
+- Implementation projects (35%)
+- Midterm exam (15%)
+- Final exam (15%)

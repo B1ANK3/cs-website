@@ -42,7 +42,7 @@
 
         <div class="event-meta">
             <div class="meta-item">
-                <span class="label">📍</span>
+                <span class="label">Location:</span>
                 <span>{event.location}</span>
             </div>
         </div>
@@ -63,7 +63,7 @@
     </div>
 
     {#if event.pinned}
-        <div class="pinned-badge">📌</div>
+        <div class="pinned-badge">Pinned</div>
     {/if}
 </div>
 
@@ -73,21 +73,21 @@
         gap: 1.5rem;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        background: var(--card-bg, #f9fafb);
-        border: 1px solid var(--border-color, #e5e7eb);
-        border-radius: 0.5rem;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
 
         &:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border-color: var(--accent-color, #3b82f6);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: #d22730;
             transform: translateY(-2px);
         }
 
         &:focus-visible {
-            outline: 2px solid var(--accent-color, #3b82f6);
+            outline: 2px solid #d22730;
             outline-offset: 2px;
         }
     }
@@ -100,8 +100,9 @@
         min-width: 70px;
         padding: 0.5rem;
         text-align: center;
-        border-radius: 0.25rem;
-        background: var(--accent-bg, rgba(59, 130, 246, 0.1));
+        border-radius: 8px;
+        background: rgba(97, 34, 59, 0.08);
+        border-left: 3px solid #d22730;
 
         .month {
             font-size: 0.75rem;
@@ -132,18 +133,18 @@
         margin: 0;
         font-size: 1.25rem;
         font-weight: 600;
-        color: var(--text-primary, #111827);
+        color: #333;
         transition: color 0.3s ease;
 
         .event-card:hover & {
-            color: var(--accent-color, #3b82f6);
+            color: #61223b;
         }
     }
 
     .event-time {
         margin: 0;
         font-size: 0.875rem;
-        color: var(--text-secondary, #6b7280);
+        color: #666;
     }
 
     .event-meta {
@@ -151,7 +152,7 @@
         flex-wrap: wrap;
         gap: 1rem;
         font-size: 0.875rem;
-        color: var(--text-secondary, #6b7280);
+        color: #666;
 
         .meta-item {
             display: flex;
@@ -167,7 +168,7 @@
     .event-description {
         margin: 0.5rem 0 0 0;
         font-size: 0.95rem;
-        color: var(--text-secondary, #6b7280);
+        color: #666;
         line-height: 1.5;
         display: -webkit-box;
         line-clamp: 2;
@@ -184,13 +185,13 @@
 
     .calendar-link {
         font-size: 0.875rem;
-        color: var(--accent-color, #3b82f6);
+        color: #d22730;
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s ease;
 
         &:hover {
-            color: var(--accent-color-dark, #2563eb);
+            color: #61223b;
             text-decoration: underline;
         }
     }
@@ -199,11 +200,18 @@
         position: absolute;
         top: 1rem;
         right: 1rem;
-        font-size: 1.25rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #ffffff;
+        background: #61223b;
+        border-radius: 999px;
+        padding: 0.25rem 0.6rem;
+        font-weight: 600;
     }
 
     .text-accent {
-        color: var(--accent-color, #3b82f6);
+        color: #61223b;
     }
 
     @media (max-width: 640px) {

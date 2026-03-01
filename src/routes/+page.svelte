@@ -3,62 +3,33 @@
     import ArrowBack from '$lib/assets/svg/ArrowBack.svelte';
     import ArrowForward from '$lib/assets/svg/ArrowForward.svelte';
 
-    let slides = [
-        { title: 'News Slide 1', color: '#D22730' },
-        { title: 'News Slide 2', color: '#82CCAE' },
-        { title: 'Events Slide 1', color: '#A60A3D' },
-        { title: 'Events Slide 2', color: '#dc4405' },
-        { title: 'Events Slide 2', color: '#643335' }
-    ];
+    import type { PageProps } from './$types';
 
-    let slideCount = slides.length;
-    let slideIndex = 0;
-    let autoScrollInterval: ReturnType<typeof setInterval> | null = null;
-    let carouselListEl: HTMLElement | null = null;
+    let { data }: PageProps = $props();
+
+    let slides = $derived(data.slides || []);
+    let slideCount = $derived(slides.length);
+    let slideIndex = $state(0);
+    let autoScrollInterval: ReturnType<typeof setTimeout> | null = null;
 
     const sliderSpeed = 6000;
 
     const raiseLeft = () => {
+        if (slideCount === 0) return;
         slideIndex = (slideIndex + slideCount - 1) % slideCount;
-        updateZIndex();
     };
 
     const raiseRight = () => {
+        if (slideCount === 0) return;
         slideIndex = (slideIndex + 1) % slideCount;
-        updateZIndex();
-    };
-
-    const updateZIndex = () => {
-        if (!carouselListEl) return;
-
-        const items = carouselListEl.querySelectorAll('li');
-        items.forEach((item, i) => {
-            if (i === slideIndex) {
-                (item as HTMLElement).style.zIndex = '6';
-            } else {
-                (item as HTMLElement).style.zIndex = '2';
-            }
-        });
     };
 
     const moveRight = () => {
         raiseRight();
-        if (carouselListEl) {
-            const firstChild = carouselListEl.firstElementChild;
-            if (firstChild) {
-                carouselListEl.appendChild(firstChild);
-            }
-        }
     };
 
     const moveLeft = () => {
         raiseLeft();
-        if (carouselListEl) {
-            const lastChild = carouselListEl.lastElementChild;
-            if (lastChild) {
-                carouselListEl.insertBefore(lastChild, carouselListEl.firstElementChild);
-            }
-        }
     };
 
     const moveRightTimer = () => {
@@ -90,9 +61,9 @@
     };
     // TODO: Fix this carousel logic. Bad animations and wrong logic for wrapping.
     onMount(() => {
-        carouselListEl = document.querySelector('.carousel-list') as HTMLElement;
-        slideIndex = slideCount - 1;
-        raiseRight();
+        if (slideCount > 0) {
+            slideIndex = 0;
+        }
         startAutoScroll();
 
         return () => {
@@ -125,16 +96,28 @@
         </button>
 
         <div class="carousel" id="carousel">
-            <ul class="carousel-list">
-                {#each slides as slide}
-                    <li class="carousel-item" style="background-color: {slide.color}">
-                        <div class="slide-content">
-                            <h2>{slide.title}</h2>
-                            <p>Carousel content coming soon</p>
-                        </div>
-                    </li>
-                {/each}
-            </ul>
+            {#if slideCount === 0}
+                <div class="empty-carousel">No featured updates available right now.</div>
+            {:else}
+                <ul class="carousel-list" style="transform: translateX(-{slideIndex * 100}%);">
+                    {#each slides as slide (slide.id)}
+                        <li class="carousel-item">
+                            <a href={slide.link} class="slide-link">
+                                <img src={slide.mainImage} alt={slide.title} class="slide-image" />
+                                <div class="slide-overlay"></div>
+                                <div class="slide-content">
+                                    <span class="slide-type"
+                                        >{slide.type === 'event' ? 'Event' : 'News'}</span
+                                    >
+                                    <h2>{slide.title}</h2>
+                                    <p>{slide.summary}</p>
+                                </div>
+                                <span class="learn-more">Learn more</span>
+                            </a>
+                        </li>
+                    {/each}
+                </ul>
+            {/if}
         </div>
 
         <button
@@ -186,20 +169,6 @@
         scroll-snap-align: start;
     }
 
-    .animated-logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 50;
-        @include smooth-transition(opacity);
-
-        img {
-            width: 80px;
-            height: auto;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
-        }
-    }
-
     .carousel-wrapper {
         position: relative;
         width: 100%;
@@ -239,33 +208,59 @@
         padding: 0;
         list-style: none;
         position: relative;
+        transition: transform 0.55s ease;
     }
 
     .carousel-item {
         min-width: 100%;
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
-        @include flex-center;
-        z-index: 2;
-        transition:
-            z-index 0.3s ease-in-out,
-            opacity 0.3s ease-in-out;
-        opacity: 0;
+        position: relative;
 
-        &[style*='z-index: 6'] {
-            opacity: 1;
+        .slide-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 10%, rgba(0, 0, 0, 0.25) 60%);
         }
 
         .slide-content {
-            text-align: center;
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+            right: 180px;
+            text-align: left;
             color: white;
+
+            .slide-type {
+                display: inline-block;
+                background: rgba(210, 39, 48, 0.9);
+                font-size: 12px;
+                padding: 6px 10px;
+                border-radius: 999px;
+                margin-bottom: 12px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
 
             h2 {
                 font-size: 48px;
-                margin: 0 0 20px 0;
+                margin: 0 0 14px 0;
                 text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             }
 
@@ -273,8 +268,40 @@
                 font-size: 18px;
                 margin: 0;
                 text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+                line-height: 1.5;
+                max-width: 760px;
             }
         }
+
+        .learn-more {
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .slide-link:hover .learn-more {
+            background: rgba(210, 39, 48, 0.9);
+            border-color: rgba(210, 39, 48, 0.9);
+        }
+    }
+
+    .empty-carousel {
+        width: 100%;
+        height: 100%;
+        @include flex-center;
+        color: #fff;
+        background: #61223b;
+        font-size: 20px;
+        text-align: center;
+        padding: 2rem;
     }
 
     .carousel-btn {
@@ -387,6 +414,27 @@
             padding: 0;
         }
 
+        .carousel-item {
+            .slide-content {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+
+                h2 {
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            .learn-more {
+                display: none;
+            }
+        }
+
         .carousel-btn {
             width: 40px;
             height: 40px;
@@ -398,14 +446,6 @@
 
             &-right {
                 right: 10px;
-            }
-        }
-
-        .animated-logo {
-            width: 60px;
-
-            img {
-                width: 60px;
             }
         }
 

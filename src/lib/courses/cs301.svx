@@ -1,0 +1,48 @@
+---
+code: "CS301"
+title: "Software Engineering"
+type: "core"
+programme: "undergraduate"
+link: "/courses/cs301"
+description: "Software development lifecycle, design patterns, and collaborative development."
+professor: "Dr. Lisa Anderson"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Learn professional software development practices and methodologies. This course covers the complete software development lifecycle, from requirements gathering to deployment and maintenance.
+
+## Learning Outcomes
+
+- Understand the software development lifecycle
+- Apply design patterns and architectural principles
+- Use version control and collaborative development tools
+- Practice agile development methodologies
+- Implement testing strategies and CI/CD pipelines
+
+## Topics Covered
+
+- Software development lifecycle (SDLC)
+- Requirements engineering and analysis
+- Software design principles (SOLID, DRY)
+- Design patterns (Creational, Structural, Behavioral)
+- Agile and Scrum methodologies
+- Version control with Git
+- Testing: unit, integration, system testing
+- Continuous Integration/Continuous Deployment
+- Code review and quality assurance
+- Software project management
+
+## Prerequisites
+
+- CS201 and experience with programming projects
+
+## Assessment
+
+- Team project (50%)
+- Individual assignments (25%)
+- Midterm exam (15%)
+- Participation and presentations (10%)

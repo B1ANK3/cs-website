@@ -1,0 +1,48 @@
+---
+code: "CS201"
+title: "Data Structures & Algorithms"
+type: "core"
+programme: "undergraduate"
+link: "/courses/cs201"
+description: "Essential data structures and algorithmic techniques for efficient problem solving."
+professor: "Dr. Michael Chen"
+semester: "Fall & Spring"
+---
+
+# {title}
+
+## Course Overview
+
+This course provides a comprehensive introduction to fundamental data structures and algorithms essential for efficient software development. Students will learn to analyze algorithm complexity and choose appropriate data structures for different problems.
+
+## Learning Outcomes
+
+- Implement and analyze fundamental data structures
+- Design and analyze algorithms for efficiency
+- Understand time and space complexity using Big O notation
+- Apply algorithmic techniques to solve complex problems
+- Make informed decisions about data structure selection
+
+## Topics Covered
+
+- Algorithm analysis and Big O notation
+- Arrays, linked lists, and dynamic arrays
+- Stacks, queues, and deques
+- Trees: binary trees, BSTs, AVL trees, heaps
+- Hash tables and hash functions
+- Graphs: representations, traversals (BFS, DFS)
+- Sorting algorithms: quicksort, mergesort, heapsort
+- Searching algorithms and binary search
+- Dynamic programming fundamentals
+- Greedy algorithms
+
+## Prerequisites
+
+- CS101 or equivalent programming experience
+
+## Assessment
+
+- Problem sets and coding assignments (45%)
+- Midterm exam (25%)
+- Final exam (25%)
+- Participation (5%)

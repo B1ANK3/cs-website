@@ -1,6 +1,7 @@
 ---
 title: "Best Practices for Web Performance"
 summary: "Learn essential techniques to optimize your web applications for better performance."
+mainImage: "https://picsum.photos/seed/news-article-2/1600/900"
 date: "2026-02-10"
 author: "Jane Smith"
 ---

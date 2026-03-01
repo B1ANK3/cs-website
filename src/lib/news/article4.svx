@@ -1,6 +1,7 @@
 ---
 title: "The Future of Web Standards"
 summary: "Exploring upcoming web standards and specifications that will shape the future of web development."
+mainImage: "https://picsum.photos/seed/news-article-4/1600/900"
 date: "2026-01-25"
 author: "Sarah Chen"
 ---

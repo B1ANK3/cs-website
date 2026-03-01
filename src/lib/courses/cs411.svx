@@ -1,0 +1,49 @@
+---
+code: "CS411"
+title: "Network Security"
+type: "elective"
+programme: "undergraduate"
+stream: "Cybersecurity"
+link: "/courses/cs411"
+description: "Network protocols, security threats, intrusion detection, and defense mechanisms."
+professor: "Dr. James Wilson"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Learn to secure computer networks against modern threats. This course covers network protocols, common attack vectors, and defensive strategies to protect networked systems.
+
+## Learning Outcomes
+
+- Understand network protocols and vulnerabilities
+- Identify and analyze security threats
+- Implement network security measures
+- Configure firewalls and intrusion detection systems
+- Conduct security audits and vulnerability assessments
+
+## Topics Covered
+
+- Network fundamentals and TCP/IP
+- Common network attacks: DoS, DDoS, MITM
+- Firewalls and network segmentation
+- Virtual Private Networks (VPNs)
+- Intrusion Detection and Prevention Systems
+- SSL/TLS and secure communications
+- Wireless network security
+- Network monitoring and logging
+- Security policies and best practices
+- Incident response and forensics
+
+## Prerequisites
+
+- CS202 and understanding of networks
+
+## Assessment
+
+- Lab exercises (40%)
+- Security audit project (30%)
+- Midterm exam (15%)
+- Final exam (15%)

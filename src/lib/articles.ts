@@ -1,6 +1,9 @@
+import type { Component } from 'svelte';
+
 export interface ArticleMeta {
     title: string;
     summary: string;
+    mainImage: string;
     date: string;
     author: string;
     slug?: string;
@@ -8,7 +11,7 @@ export interface ArticleMeta {
 
 export interface Article extends ArticleMeta {
     // TODO: Fix the any types
-    component: any;
+    component: Component;
 }
 
 // Dynamically import all .svx files from the news directory
@@ -25,12 +28,12 @@ function slugify(text: string): string {
 export async function getAllArticles(): Promise<Article[]> {
     const articles: Article[] = [];
 
-    for (const [path, module] of Object.entries(articleModules)) {
+    for (const [_path, module] of Object.entries(articleModules)) {
         const mod = module as any;
         const meta = mod.metadata as ArticleMeta;
 
         if (meta) {
-            const filename = path.split('/').pop()?.replace('.svx', '') || '';
+            // const filename = path.split('/').pop()?.replace('.svx', '') || '';
             articles.push({
                 ...meta,
                 slug: slugify(meta.title),

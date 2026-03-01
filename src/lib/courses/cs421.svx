@@ -1,0 +1,49 @@
+---
+code: "CS421"
+title: "Modern Web Development"
+type: "elective"
+programme: "undergraduate"
+stream: "Web & Mobile Development"
+link: "/courses/cs421"
+description: "Full-stack web development with modern frameworks, APIs, and deployment strategies."
+professor: "Dr. Alex Miller"
+semester: "Fall & Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Master modern web development using contemporary frameworks and tools. Build responsive, scalable web applications from frontend to backend deployment.
+
+## Learning Outcomes
+
+- Build responsive user interfaces with modern frameworks
+- Develop RESTful and GraphQL APIs
+- Implement authentication and authorization
+- Work with databases in web applications
+- Deploy and maintain web applications
+
+## Topics Covered
+
+- HTML5, CSS3, and responsive design
+- JavaScript ES6+ and TypeScript
+- Frontend frameworks: React, Vue, or Svelte
+- Backend development with Node.js/Express
+- RESTful API design and GraphQL
+- Database integration: SQL and NoSQL
+- Authentication: JWT, OAuth, sessions
+- State management and routing
+- Testing: unit, integration, E2E
+- Deployment: Docker, CI/CD, cloud platforms
+
+## Prerequisites
+
+- CS301 and web development basics
+
+## Assessment
+
+- Weekly assignments (30%)
+- Full-stack project (45%)
+- Midterm exam (15%)
+- Participation (10%)

@@ -38,6 +38,7 @@
             <a href={resolve('/')} class="nav-item">Home</a>
             <a href={resolve('/news')} class="nav-item">News</a>
             <a href={resolve('/events')} class="nav-item">Events</a>
+            <a href={resolve('/academics')} class="nav-item">Academics</a>
             <a href={resolve('/people')} class="nav-item">People</a>
             <a href={resolve('/research')} class="nav-item">Research</a>
             <a href={resolve('/contact')} class="nav-item">Contact</a>
@@ -76,6 +77,9 @@
             <a href={resolve('/')} class="mobile-nav-item" onclick={closeMobileMenu}>Home</a>
             <a href={resolve('/news')} class="mobile-nav-item" onclick={closeMobileMenu}>News</a>
             <a href={resolve('/events')} class="mobile-nav-item" onclick={closeMobileMenu}>Events</a
+            >
+            <a href={resolve('/academics')} class="mobile-nav-item" onclick={closeMobileMenu}
+                >Academics</a
             >
             <a href={resolve('/people')} class="mobile-nav-item" onclick={closeMobileMenu}>People</a
             >

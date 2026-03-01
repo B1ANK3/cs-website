@@ -5,6 +5,7 @@
     let { data }: PageProps = $props();
 
     const event = $derived(data.event as Event);
+    const EventComponent = $derived(event.component);
     const googleCalendarUrl = $derived(generateGoogleCalendarLink(event));
 
     // Helper function to format date range
@@ -26,8 +27,7 @@
         <article class="event-main">
             <div class="event-info">
                 <div class="info-item">
-                    <!-- TODO: Remove emojis -->
-                    <h3 class="info-label">📅 Date & Time</h3>
+                    <h3 class="info-label">Date & Time</h3>
                     <p class="info-content">{formatDateRange()}</p>
                     {#if event.time}
                         <p class="info-content time">{event.time}</p>
@@ -35,8 +35,7 @@
                 </div>
 
                 <div class="info-item">
-                    <!-- TODO: Remove emojis -->
-                    <h3 class="info-label">📍 Location</h3>
+                    <h3 class="info-label">Location</h3>
                     <p class="info-content">{event.location}</p>
                 </div>
 
@@ -53,7 +52,7 @@
             </div>
 
             <div class="event-content">
-                <svelte:component this={event.component} />
+                <EventComponent />
             </div>
         </article>
 
@@ -63,7 +62,7 @@
                     <div class="attendees-section">
                         <h3 class="section-title">Host{event.hosts.length !== 1 ? 's' : ''}</h3>
                         <ul class="attendees-list">
-                            {#each event.hosts as host}
+                            {#each event.hosts as host (host)}
                                 <li>{host}</li>
                             {/each}
                         </ul>
@@ -76,7 +75,7 @@
                             Speaker{event.speakers.length !== 1 ? 's' : ''}
                         </h3>
                         <ul class="attendees-list">
-                            {#each event.speakers as speaker}
+                            {#each event.speakers as speaker (speaker)}
                                 <li>{speaker}</li>
                             {/each}
                         </ul>
@@ -89,7 +88,7 @@
                             Organizer{event.organizers.length !== 1 ? 's' : ''}
                         </h3>
                         <ul class="attendees-list">
-                            {#each event.organizers as organizer}
+                            {#each event.organizers as organizer (organizer)}
                                 <li>{organizer}</li>
                             {/each}
                         </ul>
@@ -102,7 +101,7 @@
                             Attendee{event.attendees.length !== 1 ? 's' : ''}
                         </h3>
                         <ul class="attendees-list">
-                            {#each event.attendees as attendee}
+                            {#each event.attendees as attendee (attendee)}
                                 <li>{attendee}</li>
                             {/each}
                         </ul>

@@ -1,8 +1,9 @@
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export interface EventMeta {
     title: string;
     description: string;
+    mainImage: string;
     date: string; // ISO date string
     time?: string; // e.g., "2:00 PM - 4:00 PM"
     endDate?: string; // ISO date string for multi-day events
@@ -13,12 +14,13 @@ export interface EventMeta {
     speakers?: string[]; // Array of speakers
     organizers?: string[]; // Array of organizers
     attendees?: string[]; // Array of attendees
+    tags?: string[]; // Array of tags (e.g., ['#undergrad', '#research'])
     slug?: string;
     calendarLink?: string; // iCal or Google Calendar link
 }
 
 export interface Event extends EventMeta {
-    component: SvelteComponent;
+    component: Component;
 }
 
 // Dynamically import all .svx files from the events directory
@@ -35,12 +37,12 @@ function slugify(text: string): string {
 export async function getAllEvents(): Promise<Event[]> {
     const events: Event[] = [];
 
-    for (const [path, module] of Object.entries(eventModules)) {
-        const mod = module as any;
+    for (const [_path, module] of Object.entries(eventModules)) {
+        const mod = module as any; // What type is this
         const meta = mod.metadata as EventMeta;
 
         if (meta) {
-            const filename = path.split('/').pop()?.replace('.svx', '') || '';
+            // const filename = path.split('/').pop()?.replace('.svx', '') || '';
             events.push({
                 ...meta,
                 slug: meta.slug || slugify(meta.title),
@@ -96,6 +98,15 @@ export function filterEvents(events: Event[], searchQuery: string): Event[] {
             event.hosts?.some((h) => h.toLowerCase().includes(query)) ||
             event.speakers?.some((s) => s.toLowerCase().includes(query))
     );
+}
+
+export function filterEventsByTag(events: Event[], tag: string): Event[] {
+    if (!tag.trim()) return events;
+
+    const normalizedTag = tag.toLowerCase().startsWith('#')
+        ? tag.toLowerCase()
+        : `#${tag.toLowerCase()}`;
+    return events.filter((event) => event.tags?.some((t) => t.toLowerCase() === normalizedTag));
 }
 
 export function getEventBySlug(events: Event[], slug: string): Event | undefined {
@@ -157,7 +168,7 @@ export function generateGoogleCalendarLink(event: Event): string {
 
 // Helper function to generate iCal link
 export function generateICalLink(event: Event): string {
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    // const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
     const icalData = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//CS Sun Website//EN

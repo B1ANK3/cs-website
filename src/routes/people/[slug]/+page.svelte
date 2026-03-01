@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
+    import { resolve } from '$app/paths';
 
     export let data: PageData;
 
@@ -12,7 +13,7 @@
 
 <div class="profile-container">
     <div class="profile-header">
-        <a href="/people" class="back-link">← Back to People</a>
+        <a href={resolve('/people')} class="back-link">← Back to People</a>
     </div>
 
     <div class="profile-content">

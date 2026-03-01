@@ -1,4 +1,4 @@
-import { getAllArticles, getArticleBySlug, getArticlesByAuthor } from '$lib/articles';
+import { getAllArticles, getArticleBySlug } from '$lib/articles';
 import { error } from '@sveltejs/kit';
 
 export async function load({ params }) {

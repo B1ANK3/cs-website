@@ -26,85 +26,113 @@
 </script>
 
 <main class="events-page">
-    <div class="events-header">
-        <h1>Events</h1>
-        <p class="subtitle">Discover upcoming seminars, workshops, and research showcases</p>
-    </div>
+    <section class="events-hero">
+        <div class="container">
+            <h1>Events</h1>
+            <p class="subtitle">Discover upcoming seminars, workshops, and research showcases</p>
+        </div>
+    </section>
 
-    <div class="events-controls">
-        <div class="search-box">
-            <input
-                type="text"
-                placeholder="Search events..."
-                bind:value={searchQuery}
-                class="search-input"
-            />
-        </div>
+    <section class="events-content">
+        <div class="container">
+            <div class="events-controls">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search events..."
+                        bind:value={searchQuery}
+                        class="search-input"
+                    />
+                </div>
 
-        <div class="filter-buttons">
-            <button
-                class="filter-btn"
-                class:active={filterType === 'upcoming'}
-                onclick={() => (filterType = 'upcoming')}
-            >
-                Upcoming Events
-            </button>
-            <button
-                class="filter-btn"
-                class:active={filterType === 'all'}
-                onclick={() => (filterType = 'all')}
-            >
-                All Events
-            </button>
-            <button
-                class="filter-btn"
-                class:active={filterType === 'past'}
-                onclick={() => (filterType = 'past')}
-            >
-                Past Events
-            </button>
-        </div>
-    </div>
+                <div class="filter-buttons">
+                    <button
+                        class="filter-btn"
+                        class:active={filterType === 'upcoming'}
+                        onclick={() => (filterType = 'upcoming')}
+                    >
+                        Upcoming Events
+                    </button>
+                    <button
+                        class="filter-btn"
+                        class:active={filterType === 'all'}
+                        onclick={() => (filterType = 'all')}
+                    >
+                        All Events
+                    </button>
+                    <button
+                        class="filter-btn"
+                        class:active={filterType === 'past'}
+                        onclick={() => (filterType = 'past')}
+                    >
+                        Past Events
+                    </button>
+                </div>
+            </div>
 
-    {#if filteredEvents.length === 0}
-        <div class="no-events">
-            <p>No events found matching your criteria.</p>
+            {#if filteredEvents.length === 0}
+                <div class="no-events">
+                    <p>No events found matching your criteria.</p>
+                </div>
+            {:else}
+                <div class="events-list">
+                    <p class="event-count">
+                        {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''}
+                    </p>
+                    {#each filteredEvents as event (event.slug)}
+                        <EventCard {event} />
+                    {/each}
+                </div>
+            {/if}
         </div>
-    {:else}
-        <div class="events-list">
-            <p class="event-count">
-                {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''}
-            </p>
-            {#each filteredEvents as event (event.slug)}
-                <EventCard {event} />
-            {/each}
-        </div>
-    {/if}
+    </section>
 </main>
 
 <style lang="scss">
-    .events-page {
-        max-width: 900px;
+    .container {
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        padding: 0 2rem;
     }
 
-    .events-header {
-        margin-bottom: 3rem;
+    .events-page {
+        background: #f8f9fa;
+        min-height: 100vh;
+    }
+
+    .events-hero {
+        background: #61223b;
+        color: white;
+        padding: 4rem 0;
         text-align: center;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #d22730;
+        }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin: 0 0 0.5rem 0;
-            color: var(--text-primary, #111827);
+            margin: 0 0 1rem 0;
         }
 
         .subtitle {
             margin: 0;
             font-size: 1.125rem;
-            color: var(--text-secondary, #6b7280);
+            line-height: 1.6;
+            opacity: 0.95;
         }
+    }
+
+    .events-content {
+        padding: 3rem 0;
     }
 
     .events-controls {
@@ -112,6 +140,10 @@
         flex-direction: column;
         gap: 1.5rem;
         margin-bottom: 2rem;
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
         @media (min-width: 768px) {
             flex-direction: row;
@@ -134,19 +166,19 @@
         width: 100%;
         padding: 0.75rem 1rem;
         font-size: 1rem;
-        border: 1px solid var(--border-color, #e5e7eb);
-        border-radius: 0.375rem;
-        background: var(--input-bg, #ffffff);
-        color: var(--text-primary, #111827);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #333;
 
         &::placeholder {
-            color: var(--text-tertiary, #9ca3af);
+            color: #999;
         }
 
         &:focus {
             outline: none;
-            border-color: var(--accent-color, #3b82f6);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #d22730;
+            box-shadow: 0 0 0 3px rgba(210, 39, 48, 0.15);
         }
     }
 
@@ -164,26 +196,26 @@
         padding: 0.625rem 1.25rem;
         font-size: 0.875rem;
         font-weight: 500;
-        border: 1px solid var(--border-color, #e5e7eb);
-        border-radius: 0.375rem;
-        background: var(--button-bg, #f3f4f6);
-        color: var(--text-primary, #111827);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #f8f9fa;
+        color: #333;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-            background: var(--button-hover-bg, #e5e7eb);
-            border-color: var(--accent-color, #3b82f6);
+            background: #ffffff;
+            border-color: #d22730;
         }
 
         &.active {
-            background: var(--accent-color, #3b82f6);
+            background: #d22730;
             color: white;
-            border-color: var(--accent-color, #3b82f6);
+            border-color: #d22730;
         }
 
         &:focus-visible {
-            outline: 2px solid var(--accent-color, #3b82f6);
+            outline: 2px solid #d22730;
             outline-offset: 2px;
         }
     }
@@ -193,7 +225,7 @@
 
         .event-count {
             font-size: 0.875rem;
-            color: var(--text-secondary, #6b7280);
+            color: #666;
             margin: 0 0 1rem 0;
             font-weight: 500;
         }
@@ -202,7 +234,10 @@
     .no-events {
         text-align: center;
         padding: 3rem 1rem;
-        color: var(--text-secondary, #6b7280);
+        color: #666;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
         p {
             font-size: 1.125rem;
@@ -211,7 +246,7 @@
     }
 
     @media (max-width: 640px) {
-        .events-header {
+        .events-hero {
             h1 {
                 font-size: 2rem;
             }
@@ -219,6 +254,10 @@
             .subtitle {
                 font-size: 1rem;
             }
+        }
+
+        .container {
+            padding: 0 1rem;
         }
     }
 </style>

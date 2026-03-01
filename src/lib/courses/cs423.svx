@@ -1,0 +1,49 @@
+---
+code: "CS423"
+title: "Cloud Computing & DevOps"
+type: "elective"
+programme: "undergraduate"
+stream: "Web & Mobile Development"
+link: "/courses/cs423"
+description: "Cloud platforms, containerization, infrastructure as code, and CI/CD pipelines."
+professor: "Dr. Casey Williams"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Master cloud computing platforms and DevOps practices. Learn to deploy, scale, and maintain applications using modern cloud infrastructure and automation tools.
+
+## Learning Outcomes
+
+- Deploy applications to major cloud platforms
+- Use containerization and orchestration tools
+- Implement CI/CD pipelines
+- Apply infrastructure as code principles
+- Monitor and optimize cloud resources
+
+## Topics Covered
+
+- Cloud computing models: IaaS, PaaS, SaaS
+- Major platforms: AWS, Azure, Google Cloud
+- Docker and containerization
+- Kubernetes orchestration
+- Infrastructure as Code: Terraform, CloudFormation
+- Continuous Integration/Continuous Deployment
+- Monitoring and logging: Prometheus, ELK stack
+- Serverless computing and Functions as a Service
+- Cloud security and best practices
+- Cost optimization and resource management
+
+## Prerequisites
+
+- CS301 and Linux command line experience
+
+## Assessment
+
+- Cloud labs and assignments (40%)
+- Infrastructure project (35%)
+- Midterm exam (15%)
+- Final exam (10%)

@@ -1,6 +1,8 @@
+<!-- TODO: Remove legacy mode -->
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { Article } from '$lib/articles';
+    import { resolve } from '$app/paths';
 
     export let data;
 
@@ -95,7 +97,7 @@
 <div class="article-layout">
     <article class="article-detail" bind:this={contentElement}>
         <div class="article-header">
-            <a href="/news" class="back-link">← Back to News</a>
+            <a href={resolve('/news')} class="back-link">← Back to News</a>
             <h1>{article.title}</h1>
             <div class="article-meta">
                 <span class="author">{article.author}</span>

@@ -1,0 +1,49 @@
+---
+code: "CS422"
+title: "Mobile App Development"
+type: "elective"
+programme: "undergraduate"
+stream: "Web & Mobile Development"
+link: "/courses/cs422"
+description: "iOS and Android development using native and cross-platform frameworks."
+professor: "Dr. Jordan Lee"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Learn to develop mobile applications for iOS and Android platforms. Explore both native and cross-platform development approaches to build engaging mobile experiences.
+
+## Learning Outcomes
+
+- Design mobile user interfaces and experiences
+- Build native iOS and Android applications
+- Use cross-platform frameworks effectively
+- Integrate device features and APIs
+- Publish apps to app stores
+
+## Topics Covered
+
+- Mobile UI/UX design principles
+- Swift and iOS development with SwiftUI
+- Kotlin and Android development with Jetpack Compose
+- Cross-platform development: React Native or Flutter
+- Mobile navigation patterns
+- Local data storage and persistence
+- Network communication and APIs
+- Device features: camera, GPS, sensors
+- Push notifications and background tasks
+- App store deployment and distribution
+
+## Prerequisites
+
+- CS301 or programming experience
+
+## Assessment
+
+- Individual assignments (35%)
+- Mobile app project (40%)
+- UI/UX design presentation (15%)
+- Participation (10%)

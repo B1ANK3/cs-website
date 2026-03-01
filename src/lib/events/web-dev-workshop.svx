@@ -1,11 +1,16 @@
 ---
 title: Web Development Workshop
 description: Hands-on workshop covering modern web development practices with Svelte and Vite.
+mainImage: "https://picsum.photos/seed/web-dev-workshop/1600/900"
 date: 2026-04-10
 time: 4:00 PM - 6:00 PM
 location: Tech Innovation Hub
 summary: Learn practical web development skills in this interactive workshop.
 pinned: false
+tags:
+  - '#undergrad'
+  - '#workshop'
+  - '#webdev'
 hosts:
   - James Wilson
 speakers:

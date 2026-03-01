@@ -1,0 +1,48 @@
+---
+code: "CS302"
+title: "Database Systems"
+type: "core"
+programme: "undergraduate"
+link: "/courses/cs302"
+description: "Database design, SQL, NoSQL, and data modeling principles."
+professor: "Dr. Michelle Brown"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Master the fundamentals of database systems including relational and non-relational databases. Learn to design, implement, and query databases effectively for modern applications.
+
+## Learning Outcomes
+
+- Design normalized relational databases
+- Write complex SQL queries and transactions
+- Understand database indexing and optimization
+- Work with NoSQL databases
+- Implement database security and backup strategies
+
+## Topics Covered
+
+- Database fundamentals and architecture
+- Relational model and normalization
+- SQL: DDL, DML, queries, joins, subqueries
+- Transaction management and ACID properties
+- Indexing and query optimization
+- NoSQL databases: document, key-value, graph stores
+- Database security and access control
+- Backup and recovery strategies
+- Distributed databases basics
+- ORM (Object-Relational Mapping)
+
+## Prerequisites
+
+- CS201 and programming proficiency
+
+## Assessment
+
+- Database design project (35%)
+- SQL assignments (30%)
+- Midterm exam (15%)
+- Final exam (20%)

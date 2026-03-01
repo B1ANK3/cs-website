@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { getPeopleByType, filterPeopleByName, type Person } from '$lib/people';
+    import { getPeopleByType, filterPeopleByName } from '$lib/people';
+    import { resolve } from '$app/paths';
 
     let searchQuery = '';
 
@@ -17,70 +18,80 @@
     }
 </script>
 
-<!-- Meet the Staff Section -->
-<section class="section">
-    <div class="section-container">
-        <div class="people-layout">
-            <!-- Search Bar on Left -->
-            <aside class="search-sidebar">
-                <div class="search-container">
-                    <h3 class="search-title">Search</h3>
-                    <input
-                        type="text"
-                        placeholder="Search by name or title..."
-                        class="search-input"
-                        value={searchQuery}
-                        on:input={handleSearch}
-                    />
-                    <p class="search-hint">
-                        Showing {filteredStaff.length +
-                            filteredStudents.length +
-                            filteredAlumni.length} result(s)
-                    </p>
-                </div>
-            </aside>
+<div class="people-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Our People</h1>
+            <p class="subtitle">
+                Meet the dedicated faculty, talented students, and accomplished alumni who make our
+                Computer Science department a world-class institution
+            </p>
+        </div>
+    </section>
 
-            <!-- Main Content on Right -->
-            <main class="people-content">
+    <!-- Search Controls -->
+    <section class="controls-section">
+        <div class="container">
+            <div class="search-controls">
+                <input
+                    type="text"
+                    placeholder="Search by name or title..."
+                    class="search-input"
+                    value={searchQuery}
+                    oninput={handleSearch}
+                />
+                <p class="results-count">
+                    {filteredStaff.length + filteredStudents.length + filteredAlumni.length} result(s)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="people-content">
                 <!-- Staff Section -->
                 <div class="people-section">
-                    <h2 class="section-subheading">Staff</h2>
+                    <h2 class="section-heading">Faculty & Staff</h2>
                     {#if filteredStaff.length > 0}
-                        <div class="staff-grid">
+                        <div class="people-grid">
                             {#each filteredStaff as member (member.slug)}
-                                <div class="staff-card">
-                                    <a href="/people/{member.slug}" class="card-link">
-                                        <div class="card-image">
-                                            <img src={member.image} alt={member.name} />
+                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                    <div class="card-image">
+                                        <img src={member.image} alt={member.name} />
+                                    </div>
+
+                                    <div class="card-content">
+                                        <h3 class="person-name">{member.name}</h3>
+                                        <p class="person-title">{member.title}</p>
+
+                                        <span
+                                            class="person-email"
+                                            role="button"
+                                            tabindex="0"
+                                            onclick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                window.location.href = `mailto:${member.email}`;
+                                            }}
+                                            onkeydown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    window.location.href = `mailto:${member.email}`;
+                                                }
+                                            }}>{member.email}</span
+                                        >
+
+                                        <div class="about-section">
+                                            <p class="about-text">{member.about}</p>
                                         </div>
 
-                                        <div class="card-content">
-                                            <h3 class="staff-name">{member.name}</h3>
-                                            <p class="staff-title">{member.title}</p>
-
-                                            <div class="divider"></div>
-
-                                            <span
-                                                class="staff-email"
-                                                role="button"
-                                                tabindex="0"
-                                                on:click|stopPropagation={() =>
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                on:keydown|stopPropagation={(e) =>
-                                                    e.key === 'Enter' &&
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                >{member.email}</span
-                                            >
-
-                                            <div class="about-section">
-                                                <h4 class="about-heading">About</h4>
-                                                <p class="about-text">{member.about}</p>
-                                            </div>
-
-                                            <span class="profile-link">View Profile →</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                        <span class="view-profile">View Profile →</span>
+                                    </div>
+                                </a>
                             {/each}
                         </div>
                     {:else}
@@ -90,43 +101,44 @@
 
                 <!-- Students Section -->
                 <div class="people-section">
-                    <h2 class="section-subheading">Students</h2>
+                    <h2 class="section-heading">Students</h2>
                     {#if filteredStudents.length > 0}
-                        <div class="staff-grid">
+                        <div class="people-grid">
                             {#each filteredStudents as member (member.slug)}
-                                <div class="staff-card">
-                                    <a href="/people/{member.slug}" class="card-link">
-                                        <div class="card-image">
-                                            <img src={member.image} alt={member.name} />
+                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                    <div class="card-image">
+                                        <img src={member.image} alt={member.name} />
+                                    </div>
+
+                                    <div class="card-content">
+                                        <h3 class="person-name">{member.name}</h3>
+                                        <p class="person-title">{member.title}</p>
+
+                                        <span
+                                            class="person-email"
+                                            role="button"
+                                            tabindex="0"
+                                            onclick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                window.location.href = `mailto:${member.email}`;
+                                            }}
+                                            onkeydown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    window.location.href = `mailto:${member.email}`;
+                                                }
+                                            }}>{member.email}</span
+                                        >
+
+                                        <div class="about-section">
+                                            <p class="about-text">{member.about}</p>
                                         </div>
 
-                                        <div class="card-content">
-                                            <h3 class="staff-name">{member.name}</h3>
-                                            <p class="staff-title">{member.title}</p>
-
-                                            <div class="divider"></div>
-
-                                            <span
-                                                class="staff-email"
-                                                role="button"
-                                                tabindex="0"
-                                                on:click|stopPropagation={() =>
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                on:keydown|stopPropagation={(e) =>
-                                                    e.key === 'Enter' &&
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                >{member.email}</span
-                                            >
-
-                                            <div class="about-section">
-                                                <h4 class="about-heading">About</h4>
-                                                <p class="about-text">{member.about}</p>
-                                            </div>
-
-                                            <span class="profile-link">View Profile →</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                        <span class="view-profile">View Profile →</span>
+                                    </div>
+                                </a>
                             {/each}
                         </div>
                     {:else}
@@ -136,343 +148,353 @@
 
                 <!-- Alumni Section -->
                 <div class="people-section">
-                    <h2 class="section-subheading">Alumni</h2>
+                    <h2 class="section-heading">Alumni</h2>
                     {#if filteredAlumni.length > 0}
-                        <div class="staff-grid">
+                        <div class="people-grid">
                             {#each filteredAlumni as member (member.slug)}
-                                <div class="staff-card">
-                                    <a href="/people/{member.slug}" class="card-link">
-                                        <div class="card-image">
-                                            <img src={member.image} alt={member.name} />
+                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                    <div class="card-image">
+                                        <img src={member.image} alt={member.name} />
+                                    </div>
+
+                                    <div class="card-content">
+                                        <h3 class="person-name">{member.name}</h3>
+                                        <p class="person-title">{member.title}</p>
+
+                                        <span
+                                            class="person-email"
+                                            role="button"
+                                            tabindex="0"
+                                            onclick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                window.location.href = `mailto:${member.email}`;
+                                            }}
+                                            onkeydown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                    window.location.href = `mailto:${member.email}`;
+                                                }
+                                            }}>{member.email}</span
+                                        >
+
+                                        <div class="about-section">
+                                            <p class="about-text">{member.about}</p>
                                         </div>
 
-                                        <div class="card-content">
-                                            <h3 class="staff-name">{member.name}</h3>
-                                            <p class="staff-title">{member.title}</p>
-
-                                            <div class="divider"></div>
-
-                                            <span
-                                                class="staff-email"
-                                                role="button"
-                                                tabindex="0"
-                                                on:click|stopPropagation={() =>
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                on:keydown|stopPropagation={(e) =>
-                                                    e.key === 'Enter' &&
-                                                    (window.location.href = `mailto:${member.email}`)}
-                                                >{member.email}</span
-                                            >
-
-                                            <div class="about-section">
-                                                <h4 class="about-heading">About</h4>
-                                                <p class="about-text">{member.about}</p>
-                                            </div>
-
-                                            <span class="profile-link">View Profile →</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                        <span class="view-profile">View Profile →</span>
+                                    </div>
+                                </a>
                             {/each}
                         </div>
                     {:else}
                         <p class="no-results">No alumni match your search.</p>
                     {/if}
                 </div>
-            </main>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
-
-    .section {
-        width: 100%;
-        padding: 80px 20px;
-        background-color: #ffffff;
-    }
-
-    .section-container {
-        max-width: $max-width;
+    .container {
+        max-width: 1200px;
         margin: 0 auto;
-        width: 100%;
+        padding: 0 2rem;
     }
 
-    .people-layout {
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: 40px;
+    .people-page {
+        background: #f8f9fa;
+        min-height: 100vh;
     }
 
-    .search-sidebar {
-        position: sticky;
-        top: 100px;
-        height: fit-content;
+    /* Hero Section */
+    .hero-section {
+        background: #61223b;
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #d22730;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+        }
+
+        .subtitle {
+            margin: 0;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
     }
 
-    .search-container {
-        background-color: $light-bg;
-        border-radius: 8px;
-        padding: 20px;
-        border: 1px solid $border-color;
+    /* Search Controls */
+    .controls-section {
+        padding: 2rem 0 0 0;
     }
 
-    .search-title {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 15px 0;
-        color: $text-color;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+    .search-controls {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
 
     .search-input {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid $border-color;
-        border-radius: 6px;
-        font-size: 14px;
+        flex: 1;
+        min-width: 250px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
         font-family: inherit;
-        @include smooth-transition(all);
-        background-color: $light-bg;
-        color: $text-color;
-
-        &:focus {
-            outline: none;
-            border-color: $primary-color;
-            box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
-        }
 
         &::placeholder {
             color: #999;
         }
+
+        &:focus {
+            outline: none;
+            border-color: #d22730;
+            box-shadow: 0 0 0 3px rgba(210, 39, 48, 0.15);
+        }
     }
 
-    .search-hint {
-        font-size: 12px;
-        color: #999;
-        margin: 12px 0 0 0;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+    .results-count {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    /* Content Section */
+    .content-section {
+        padding: 3rem 0;
     }
 
     .people-content {
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 4rem;
     }
 
     .people-section {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 1.5rem;
     }
 
-    .section-subheading {
-        font-size: 32px;
+    .section-heading {
+        font-size: 2rem;
         margin: 0;
-        color: $text-color;
-        padding-bottom: 15px;
-        border-bottom: 2px solid $border-color;
+        color: #61223b;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #d22730;
+        font-weight: 700;
     }
 
-    .staff-grid {
+    /* People Grid */
+    .people-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 40px;
-        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
     }
 
-    .staff-card {
-        background-color: #ffffff;
-        border: 1px solid $border-color;
-        border-radius: 8px;
+    /* Person Card */
+    .person-card {
+        background: white;
+        border-radius: 12px;
         overflow: hidden;
-        @include smooth-transition(all);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-        &:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-4px);
-        }
-    }
-
-    .card-link {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
         text-decoration: none;
         color: inherit;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid transparent;
+
+        &:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            border-color: #d22730;
+        }
     }
 
     .card-image {
         width: 100%;
-        height: 250px;
+        height: 280px;
         overflow: hidden;
-        background-color: $light-bg;
+        background: #f5f5f5;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            @include smooth-transition(transform);
+            transition: transform 0.3s ease;
         }
     }
 
-    .staff-card:hover .card-image img {
+    .person-card:hover .card-image img {
         transform: scale(1.05);
     }
 
     .card-content {
-        padding: 30px;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         flex: 1;
     }
 
-    .staff-name {
-        font-size: 22px;
-        margin: 0 0 8px 0;
-        color: $text-color;
+    .person-name {
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem 0;
+        color: #333;
+        font-weight: 700;
     }
 
-    .staff-title {
-        font-size: 14px;
-        color: $primary-color;
+    .person-title {
+        font-size: 0.875rem;
+        color: #d22730;
         font-weight: 600;
-        margin: 0 0 15px 0;
+        margin: 0 0 1rem 0;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
 
-    .divider {
-        height: 1px;
-        background-color: $border-color;
-        margin: 15px 0;
-    }
-
-    .staff-email {
-        font-size: 14px;
-        color: $primary-color;
+    .person-email {
+        font-size: 0.875rem;
+        color: #61223b;
         text-decoration: none;
-        @include smooth-transition(all);
+        margin-bottom: 1rem;
+        display: inline-block;
+        transition: color 0.2s ease;
+        cursor: pointer;
 
         &:hover {
+            color: #d22730;
             text-decoration: underline;
         }
     }
 
     .about-section {
-        margin: 15px 0;
         flex: 1;
-    }
-
-    .about-heading {
-        font-size: 12px;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin: 0 0 8px 0;
-        font-weight: 600;
+        margin-bottom: 1rem;
     }
 
     .about-text {
-        font-size: 14px;
+        font-size: 0.9rem;
         line-height: 1.6;
         color: #666;
         margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
-    .profile-link {
-        font-size: 14px;
-        color: $primary-color;
-        text-decoration: none;
+    .view-profile {
+        font-size: 0.875rem;
+        color: #d22730;
         font-weight: 600;
-        margin-top: 15px;
-        @include smooth-transition(all);
+        transition: all 0.2s ease;
         display: inline-block;
     }
 
-    .staff-card:hover .profile-link {
-        color: darken($primary-color, 10%);
+    .person-card:hover .view-profile {
         transform: translateX(4px);
     }
 
     .no-results {
-        font-size: 16px;
+        font-size: 1rem;
         color: #999;
         text-align: center;
-        padding: 40px 20px;
-        background-color: $light-bg;
-        border-radius: 8px;
+        padding: 3rem 2rem;
+        background: white;
+        border-radius: 12px;
+        margin: 0;
     }
 
-    // Responsive
-    @media (max-width: $tablet-breakpoint) {
-        .people-layout {
-            grid-template-columns: 1fr;
-            gap: 30px;
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .people-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 3rem 0;
+
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
         }
 
-        .search-sidebar {
-            position: static;
+        .controls-section {
+            padding: 1.5rem 0 0 0;
         }
 
-        .staff-grid {
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+        .search-controls {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .section-subheading {
-            font-size: 24px;
+        .search-input {
+            width: 100%;
+        }
+
+        .content-section {
+            padding: 2rem 0;
         }
 
         .people-content {
-            gap: 50px;
-        }
-    }
-
-    @media (max-width: $mobile-breakpoint) {
-        .section {
-            padding: 60px 20px;
+            gap: 3rem;
         }
 
-        .staff-grid {
+        .section-heading {
+            font-size: 1.5rem;
+        }
+
+        .people-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 1.5rem;
         }
 
-        .section-subheading {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .card-image {
+            height: 240px;
         }
 
         .card-content {
-            padding: 20px;
+            padding: 1.25rem;
         }
 
-        .staff-name {
-            font-size: 18px;
-        }
-
-        .about-text {
-            font-size: 13px;
-        }
-
-        .people-content {
-            gap: 40px;
-        }
-
-        .search-container {
-            padding: 15px;
-        }
-
-        .search-title {
-            font-size: 14px;
+        .container {
+            padding: 0 1.5rem;
         }
     }
 </style>

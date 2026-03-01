@@ -1,4 +1,4 @@
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export interface FAQMeta {
     question: string;
@@ -8,7 +8,7 @@ export interface FAQMeta {
 }
 
 export interface FAQ extends FAQMeta {
-    component: SvelteComponent;
+    component: Component;
 }
 
 // Dynamically import all .svx files from the faq directory

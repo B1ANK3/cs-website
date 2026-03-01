@@ -1,0 +1,49 @@
+---
+code: "CS432"
+title: "Big Data Technologies"
+type: "elective"
+programme: "undergraduate"
+stream: "Data Science"
+link: "/courses/cs432"
+description: "Distributed computing, Hadoop, Spark, and scalable data processing frameworks."
+professor: "Dr. Emily Rodriguez"
+semester: "Spring"
+---
+
+# {title}
+
+## Course Overview
+
+Master technologies for processing and analyzing massive datasets. Learn distributed computing frameworks and big data tools used in industry.
+
+## Learning Outcomes
+
+- Understand distributed computing principles
+- Work with Hadoop ecosystem
+- Process data using Apache Spark
+- Design scalable data pipelines
+- Optimize big data workflows
+
+## Topics Covered
+
+- Big data fundamentals and challenges
+- Distributed file systems: HDFS
+- MapReduce programming model
+- Apache Hadoop ecosystem
+- Apache Spark: RDDs, DataFrames, SQL
+- Stream processing with Spark Streaming
+- NoSQL databases for big data
+- Data warehousing: Hive, Impala
+- Data pipeline orchestration
+- Cloud-based big data solutions
+
+## Prerequisites
+
+- CS302 and Python/Java proficiency
+
+## Assessment
+
+- Programming assignments (40%)
+- Big data project (35%)
+- Midterm exam (15%)
+- Final exam (10%)

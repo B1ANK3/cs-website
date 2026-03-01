@@ -1,0 +1,49 @@
+---
+code: "CS401"
+title: "Machine Learning Fundamentals"
+type: "elective"
+programme: "undergraduate"
+stream: "AI & Machine Learning"
+link: "/courses/cs401"
+description: "Introduction to machine learning algorithms, supervised and unsupervised learning techniques."
+professor: "Dr. John Smith"
+semester: "Fall"
+---
+
+# {title}
+
+## Course Overview
+
+Introduction to the fundamental concepts and techniques of machine learning. Students will learn to apply various ML algorithms to real-world problems and understand when to use each approach.
+
+## Learning Outcomes
+
+- Understand core machine learning concepts and terminology
+- Implement supervised and unsupervised learning algorithms
+- Evaluate and tune machine learning models
+- Apply ML techniques to real-world datasets
+- Understand ethical considerations in ML
+
+## Topics Covered
+
+- Introduction to machine learning paradigms
+- Linear regression and logistic regression
+- Decision trees and random forests
+- Support Vector Machines (SVM)
+- K-means clustering and hierarchical clustering
+- Principal Component Analysis (PCA)
+- Model evaluation and cross-validation
+- Bias-variance tradeoff
+- Feature engineering and selection
+- Introduction to neural networks
+
+## Prerequisites
+
+- CS201, linear algebra, and basic statistics
+
+## Assessment
+
+- Programming assignments (40%)
+- ML project (35%)
+- Midterm exam (15%)
+- Final exam (10%)

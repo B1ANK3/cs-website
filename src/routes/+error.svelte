@@ -1,12 +1,13 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
+    import { resolve } from '$app/paths';
     import { goto } from '$app/navigation';
 
-    $: status = $page.status || 500;
-    $: message = $page.error?.message || 'An unexpected error occurred';
+    const status = $derived(page.status || 500);
+    const message = $derived(page.error?.message || 'An unexpected error occurred');
 
     function goHome() {
-        goto('/');
+        goto(resolve('/'));
     }
 
     function goBack() {
@@ -71,11 +72,11 @@
 
             <!-- Action Buttons -->
             <div class="error-actions">
-                <button class="btn btn-primary" on:click={goHome}>
+                <button class="btn btn-primary" onclick={goHome}>
                     <span class="btn-icon">🏠</span>
                     Go Home
                 </button>
-                <button class="btn btn-secondary" on:click={goBack}>
+                <button class="btn btn-secondary" onclick={goBack}>
                     <span class="btn-icon">←</span>
                     Go Back
                 </button>
