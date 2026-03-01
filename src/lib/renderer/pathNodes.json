@@ -1,0 +1,89 @@
+[
+  {
+    "id": "entry-left",
+    "x": 100,
+    "y": 800,
+    "connections": ["path-1", "path-2"]
+  },
+  {
+    "id": "entry-right",
+    "x": 1820,
+    "y": 800,
+    "connections": ["path-8", "path-9"]
+  },
+  {
+    "id": "path-1",
+    "x": 300,
+    "y": 700,
+    "connections": ["entry-left", "path-2", "path-3"]
+  },
+  {
+    "id": "path-2",
+    "x": 500,
+    "y": 650,
+    "connections": ["entry-left", "path-1", "path-3", "fountain"]
+  },
+  {
+    "id": "path-3",
+    "x": 700,
+    "y": 600,
+    "connections": ["path-1", "path-2", "fountain", "bench-left", "path-4"]
+  },
+  {
+    "id": "fountain",
+    "x": 600,
+    "y": 500,
+    "isWaypoint": true,
+    "connections": ["path-2", "path-3", "path-5", "path-6"]
+  },
+  {
+    "id": "bench-left",
+    "x": 400,
+    "y": 400,
+    "isWaypoint": true,
+    "connections": ["path-3", "path-5"]
+  },
+  {
+    "id": "path-4",
+    "x": 950,
+    "y": 550,
+    "connections": ["path-3", "path-5", "path-6", "path-7"]
+  },
+  {
+    "id": "path-5",
+    "x": 700,
+    "y": 450,
+    "connections": ["fountain", "bench-left", "path-4", "path-6"]
+  },
+  {
+    "id": "path-6",
+    "x": 850,
+    "y": 400,
+    "connections": ["fountain", "path-4", "path-5", "path-7", "bench-right"]
+  },
+  {
+    "id": "bench-right",
+    "x": 1000,
+    "y": 350,
+    "isWaypoint": true,
+    "connections": ["path-6", "path-7"]
+  },
+  {
+    "id": "path-7",
+    "x": 1200,
+    "y": 450,
+    "connections": ["path-4", "path-6", "bench-right", "path-8", "path-9"]
+  },
+  {
+    "id": "path-8",
+    "x": 1500,
+    "y": 550,
+    "connections": ["entry-right", "path-7", "path-9"]
+  },
+  {
+    "id": "path-9",
+    "x": 1700,
+    "y": 650,
+    "connections": ["entry-right", "path-7", "path-8"]
+  }
+]

@@ -94,6 +94,7 @@
 </div>
 
 <style lang="scss">
+    @use 'sass:color';
     @import '$lib/styles/globals.scss';
 
     .error-page {
@@ -253,7 +254,7 @@
         color: white;
 
         &:hover {
-            background: darken($accent-color, 10%);
+            background: color.adjust($accent-color, $lightness: -10%);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba($accent-color, 0.3);
         }
@@ -264,7 +265,7 @@
         color: white;
 
         &:hover {
-            background: darken($secondary-color, 10%);
+            background: color.adjust($secondary-color, $lightness: -10%);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba($secondary-color, 0.3);
         }
@@ -294,7 +295,7 @@
         transition: color 0.2s ease;
 
         &:hover {
-            color: darken($accent-color, 15%);
+            color: color.adjust($accent-color, $lightness: -15%);
             text-decoration: underline;
         }
     }

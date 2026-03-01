@@ -51,7 +51,7 @@
             <div class="helpful-links">
                 <ul class="footer-links">
                     <li><a href="#">Sitemap</a></li>
-                    <li><a href="#">Report Issues</a></li>
+                    <li><a href="mailto:help@university.edu">Report Issues</a></li>
                     <li><a href={resolve('/faq')}>FAQ</a></li>
                     <li><a href="#">Accessibility</a></li>
                 </ul>

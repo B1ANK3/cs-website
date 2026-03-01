@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      pathfinding:
+        specifier: ^0.4.18
+        version: 0.4.18
+      two.js:
+        specifier: ^0.8.23
+        version: 0.8.23
     devDependencies:
       '@eslint/compat':
         specifier: ^2.0.2
@@ -29,6 +36,12 @@ importers:
       '@types/node':
         specifier: ^24
         version: 24.11.0
+      '@types/pathfinding':
+        specifier: ^0.1.0
+        version: 0.1.0
+      '@types/two.js':
+        specifier: ^0.7.9
+        version: 0.7.9
       '@unocss/extractor-svelte':
         specifier: ^66.6.2
         version: 66.6.2
@@ -692,8 +705,14 @@ packages:
   '@types/node@24.11.0':
     resolution: {integrity: sha512-fPxQqz4VTgPI/IQ+lj9r0h+fDR66bzoeMGHp8ASee+32OSGIkeASsoZuJixsQoVef1QJbeubcPBxKk22QVoWdw==}
 
+  '@types/pathfinding@0.1.0':
+    resolution: {integrity: sha512-QkKZqdAPhfkHIoiCWa/4yVolcCDin10qScbdiyqtDsY9cxlcslVgoU1g9yVdFytsHqJQevkYNcNBgD/P7OZbQg==}
+
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+
+  '@types/two.js@0.7.9':
+    resolution: {integrity: sha512-8WZkrr6Eej4v15i+uc7QvimUuqWageL42xl3SUZq3unOh2OjxnTWDda/XiDdYiOilMGjnzDu9XZBTJXO0XO5hQ==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -1173,6 +1192,9 @@ packages:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
 
+  heap@0.2.5:
+    resolution: {integrity: sha512-G7HLD+WKcrOyJP5VQwYZNC3Z6FcQ7YYjEFiFoIj8PfEr73mu421o8B1N5DKUcc8K37EsJ2XXWA8DtrDz/2dReg==}
+
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -1340,6 +1362,9 @@ packages:
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
+
+  pathfinding@0.4.18:
+    resolution: {integrity: sha512-R0TGEQ9GRcFCDvAWlJAWC+KGJ9SLbW4c0nuZRcioVlXVTlw+F5RvXQ8SQgSqI9KXWC1ew95vgmIiyaWTlCe9Ag==}
 
   perfect-debounce@2.1.0:
     resolution: {integrity: sha512-LjgdTytVFXeUgtHZr9WYViYSM/g8MkcTPYDlPa3cDqMirHjKiSZPYd6DoL7pK8AJQr+uWkQvCjHNdiMqsrJs+g==}
@@ -1545,6 +1570,9 @@ packages:
     engines: {node: '>=18.12'}
     peerDependencies:
       typescript: '>=4.8.4'
+
+  two.js@0.8.23:
+    resolution: {integrity: sha512-Yp3m4XHKI1VO7nlckRb6aVio0qjuy4hBEli8IDQst/hqL7Tg6lhKnqXQLo+27Z11FmxAykwyoPu1IpSVFmAnJQ==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -2185,7 +2213,11 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  '@types/pathfinding@0.1.0': {}
+
   '@types/trusted-types@2.0.7': {}
+
+  '@types/two.js@0.7.9': {}
 
   '@types/unist@2.0.11': {}
 
@@ -2778,6 +2810,8 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  heap@0.2.5: {}
+
   ignore@5.3.2: {}
 
   ignore@7.0.5: {}
@@ -2924,6 +2958,10 @@ snapshots:
   path-key@3.1.1: {}
 
   pathe@2.0.3: {}
+
+  pathfinding@0.4.18:
+    dependencies:
+      heap: 0.2.5
 
   perfect-debounce@2.1.0: {}
 
@@ -3132,6 +3170,8 @@ snapshots:
   ts-api-utils@2.4.0(typescript@5.9.3):
     dependencies:
       typescript: 5.9.3
+
+  two.js@0.8.23: {}
 
   type-check@0.4.0:
     dependencies:

@@ -83,7 +83,24 @@ export const load: PageLoad = async () => {
 
     const slides = shuffle([...eventSlides, ...newsSlides]);
 
+    // Format articles and events for the IsometricRenderer
+    const formattedArticles = recentNews.map((article) => ({
+        title: article.title,
+        summary: article.summary,
+        url: `/news/${getAuthorPath(article.author)}/${article.slug}`,
+        date: article.date
+    }));
+
+    const formattedEvents = futureEvents.map((event) => ({
+        title: event.title,
+        summary: event.summary || event.description,
+        url: `/events/${event.slug}`,
+        date: event.date
+    }));
+
     return {
-        slides
+        slides,
+        articles: formattedArticles,
+        events: formattedEvents
     };
 };

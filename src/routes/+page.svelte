@@ -2,12 +2,15 @@
     import { onMount } from 'svelte';
     import ArrowBack from '$lib/assets/svg/ArrowBack.svelte';
     import ArrowForward from '$lib/assets/svg/ArrowForward.svelte';
+    import IsometricRenderer from '$lib/components/IsometricRenderer.svelte';
 
     import type { PageProps } from './$types';
 
     let { data }: PageProps = $props();
 
     let slides = $derived(data.slides || []);
+    let articles = $derived(data.articles || []);
+    let events = $derived(data.events || []);
     let slideCount = $derived(slides.length);
     let slideIndex = $state(0);
     let autoScrollInterval: ReturnType<typeof setTimeout> | null = null;
@@ -149,11 +152,9 @@
             </p>
         </div>
 
-        <!-- Right Side: 2D Renderer Placeholder -->
+        <!-- Right Side: Isometric Scene Renderer -->
         <div class="renderer-container">
-            <div class="placeholder">
-                <p>2D Renderer - Coming Soon</p>
-            </div>
+            <IsometricRenderer {articles} {events} />
         </div>
     </div>
 </section>
@@ -367,20 +368,11 @@
     .renderer-container {
         width: 100%;
         height: 100%;
-        background-color: $light-bg;
-        border: 2px dashed $border-color;
+        min-height: 540px;
+        background-color: #f5f5f5;
         border-radius: 8px;
-        @include flex-center;
-
-        .placeholder {
-            text-align: center;
-            color: #999;
-
-            p {
-                font-size: 16px;
-                margin: 0;
-            }
-        }
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .welcome-content {
