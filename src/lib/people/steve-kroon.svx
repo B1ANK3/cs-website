@@ -1,0 +1,9 @@
+---
+name: "Steve Kroon"
+title: "Associate Professor"
+email: "kroon@sun.ac.za"
+about: "Artificial intelligence/machine learning, statistical learning theory, probability and computing"
+image: "/images/people/steve_kroon.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~kroon/"
+---

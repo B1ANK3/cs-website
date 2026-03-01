@@ -1,0 +1,9 @@
+---
+name: "Brink van der Merwe"
+title: "Professor"
+email: "abvdm@cs.sun.ac.za"
+about: "Tree automata and applications, Learning of grammars and languages from data"
+image: "/images/people/brink_van_der_merwe.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~abvdm/"
+---

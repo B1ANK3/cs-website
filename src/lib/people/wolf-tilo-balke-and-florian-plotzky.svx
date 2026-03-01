@@ -1,0 +1,9 @@
+---
+name: "Wolf-Tilo Balke and Florian Plötzky"
+title: "Visiting Academic"
+email: "balke@ifis.cs.tu-bs.de"
+about: "Query Processing, User Preferences and Personalization, Cognitive User Modeling and Conceptualization, Peer-to-Peer Networks and Distributed Retrieval"
+image: "/images/people/wolftilo_balke_and_florian_pltzky.jpg"
+type: "staff"
+redirect: "http://www.ifis.cs.tu-bs.de/staff/balke"
+---

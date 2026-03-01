@@ -1,0 +1,9 @@
+---
+name: "David Baker Effendi"
+title: "Research Fellow"
+email: ""
+about: "Program analysis, static analysis"
+image: "/images/people/david_baker_effendi.jpg"
+type: "staff"
+redirect: "https://davidbakereffendi.github.io/"
+---

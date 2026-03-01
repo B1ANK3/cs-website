@@ -65,7 +65,7 @@
 </footer>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .footer {
         background-color: $primary-color;

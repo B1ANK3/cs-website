@@ -1,0 +1,9 @@
+---
+name: "Lynette van Zijl"
+title: "Professor"
+email: "lvzijl@sun.ac.za"
+about: "Implementation and applications of automata; assistive technologies"
+image: "/images/people/lynette_van_zijl.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~lvzijl/"
+---

@@ -1,0 +1,9 @@
+---
+name: "Maria Keet"
+title: "Professor Extraordinary"
+email: ""
+about: "Ontology, Semantic Web, Conceptual Modeling, Knowledge Representation and reasoning"
+image: "/images/people/maria_keet.jpg"
+type: "staff"
+redirect: "http://www.meteck.org/"
+---

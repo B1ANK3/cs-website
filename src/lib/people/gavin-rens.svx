@@ -1,0 +1,9 @@
+---
+name: "Gavin Rens"
+title: "Lecturer"
+email: "gavinrens@sun.ac.za"
+about: "Cognitive Robotics focusing on knowledge representation and reasoning under uncertainty. Probabilistic planning. Reinforcement learning."
+image: "/images/people/gavin_rens.jpg"
+type: "staff"
+redirect: "https://kognitiv.systems/"
+---

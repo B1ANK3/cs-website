@@ -117,7 +117,7 @@
 </div>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .faq-page {
         min-height: 100vh;

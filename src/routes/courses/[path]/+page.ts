@@ -2,8 +2,6 @@ import { error } from '@sveltejs/kit';
 import { getAllCourses, getCourseByCode } from '$lib/courses';
 import type { PageLoad } from './$types';
 
-export const prerender = true;
-
 export const load: PageLoad = async ({ params }) => {
     const path = params.path;
 

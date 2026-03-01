@@ -1,0 +1,395 @@
+{
+    "frames": [
+        {
+            "filename": "eng_building (ISO LAYER).aseprite",
+            "frame": { "x": 1897, "y": 384, "w": 349, "h": 138 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 329, "y": 190, "w": 349, "h": 138 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Foyer floor).aseprite",
+            "frame": { "x": 1, "y": 1, "w": 784, "h": 397 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 23, "y": 118, "w": 784, "h": 397 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Main walk way).aseprite",
+            "frame": { "x": 1417, "y": 384, "w": 478, "h": 243 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 289, "y": 70, "w": 478, "h": 243 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Side Walk Right).aseprite",
+            "frame": { "x": 165, "y": 400, "w": 194, "h": 105 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 169, "y": 102, "w": 194, "h": 105 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Wood Walls).aseprite",
+            "frame": { "x": 2051, "y": 1, "w": 306, "h": 317 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 333, "y": 27, "w": 306, "h": 317 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Side Walk Left).aseprite",
+            "frame": { "x": 165, "y": 400, "w": 194, "h": 105 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 509, "y": 272, "w": 194, "h": 105 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Stairs Left).aseprite",
+            "frame": { "x": 1, "y": 400, "w": 162, "h": 145 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 413, "y": 336, "w": 162, "h": 145 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Stairs Right).aseprite",
+            "frame": { "x": 1, "y": 400, "w": 162, "h": 145 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 73, "y": 166, "w": 162, "h": 145 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node17).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 665, "y": 364, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node16).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 719, "y": 265, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node15).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 529, "y": 330, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node14).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 548, "y": 174, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node13).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 437, "y": 475, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node12).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 444, "y": 163, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node11).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 352, "y": 398, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node10).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 537, "y": 270, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node9).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 471, "y": 312, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node8).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 402, "y": 237, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node7).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 394, "y": 99, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node6).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 286, "y": 108, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node5).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 184, "y": 158, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node4).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 285, "y": 232, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node3).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 334, "y": 307, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node2).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 206, "y": 306, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Node1).aseprite",
+            "frame": { "x": 2051, "y": 320, "w": 23, "h": 14 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 90, "y": 300, "w": 23, "h": 14 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (DebugPaths).aseprite",
+            "frame": { "x": 1417, "y": 1, "w": 632, "h": 381 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 100, "y": 102, "w": 632, "h": 381 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        },
+        {
+            "filename": "eng_building (Number layer).aseprite",
+            "frame": { "x": 787, "y": 1, "w": 628, "h": 415 },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": { "x": 89, "y": 88, "w": 628, "h": 415 },
+            "sourceSize": { "w": 824, "h": 536 },
+            "duration": 250
+        }
+    ],
+    "meta": {
+        "app": "https://www.aseprite.org/",
+        "version": "1.3.17-x64",
+        "image": "eng_building_v4.png",
+        "format": "RGBA8888",
+        "size": { "w": 2358, "h": 628 },
+        "scale": "1",
+        "frameTags": [],
+        "layers": [
+            { "name": "ISO LAYER", "opacity": 255, "blendMode": "overlay" },
+            { "name": "Visible" },
+            { "name": "Foyer floor", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            { "name": "Main walk way", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            {
+                "name": "Side Walk Right",
+                "group": "Visible",
+                "opacity": 255,
+                "blendMode": "normal"
+            },
+            { "name": "Wood Walls", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            { "name": "Side Walk Left", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            { "name": "Stairs Left", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            { "name": "Stairs Right", "group": "Visible", "opacity": 255, "blendMode": "normal" },
+            { "name": "Debug" },
+            {
+                "name": "Node17",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":17, \"path\":[10,9,11]}"
+            },
+            {
+                "name": "Node16",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":16, \"path\":[12,14,15]}"
+            },
+            {
+                "name": "Node15",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":15, \"path\":[13,1]}"
+            },
+            {
+                "name": "Node14",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":14, \"path\":[7,12,16]}"
+            },
+            {
+                "name": "Node13",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":13, \"path\":[1,11,15]}"
+            },
+            {
+                "name": "Node12",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":12, \"path\":[6,7,14,16]}"
+            },
+            {
+                "name": "Node11",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":11, \"path\":[1,2,3,9,17,13]}"
+            },
+            {
+                "name": "Node10",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":10, \"path\":[8,3,9,17]}"
+            },
+            {
+                "name": "Node9",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\": 9, \"path\":[11,3,8,10,17]}"
+            },
+            {
+                "name": "Node8",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\": 8, \"path\":[3,4,9,10]}"
+            },
+            {
+                "name": "Node7",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":7, \"path\":[6,12,14]}"
+            },
+            {
+                "name": "Node6",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\": 6, \"path\":[1,5,7,12]}"
+            },
+            {
+                "name": "Node5",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":5, \"path\":[1,6]}"
+            },
+            {
+                "name": "Node4",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":4, \"path\":[2,3,8]}"
+            },
+            {
+                "name": "Node3",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\": 3, \"path\":[2,11,4,8,9,10]}"
+            },
+            {
+                "name": "Node2",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\": 2, \"path\":[1,3,4,11]}"
+            },
+            {
+                "name": "Node1",
+                "group": "Debug",
+                "opacity": 255,
+                "blendMode": "normal",
+                "data": "{\"id\":1, \"path\":[2,5,6,11,13]}"
+            },
+            { "name": "DebugPaths", "group": "Debug", "opacity": 255, "blendMode": "normal" },
+            { "name": "Number layer", "group": "Debug", "opacity": 255, "blendMode": "normal" }
+        ],
+        "slices": []
+    }
+}

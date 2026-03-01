@@ -1,0 +1,8 @@
+---
+name: "Gaynor Fortuin"
+title: "Administrative Officer"
+email: "gfortuin@sun.ac.za"
+about: "Administrative support"
+image: "/images/people/gaynor_fortuin.jpg"
+type: "staff"
+---

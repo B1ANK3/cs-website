@@ -1,0 +1,9 @@
+---
+name: "McElory Hoffmann"
+title: "Senior Lecturer Extraordinary"
+email: "mcelory@praelexis.co.za"
+about: "Computer vision, machine learning, smart cameras"
+image: "/images/people/mcelory_hoffmann.jpg"
+type: "staff"
+redirect: "https://www.linkedin.com/in/mcelory/"
+---

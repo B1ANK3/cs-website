@@ -1,0 +1,9 @@
+---
+name: "Judith Bishop"
+title: "Professor Extraordinary"
+email: "jbishop@sun.ac.za"
+about: "Programming languages, software engineering, mobile computing, open source software"
+image: "/images/people/judith_bishop.jpg"
+type: "staff"
+redirect: "https://www.linkedin.com/in/judith-bishop"
+---

@@ -1,0 +1,8 @@
+---
+name: "Derrick Stephanus"
+title: "Assistant"
+email: "djstep@sun.ac.za"
+about: "Administrative support"
+image: ""
+type: "staff"
+---

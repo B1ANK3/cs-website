@@ -1,0 +1,9 @@
+---
+name: "Willem Visser"
+title: "Part-time Professor"
+email: "visserw@sun.ac.za"
+about: "Software engineering, testing, symbolic execution, and model checking"
+image: "/images/people/willem_visser.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~wvisser/"
+---

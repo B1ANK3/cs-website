@@ -1,0 +1,9 @@
+---
+name: "Bernd Fischer"
+title: "Professor"
+email: "bfischer@cs.sun.ac.za"
+about: "Software engineering, formal methods, program analysis, program generation, program verification, artificial intelligence"
+image: "/images/people/bernd_fischer.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~bfischer/"
+---

@@ -1,0 +1,9 @@
+---
+name: "Francesco Petruccione"
+title: "Visiting Academic"
+email: "petruccione@sun.ac.za"
+about: "Interim director of the National Institute for Theoretical and Computational Sciences (NITheCS) and Professor Extraordinary in the Department of Physics at SU."
+image: "/images/people/francesco_petruccione.jpg"
+type: "staff"
+redirect: "https://www.sun.ac.za/english/Lists/news/DispForm.aspx?ID=9203"
+---

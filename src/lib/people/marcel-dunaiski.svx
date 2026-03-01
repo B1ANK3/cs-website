@@ -1,0 +1,9 @@
+---
+name: "Marcel Dunaiski"
+title: "Senior Lecturer"
+email: "marceldunaiski@sun.ac.za"
+about: "Data Science, Informetrics, Scientometrics"
+image: "/images/people/marcel_dunaiski.jpg"
+type: "staff"
+redirect: "https://marceldunaiski.pages.cs.sun.ac.za/"
+---

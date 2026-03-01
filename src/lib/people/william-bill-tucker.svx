@@ -1,0 +1,9 @@
+---
+name: "William (Bill) Tucker"
+title: "Professor"
+email: "btucker@sun.ac.za"
+about: "Computer networks and their applications; human computer interaction; social impact; ethical, responsible, and sustainable computing"
+image: "/images/people/william_bill_tucker.jpg"
+type: "staff"
+redirect: "https://researcherprofiles.sun.ac.za/37639-bill-tucker"
+---

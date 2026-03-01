@@ -1,0 +1,9 @@
+---
+name: "Laurette Pretorius"
+title: "Associate Professor Extraordinary"
+email: ""
+about: "Multilingual NLP, Semantic computing, Ontology development, Machine translation, Language generation"
+image: "/images/people/laurette_pretorius.jpg"
+type: "staff"
+redirect: "https://w2.unisa.ac.za/CW/SITES/CORPORAT/DEFAULT/COLLEGES/COLLEGE_/RESEARCH/ACADEMIC/PROF_LAU.HTM"
+---

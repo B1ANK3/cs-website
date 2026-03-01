@@ -2,8 +2,6 @@ import { getAllEvents, getEventBySlug } from '$lib/events';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const prerender = true;
-
 export const load: PageLoad = async ({ params }) => {
     const events = await getAllEvents();
     const event = getEventBySlug(events, params.event);

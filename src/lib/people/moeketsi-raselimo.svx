@@ -1,0 +1,9 @@
+---
+name: "Moeketsi Raselimo"
+title: "Lecturer Extraordinary"
+email: ""
+about: "Programming Languages, Software Testing, Fuzzing"
+image: "/images/people/moeketsi_raselimo.jpg"
+type: "staff"
+redirect: "https://de.linkedin.com/in/moeketsi-raselimo"
+---

@@ -46,7 +46,7 @@
 </div>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .profile-container {
         max-width: 900px;

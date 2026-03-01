@@ -111,7 +111,7 @@
 </div>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .navbar {
         background-color: $primary-color;

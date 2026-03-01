@@ -3,6 +3,7 @@
     import ArrowBack from '$lib/assets/svg/ArrowBack.svelte';
     import ArrowForward from '$lib/assets/svg/ArrowForward.svelte';
     import IsometricRenderer from '$lib/components/IsometricRenderer.svelte';
+    import { getPeopleByType } from '$lib/people';
 
     import type { PageProps } from './$types';
 
@@ -11,6 +12,8 @@
     let slides = $derived(data.slides || []);
     let articles = $derived(data.articles || []);
     let events = $derived(data.events || []);
+    let staff = $derived(getPeopleByType('staff'));
+    let staffNames = $derived(staff.map((person) => person.name));
     let slideCount = $derived(slides.length);
     let slideIndex = $state(0);
     let autoScrollInterval: ReturnType<typeof setTimeout> | null = null;
@@ -154,13 +157,13 @@
 
         <!-- Right Side: Isometric Scene Renderer -->
         <div class="renderer-container">
-            <IsometricRenderer {articles} {events} />
+            <IsometricRenderer {articles} {events} names={staffNames} />
         </div>
     </div>
 </section>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
     .hero-section {
         position: relative;
         height: calc(100vh - $navbar-height - $navbar-border-height);

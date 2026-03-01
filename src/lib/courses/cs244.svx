@@ -1,0 +1,47 @@
+---
+code: "CS244"
+title: "Computer Architecture"
+type: "core"
+programme: "undergraduate"
+link: "/courses/cs244"
+description: "Basic computer architecture. Programming in machine language and assembly language. Assemblers, binders and loaders. Basic concepts of operating systems; memory management, process management and file systems."
+professor: "Willem Bester"
+semester: "2nd Semester"
+---
+
+# {title}
+
+## Course Overview
+
+Explore the fundamental components of computer systems from hardware to software. This course covers computer architecture, operating system concepts, and low-level programming to understand how computers actually work.
+
+## Learning Outcomes
+
+- Understand computer architecture and organization
+- Master low-level programming concepts
+- Comprehend operating system fundamentals
+- Analyze system performance and optimization
+- Work with assembly language and system calls
+
+## Topics Covered
+
+- Computer architecture: CPU, memory hierarchy, I/O
+- Number systems and data representation
+- Assembly language programming
+- Memory management and virtual memory
+- Process management and scheduling
+- Concurrency and synchronization
+- File systems and storage
+- System calls and kernel interactions
+- Performance measurement and optimization
+
+## Prerequisites
+
+- CS101 and basic knowledge of programming
+
+## Assessment
+
+- Lab assignments (40%)
+- Programming projects (30%)
+- Midterm exam (15%)
+- Final exam (15%)

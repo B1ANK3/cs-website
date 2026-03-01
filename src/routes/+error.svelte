@@ -95,7 +95,7 @@
 
 <style lang="scss">
     @use 'sass:color';
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .error-page {
         min-height: 100vh;

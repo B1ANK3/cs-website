@@ -1,0 +1,9 @@
+---
+name: "Andries Engelbrecht"
+title: "Professor"
+email: "engel@sun.ac.za"
+about: "Swarm intelligence, Evolutionary computation, Hyper-heuristics, Neural networks, Machine learning, Data analytics, Optimization, Fitness landscape analysis"
+image: "/images/people/andries_engelbrecht.jpg"
+type: "staff"
+redirect: "https://engel.pages.cs.sun.ac.za/"
+---

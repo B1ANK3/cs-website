@@ -1,0 +1,116 @@
+---
+name: "Willem Bester"
+namealias: "W. H. K. Bester"
+title: "Junior Lecturer"
+email: "whkbester@cs.sun.ac.za"
+about: "Expert in software engineering and program verification. Currently leading research on automated testing."
+image: "/images/people/willem_bester.jpg"
+type: "staff"
+---
+
+<script>
+    import { resolve } from '$app/paths';
+</script>
+
+# {namealias}
+
+## Contact information
+
+Computer Science Division
+Department of Mathematical Sciences
+University of Stellenbosch
+Private Bag X1, Matieland 7602, South Africa
+A508, General Engineering Building
+University of Stellenbosch
+c.o. Banghoek Road and Joubert Street
+Stellenbosch, South Africa
+
+## Bio
+
+Without any formal qualification or training, I worked as a software programmer/analyst for eight years in the media industry. I was involved with system programming, web strategising, and full-text data archiving and retrieval. In 2003, I turned to university studies, for an undergraduate degree in Computer Science and Mathematics at the University of Stellenbosch, followed by an honours and a master’s degree. I was appointed as technical officer in the Computer Science Division in 2009, and then as junior lecturer in 2014.
+
+Besides my life in academia, I am also an active performing musician as a member of the Cape Consort, a group of singers and instrumentalists dedicated to the historically informed performance of early music. Since 2001, I have been a freelance music and theatre critic for Die Burger (now also Netwerk24), and from time to time, I broadcast on Fine Music Radio.
+## Research
+### Research interests
+
+My main research interests are formal languages and automata theory, and the principles of software engineering as applied to system programming. I have a soft spot for the web, and as an inveterate tool builder, I am also interested in the efficiency and space requirements of algorithms used in system and other programming libraries.
+
+### Qualifications
+
+I hold the degree MSc (Computer Science) cum laude from Stellenbosch University, completed under the supervision of Willem Visser and Cornelia Inggs, and I am currently working towards a PhD under the supervision of Brink van der Merwe in the field of automata theory, specialising in regular expression matching.
+### Peer-reviewed publications
+
+Berglund, Martin, Willem Bester, and Brink van der Merwe Formalising Boost POSIX Regular Expression Matching. Theoretical Aspects of Computing – ICTAC 2018, Lecture Notes in Computer Science, 11187, pp. 99–115. [Slides]
+
+Le Roux, P. B., Kroon, S. R., and Bester, W. H. K. DSaaS: A Cloud Service for Persistent Data Structures. CLOSER 2016 Proceedings of the 6th International Conference on Cloud Computing and Services Science, 2016, pp. 37–48.
+
+Bester, W. H. K., Inggs, C. P., and Visser, W. C. Test-Case Generation and Bug-Finding through Symbolic Execution. SAICSIT ’12 Proceedings of the South African Institute for Computer Scientists and Information Technologists Conference, 2012, pp. 1–9. This paper, based on my MSc work, was named the best computer science paper at SAICSIT ’12.
+
+## Students
+### Current students
+Chris Coetzee (MSc, 2016–)
+Chris is doing his thesis work in static instrumentation of ELF binaries as applied to address-space layout randomisation. This work continues his BScHons project, which was named the best computer science honours project of 2015.
+
+Johannes Coetzee (HonsBSc, 2019)
+Johannes will be exploring type inference for Python lambdas.
+
+Johan Pieterse (HonsBSc, 2019)
+Johannes is going to build a browser-based, dynamic presentation tool.
+
+Michael Shepherd (HonsBSc, 2019)
+Michael will build a management system for collecting and marking student progamming assignments.
+
+Steyn van Litsenborgh (MSc, 2019–)
+Steyn is joining my PhD research in the formalisation of regular expression matching.
+
+### Students graduated
+Erik Botes (BScHons, 2016)
+Erik wrote a web-based submission system for programming projects, focusing on support for peer assessment and estimation of marks by using machine learning techniques.
+
+Chris Coetzee (BScHons, 2015)
+Chris created a static instrumentation framework in Python for 64-bit ELF binaries on Linux. This project was named the best computer science honours project for 2015.
+
+Marco Grond (BScHons, 2014)
+Marco wrote a system for teaching basic Python programming to novices, based on ideas from Duolingo.
+
+Christiaan Landman (BScHons, 2017)
+Project title: Web APIs as programs.
+
+Pierre le Roux (BScHons, 2015), co-supervised with Steve Kroon
+Pierre worked with confluently-persistent data structures for the web. He presented his study DSaaS: A Cloud Service for Persistent Data Structures at CLOSER 2016.
+
+Angelo Melonas (BScHons, 2016)
+Angelo wrote a web-based calendar scheduling tool, based on the Squeaky Wheel Algorithm.
+
+Pedrie Oosthuizen (BScHons, 2017)
+Project title: Protocol steganography.
+
+Rudolf Stander (BScHons, 2016)
+Rudolf added a backend to the LLVM compiler that accomplishes “MOVfuscation”, where as many structures possible are translated into Intel MOV instructions. This project was named the best computer science honours project for 2016.
+
+Steyn van Litsenborgh (BScHons, 2018)
+Steyn built a web-based framework for experimenting with automata learning.
+
+Ryan Venter (BScHons, 2016)
+Ryan built a web-based system for designing Beamer master layouts.
+
+Jason Wallace (BScHons, 2014)
+Jason wrote a system for teaching programming principles to novice programmers, based on gamification.
+
+Nicolaas Weideman (BScHons, 2015)
+Nicolaas did work in catastrophic backtracking of regular expressions, which he continued for a master’s degree under the supervision of Brink van der Merwe.
+
+## Teaching
+### Current academic year
+    - [Computer Science 244]({resolve('/courses/cs244')})
+    - Scientific Computing 272
+    - Scientific Computing 372
+
+### Previous academic years
+    - Computer Science 214 (practicums): 2010, 2011
+    - Computer Science 244: 2011–2018
+    - Computer Science 244 (practicums): 2010
+    - Computer Science 252: 2008, 2009
+    - Scientific Computing 272: 2009–2016, 2017.II, 2018.II
+    - Scientific Computing 372: 2009–2015, 2017.II, 2018.II
+

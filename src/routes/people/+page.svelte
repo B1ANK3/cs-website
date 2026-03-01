@@ -59,9 +59,11 @@
                         <div class="people-grid">
                             {#each filteredStaff as member (member.slug)}
                                 <a href={resolve(`/people/${member.slug}`)} class="person-card">
-                                    <div class="card-image">
-                                        <img src={member.image} alt={member.name} />
-                                    </div>
+                                    {#if member.image}
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+                                    {/if}
 
                                     <div class="card-content">
                                         <h3 class="person-name">{member.name}</h3>
@@ -106,9 +108,11 @@
                         <div class="people-grid">
                             {#each filteredStudents as member (member.slug)}
                                 <a href={resolve(`/people/${member.slug}`)} class="person-card">
-                                    <div class="card-image">
-                                        <img src={member.image} alt={member.name} />
-                                    </div>
+                                    {#if member.image}
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+                                    {/if}
 
                                     <div class="card-content">
                                         <h3 class="person-name">{member.name}</h3>
@@ -153,9 +157,11 @@
                         <div class="people-grid">
                             {#each filteredAlumni as member (member.slug)}
                                 <a href={resolve(`/people/${member.slug}`)} class="person-card">
-                                    <div class="card-image">
-                                        <img src={member.image} alt={member.name} />
-                                    </div>
+                                    {#if member.image}
+                                        <div class="card-image">
+                                            <img src={member.image} alt={member.name} />
+                                        </div>
+                                    {/if}
 
                                     <div class="card-content">
                                         <h3 class="person-name">{member.name}</h3>

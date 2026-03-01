@@ -6,6 +6,8 @@
     import { createBehaviorConfig, pickRandom } from '$lib/renderer/CharacterBehaviors';
     import type { DialogContent, PathNode } from '$lib/renderer/types';
     import pathNodesData from '$lib/renderer/pathNodes.json';
+    import buildingAtlasData from '$lib/assets/eng_building_v4.json';
+    import buildingSpriteSheetUrl from '$lib/assets/eng_building_v4.png';
     import { onMount } from 'svelte';
 
     interface Article {
@@ -25,13 +27,14 @@
     interface PageProps {
         articles: Article[];
         events: Event[];
+        names?: string[];
     }
 
-    let { articles = [], events = [] }: PageProps = $props();
+    let { articles = [], events = [], names = [] }: PageProps = $props();
 
     let containerElement: HTMLElement;
     let canvasElement: HTMLCanvasElement;
-    
+
     // Reactive state for class instances
     let rendererState = $state({
         scene: null as Scene | null,
@@ -39,12 +42,44 @@
         dialogBubblePool: null as DialogBubblePool | null,
         resizeObserver: null as ResizeObserver | null
     });
-    
+
+    let sceneSpriteSheet: HTMLImageElement | null = $state(null);
+
+    type AtlasFrame = {
+        filename: string;
+        frame: { x: number; y: number; w: number; h: number };
+        spriteSourceSize: { x: number; y: number; w: number; h: number };
+        sourceSize: { w: number; h: number };
+    };
+
+    type PathNodeData = {
+        id: number;
+        x: number;
+        y: number;
+        connections: number[];
+        isWaypoint?: boolean;
+    };
+
+    const SCENE_BASE_WIDTH = 824;
+    const SCENE_BASE_HEIGHT = 536;
+    const DEBUG_NODES_LAYER = 'DebugNodes';
+    const RENDER_LAYER_ORDER = [
+        'Foyer floor',
+        'Main walk way',
+        'Side Walk Right',
+        'Wood Walls',
+        'Side Walk Left',
+        'Stairs Right',
+        'Stairs Left',
+        DEBUG_NODES_LAYER
+    ] as const;
     let characters: Map<string, Character> = $state(new Map());
     let animationFrameId: number | null = $state(null);
     let lastFrameTime: number = $state(Date.now());
     let characterCount: number = $state(6);
     let debugMode: boolean = $state(false);
+
+    const atlasFrames = (buildingAtlasData.frames ?? []) as AtlasFrame[];
 
     /**
      * Derived combined content from articles and events
@@ -74,12 +109,102 @@
      * Get the appropriate dimensions for the canvas
      */
     function getCanvasDimensions() {
-        if (!containerElement) return { width: 1280, height: 540 };
+        return { width: SCENE_BASE_WIDTH, height: SCENE_BASE_HEIGHT };
+    }
 
-        const width = containerElement.clientWidth || 1280;
-        const height = containerElement.clientHeight || 540;
+    function findLayerFrame(layerName: string): AtlasFrame | undefined {
+        return atlasFrames.find((frame) => frame.filename.includes(`(${layerName})`));
+    }
 
-        return { width, height };
+    function loadSceneSpriteSheet(src: string): Promise<HTMLImageElement> {
+        return new Promise((resolve, reject) => {
+            const image = new Image();
+            image.crossOrigin = 'anonymous';
+            image.onload = () => resolve(image);
+            image.onerror = () => reject(new Error(`Failed to load scene spritesheet: ${src}`));
+            image.src = src;
+        });
+    }
+
+    function renderAtlasLayer(
+        ctx: CanvasRenderingContext2D,
+        layerName: string,
+        scaleX: number,
+        scaleY: number
+    ) {
+        if (!sceneSpriteSheet) return;
+
+        const layerFrame = findLayerFrame(layerName);
+        if (!layerFrame) return;
+
+        const { frame, spriteSourceSize } = layerFrame;
+        ctx.drawImage(
+            sceneSpriteSheet,
+            frame.x,
+            frame.y,
+            frame.w,
+            frame.h,
+            spriteSourceSize.x * scaleX,
+            spriteSourceSize.y * scaleY,
+            frame.w * scaleX,
+            frame.h * scaleY
+        );
+    }
+
+    function renderPathOverlay(ctx: CanvasRenderingContext2D, scaleX: number, scaleY: number) {
+        const typedPathNodes = pathNodesData as PathNodeData[];
+        const nodeMap = new Map(typedPathNodes.map((node) => [String(node.id), node]));
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(100, 200, 255, 0.35)';
+        ctx.lineWidth = 2;
+
+        for (const node of typedPathNodes) {
+            for (const connectionId of node.connections) {
+                const fromId = String(node.id);
+                const toId = String(connectionId);
+
+                if (fromId > toId) continue;
+
+                const connectedNode = nodeMap.get(toId);
+                if (!connectedNode) continue;
+
+                ctx.beginPath();
+                ctx.moveTo(node.x * scaleX, node.y * scaleY);
+                ctx.lineTo(connectedNode.x * scaleX, connectedNode.y * scaleY);
+                ctx.stroke();
+            }
+        }
+
+        for (const node of typedPathNodes) {
+            ctx.fillStyle = node.isWaypoint
+                ? 'rgba(255, 140, 140, 0.8)'
+                : 'rgba(110, 220, 255, 0.8)';
+            ctx.beginPath();
+            ctx.arc(node.x * scaleX, node.y * scaleY, 4.5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        ctx.restore();
+    }
+
+    function renderSceneLayers() {
+        const ctx = rendererState.scene?.getContext();
+        const canvas = rendererState.scene?.getCanvas();
+        if (!ctx || !canvas || !sceneSpriteSheet) return;
+
+        const scaleX = canvas.width / SCENE_BASE_WIDTH;
+        const scaleY = canvas.height / SCENE_BASE_HEIGHT;
+
+        for (const layerName of RENDER_LAYER_ORDER) {
+            // Skip debug layers if debug mode is off
+            if (layerName === DEBUG_NODES_LAYER && !debugMode) continue;
+
+            renderAtlasLayer(ctx, layerName, scaleX, scaleY);
+            if (layerName === DEBUG_NODES_LAYER) {
+                renderPathOverlay(ctx, scaleX, scaleY);
+            }
+        }
     }
 
     /**
@@ -91,28 +216,27 @@
         try {
             const { width, height } = getCanvasDimensions();
 
-            // Create scene
+            if (!sceneSpriteSheet) {
+                sceneSpriteSheet = await loadSceneSpriteSheet(buildingSpriteSheetUrl);
+            }
+
             rendererState.scene = new Scene({
                 canvasWidth: width,
                 canvasHeight: height,
-                backgroundImage: '/scene/scene-background.png'
+                backgroundImage: ''
             });
 
             await rendererState.scene.initialize(canvasElement);
 
-            // Initialize dialog bubble pool
             if (!rendererState.dialogBubblePool) {
                 rendererState.dialogBubblePool = new DialogBubblePool(containerElement);
             }
 
-            // Initialize debug renderer
             rendererState.debugRenderer = new DebugRenderer(canvasElement);
             rendererState.debugRenderer.setPathNodes(pathNodesData as PathNode[]);
 
-            // Spawn initial characters
             spawnCharacters();
 
-            // Start animation loop if not already running
             if (!animationFrameId) {
                 animate();
             }
@@ -128,16 +252,25 @@
         if (!rendererState.scene || !rendererState.dialogBubblePool) return;
 
         const pathFinding = rendererState.scene.getPathFinding();
-        const allNodes = pathFinding.getAllNodes();
+        const allNodes = pathFinding.getAllNodes() as PathNodeData[];
 
         // Clear existing characters
         rendererState.debugRenderer?.clear();
         characters.clear();
 
+        const occupiedStartNodes = new Set<number | string>();
+
         // Spawn new characters
         for (let i = 0; i < characterCount; i++) {
+            // Assign name from list or use generic fallback
+            const characterName =
+                names && names.length > 0 ? names[i % names.length] : `Character ${i + 1}`;
             const characterId = `character-${i}`;
-            const startNode = pickRandom(allNodes) || (allNodes[0] as PathNode);
+
+            // Pick a random unoccupied start node
+            const availableStartNodes = allNodes.filter((node) => !occupiedStartNodes.has(node.id));
+            const startNode = pickRandom(availableStartNodes) || (allNodes[0] as PathNode);
+            occupiedStartNodes.add(startNode.id);
 
             // Create placeholder sprite data (using simple geometry for now)
             const spriteData = {
@@ -160,12 +293,33 @@
                 pathFinding
             );
 
+            // Store character with name metadata
             characters.set(characterId, character);
+            // Store name in character entity for display if needed
+            character.getEntity().name = characterName;
             rendererState.debugRenderer?.addCharacter(character);
 
-            // Stagger character spawning
+            // Stagger character spawning and pick an unoccupied destination node
             setTimeout(() => {
-                character.pathTo(pickRandom(allNodes)?.id || 'entry-left');
+                const occupiedCurrentNodes = new Set<number | string>();
+                characters.forEach((char) => {
+                    const nodes = char.getEntity().pathData.nodes;
+                    if (nodes.length > 0) {
+                        const currentNodeIdx = char.getEntity().pathData.currentNodeIndex;
+                        const currentNode = nodes[currentNodeIdx];
+                        if (currentNode) {
+                            occupiedCurrentNodes.add(currentNode.id);
+                        }
+                    }
+                });
+
+                const availableDestNodes = allNodes.filter(
+                    (node) => !occupiedCurrentNodes.has(node.id)
+                );
+                const destNode = pickRandom(availableDestNodes) || pickRandom(allNodes);
+                if (destNode) {
+                    character.pathTo(destNode.id);
+                }
             }, i * 500);
         }
 
@@ -182,6 +336,13 @@
         lastFrameTime = now;
 
         if (rendererState.scene) {
+            // Get canvas dimensions for positioning
+            const canvas = rendererState.scene.getCanvas();
+            if (!canvas) return;
+
+            const scaleX = canvas.width / SCENE_BASE_WIDTH;
+            const scaleY = canvas.height / SCENE_BASE_HEIGHT;
+
             // Update all characters
             characters.forEach((character) => {
                 character.update(deltaTime);
@@ -189,9 +350,22 @@
                 // Update dialog bubble position
                 if (rendererState.dialogBubblePool) {
                     const entity = character.getEntity();
+                    const pos = character.getPosition();
+
+                    // Calculate screen position for dialog bubble (scaled from canvas coordinates)
+                    const screenX = pos.x * scaleX;
+                    const screenY = pos.y * scaleY;
+
                     if (entity.dialogBubble.isVisible) {
-                        const pos = character.getPosition();
-                        rendererState.dialogBubblePool.setDialogPosition(entity.id, pos.x, pos.y);
+                        rendererState.dialogBubblePool.setDialogPosition(
+                            entity.id,
+                            screenX,
+                            screenY
+                        );
+                    } else if (entity.dialogBubble.content) {
+                        // Hide dialog if character is no longer in talking state
+                        rendererState.dialogBubblePool.hideDialog(entity.id);
+                        entity.dialogBubble.content = null;
                     }
 
                     // Show dialog if transitioning to talking
@@ -202,9 +376,13 @@
                     ) {
                         const content = pickRandomContent();
                         if (content) {
-                            const pos = character.getPosition();
                             character.showDialog(content);
-                            rendererState.dialogBubblePool.showDialog(entity.id, content, pos.x, pos.y);
+                            rendererState.dialogBubblePool.showDialog(
+                                entity.id,
+                                content,
+                                screenX,
+                                screenY
+                            );
                         }
                     }
                 }
@@ -212,6 +390,7 @@
 
             // Render scene
             rendererState.scene.render(() => {
+                renderSceneLayers();
                 renderCharacters();
             });
 
@@ -261,11 +440,12 @@
             ctx.lineTo(pos.x + dx, pos.y + dy);
             ctx.stroke();
 
-            // Draw character ID
+            // Draw character name or ID
             ctx.fillStyle = '#000';
             ctx.font = 'bold 10px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(entity.id, pos.x, pos.y + 28);
+            const displayName = entity.name || entity.id;
+            ctx.fillText(displayName, pos.x, pos.y + 28);
         });
     }
 

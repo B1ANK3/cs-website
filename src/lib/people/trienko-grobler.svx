@@ -1,0 +1,9 @@
+---
+name: "Trienko Grobler"
+title: "Lecturer"
+email: "tlgrobler@sun.ac.za"
+about: "Machine learning, remote sensing, radio interferometry, coding theory and the epoch of reionization"
+image: "/images/people/trienko_grobler.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~tlgrobler/"
+---

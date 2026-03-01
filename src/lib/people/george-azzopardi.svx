@@ -1,0 +1,9 @@
+---
+name: "George Azzopardi"
+title: "Associate Professor Extraordinary"
+email: ""
+about: "Brain-inspired computing, Computer Vision, Pattern Recognition, Machine Learning"
+image: "/images/people/gazzopardi.jpg"
+type: "staff"
+redirect: "https://www.rug.nl/staff/g.azzopardi/?lang=en"
+---

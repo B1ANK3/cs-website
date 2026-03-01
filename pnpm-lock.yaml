@@ -22,7 +22,7 @@ importers:
         specifier: ^9.39.2
         version: 9.39.3
       '@playwright/test':
-        specifier: ^1.58.1
+        specifier: ^1.58.2
         version: 1.58.2
       '@sveltejs/adapter-static':
         specifier: ^3.0.10

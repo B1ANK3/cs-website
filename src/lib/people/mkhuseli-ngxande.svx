@@ -1,0 +1,9 @@
+---
+name: "Mkhuseli Ngxande"
+title: "Lecturer"
+email: "ngxandem@sun.ac.za"
+about: "Machine learning, computer vision, bioinformatics, wide area surveillance"
+image: "/images/people/mkhuseli_ngxande.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~ngxandem"
+---

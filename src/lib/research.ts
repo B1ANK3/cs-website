@@ -26,7 +26,7 @@ const researchModules = import.meta.glob('/src/lib/research/*.svx', { eager: tru
 function loadResearchGroups(modules: Record<string, any>): ResearchGroup[] {
     const groups: ResearchGroup[] = [];
 
-    for (const [path, module] of Object.entries(modules)) {
+    for (const [_, module] of Object.entries(modules)) {
         const mod = module as any;
         const meta = mod.metadata as ResearchMeta;
 

@@ -1,0 +1,9 @@
+---
+name: "Fabian Yamaguchi"
+title: "Professor Extraordinary"
+email: "fabs@shiftleft.io"
+about: "Computer security, Program analysis, Machine learning"
+image: "/images/people/fabian_yamaguchi.jpg"
+type: "staff"
+redirect: "https://fabs.codeminers.org/"
+---

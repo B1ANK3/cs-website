@@ -156,7 +156,7 @@
 </div>
 
 <style lang="scss">
-    @import '$lib/styles/globals.scss';
+    @use '$lib/styles/globals' as *;
 
     .research-page {
         min-height: 100vh;

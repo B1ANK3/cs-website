@@ -1,0 +1,9 @@
+---
+name: "Cornelia Inggs"
+title: "Senior Lecturer"
+email: "cinggs@cs.sun.ac.za"
+about: "Formal methods, model checking, concurrency"
+image: "/images/people/cornelia_inggs.jpg"
+type: "staff"
+redirect: "http://www.cs.sun.ac.za/~cinggs/"
+---
