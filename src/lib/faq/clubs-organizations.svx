@@ -1,0 +1,54 @@
+---
+question: "What student clubs and organizations are available?"
+order: 5
+category: "Student Life"
+---
+
+# What student clubs and organizations are available?
+
+The CS department has a vibrant student community with numerous clubs and organizations.
+
+## Technical Clubs
+
+### ACM Chapter
+The Association for Computing Machinery student chapter hosts:
+- Weekly coding workshops
+- Hackathons and competitions
+- Guest speaker series
+- Study groups
+
+### Cybersecurity Club
+Focus on information security with:
+- Capture The Flag (CTF) competitions
+- Security certifications preparation
+- Industry networking events
+
+### Women in Computer Science
+Supporting women and underrepresented groups in tech:
+- Mentorship programs
+- Professional development workshops
+- Community building events
+
+### Game Development Club
+Create games and interactive media:
+- Game jams
+- Unity/Unreal Engine workshops
+- Showcase events
+
+## Competitive Teams
+
+### Programming Competition Team
+Train for and compete in:
+- ACM International Collegiate Programming Contest (ICPC)
+- Local and regional competitions
+- Practice sessions twice weekly
+
+### Robotics Team
+Build and program robots for competitions
+
+## Social Groups
+
+### CS Student Association
+General social organization for all CS students with social events, study sessions, and more.
+
+Visit the [student organizations portal](https://student-orgs.university.edu/cs) to join or learn more!

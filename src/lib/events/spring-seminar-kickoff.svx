@@ -1,0 +1,47 @@
+---
+title: Spring Seminar Series Kickoff
+description: Join us for an interactive discussion on the future of computer science education and research opportunities.
+date: 2026-03-15
+time: 2:00 PM - 3:30 PM
+location: Computer Science Building, Room 101
+summary: An exciting kickoff event for our spring seminar series featuring guest speakers from industry and academia.
+pinned: true
+hosts:
+  - John Smith
+  - Sarah Johnson
+speakers:
+  - Dr. Emily Rodriguez
+  - Dr. Michael Chen
+organizers:
+  - John Smith
+  - Sarah Johnson
+  - James Wilson
+attendees:
+  - Alex Miller
+  - Casey Williams
+  - Jordan Lee
+slug: spring-seminar-kickoff
+---
+
+# Spring Seminar Series Kickoff
+
+This is your chance to network with industry professionals and learn about the latest trends in computer science.
+
+## What to Expect
+
+- Welcome remarks from our department chair
+- Guest speaker presentations
+- Q&A session with speakers
+- Light refreshments and networking
+
+## Guest Speakers
+
+### Dr. Emily Rodriguez
+Emily is a leading researcher in artificial intelligence and machine learning, with publications in top-tier conferences.
+
+### Dr. Michael Chen
+Michael specializes in distributed systems and cloud computing, bringing over 15 years of industry experience.
+
+## Registration
+
+Please register in advance using the calendar link to help us plan for refreshments.

@@ -1,0 +1,44 @@
+---
+title: Web Development Workshop
+description: Hands-on workshop covering modern web development practices with Svelte and Vite.
+date: 2026-04-10
+time: 4:00 PM - 6:00 PM
+location: Tech Innovation Hub
+summary: Learn practical web development skills in this interactive workshop.
+pinned: false
+hosts:
+  - James Wilson
+speakers:
+  - James Wilson
+organizers:
+  - James Wilson
+  - Alex Miller
+slug: web-dev-workshop
+---
+
+# Web Development Workshop
+
+In this hands-on session, you'll learn how to build modern web applications using cutting-edge tools and frameworks.
+
+## Topics Covered
+
+- Introduction to Svelte
+- Building reactive components
+- State management with Stores
+- Styling with UnoCSS
+- Vite for fast development
+
+## Prerequisites
+
+- Basic knowledge of HTML, CSS, and JavaScript
+- A laptop with Node.js installed
+- Your favorite code editor
+
+## What to Bring
+
+- Laptop with development environment setup
+- Willingness to learn and experiment
+
+## Resources
+
+Participants will receive a GitHub repository with starter code and examples.

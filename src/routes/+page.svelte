@@ -179,7 +179,7 @@
     @import '$lib/styles/globals.scss';
     .hero-section {
         position: relative;
-        height: calc(100vh - #{$navbar-height});
+        height: calc(100vh - $navbar-height - $navbar-border-height);
         width: 100%;
         @include flex-center;
         overflow: hidden;
@@ -314,7 +314,7 @@
     // Welcome Section
     .welcome-section {
         position: relative;
-        height: calc(100vh - #{$navbar-height});
+        min-height: auto;
         width: 100%;
         padding: 60px 20px;
         background-color: #ffffff;
@@ -323,7 +323,7 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
 
     .content-wrapper {

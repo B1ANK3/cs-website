@@ -1,0 +1,61 @@
+---
+title: Research Showcase 2026
+description: Annual event showcasing student and faculty research projects across all CS disciplines.
+date: 2026-05-20
+endDate: 2026-05-21
+time: 10:00 AM - 5:00 PM
+location: Computer Science Building, Multiple Venues
+summary: A two-day event featuring research presentations, demos, and poster sessions.
+pinned: true
+hosts:
+  - Sarah Johnson
+  - Michael Chen
+speakers:
+  - Multiple Faculty Members
+organizers:
+  - Sarah Johnson
+  - Michael Chen
+  - Lisa Anderson
+  - Michelle Brown
+attendees:
+  - John Smith
+  - Emily Rodriguez
+  - Robert Davis
+slug: research-showcase-2026
+---
+
+# Research Showcase 2026
+
+This is the premier event for showcasing cutting-edge research conducted by our department's students and faculty.
+
+## Schedule
+
+### Day 1 - Tuesday, May 20
+- Morning: Registration and Keynote
+- Afternoon: Poster Sessions and Demos
+- Evening: Networking Reception
+
+### Day 2 - Wednesday, May 21
+- Morning: Oral Presentations (Track A & B)
+- Afternoon: Demos and Discussions
+- Awards Ceremony
+
+## Presentation Areas
+
+- Artificial Intelligence & Machine Learning
+- Software Engineering
+- Databases & Systems
+- Computer Security
+- Human-Computer Interaction
+- Theory and Algorithms
+
+## Who Should Attend
+
+Students, faculty, industry professionals, and the general public interested in computer science research.
+
+## Special Features
+
+- Meet with faculty advisors
+- Explore the latest research technologies
+- Network with industry representatives
+- Refreshments throughout the event

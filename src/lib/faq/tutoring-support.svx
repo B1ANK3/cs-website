@@ -1,0 +1,46 @@
+---
+question: "Is tutoring or academic support available?"
+order: 6
+category: "Academic"
+---
+
+# Is tutoring or academic support available?
+
+Yes, we offer comprehensive academic support services for all CS students.
+
+## Free Tutoring Services
+
+### CS Help Lab
+**Location:** Computer Science Building, Room 120  
+**Hours:** Monday-Friday, 10 AM - 6 PM
+
+Walk-in tutoring for:
+- CS 101, 201, 301 (core courses)
+- General programming questions
+- Assignment help (no solutions provided, but guidance given)
+
+### Peer Tutoring Program
+One-on-one sessions with experienced upper-level students:
+- Schedule appointments online
+- Up to 2 hours per week per student
+- Free of charge
+
+## Additional Resources
+
+### Office Hours
+All faculty and TAs hold regular office hours - check your course syllabus for times.
+
+### Study Groups
+Join or form study groups through our online portal - we'll match you with classmates.
+
+### Online Resources
+Access to:
+- Video lecture archives
+- Practice problems and solutions
+- Supplementary learning materials
+
+### Accommodations
+Students with disabilities can receive accommodations through the [Disability Services Office](https://disability.university.edu).
+
+## Contact
+For questions about academic support, email [help@cs.university.edu](mailto:help@cs.university.edu).

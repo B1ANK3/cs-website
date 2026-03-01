@@ -1,0 +1,33 @@
+---
+question: "What are the course requirements for a CS degree?"
+order: 2
+category: "Academic"
+---
+
+# What are the course requirements for a CS degree?
+
+Our Computer Science degree requires **120 credit hours** total, including:
+
+## Core Requirements (45 credits)
+- Introduction to Programming (CS 101)
+- Data Structures (CS 201)
+- Algorithms (CS 301)
+- Computer Architecture (CS 250)
+- Operating Systems (CS 350)
+- Software Engineering (CS 400)
+- Database Systems (CS 420)
+
+## Mathematics (18 credits)
+- Calculus I & II
+- Discrete Mathematics
+- Linear Algebra
+- Probability & Statistics
+
+## Electives (30 credits)
+Choose from specialized areas like:
+- Artificial Intelligence
+- Cybersecurity
+- Web Development
+- Machine Learning
+
+See our [complete course catalog](/courses) for more details.

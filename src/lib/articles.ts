@@ -7,6 +7,7 @@ export interface ArticleMeta {
 }
 
 export interface Article extends ArticleMeta {
+    // TODO: Fix the any types
     component: any;
 }
 

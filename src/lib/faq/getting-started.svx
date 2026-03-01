@@ -1,0 +1,16 @@
+---
+question: "How do I get started with the Computer Science program?"
+order: 1
+category: "General"
+---
+
+# How do I get started with the Computer Science program?
+
+To get started with our Computer Science program, follow these steps:
+
+1. **Apply through the university admissions portal** at [admissions.university.edu](https://admissions.university.edu)
+2. **Submit required documents** including transcripts and test scores
+3. **Attend orientation** once you're accepted
+4. **Meet with your academic advisor** to plan your course schedule
+
+For more information, visit our [undergraduate programs page](/courses) or contact us at [cs-info@university.edu](mailto:cs-info@university.edu).

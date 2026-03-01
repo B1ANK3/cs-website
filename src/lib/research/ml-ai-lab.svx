@@ -1,0 +1,42 @@
+---
+name: "Machine Learning & AI Lab"
+slug: "ml-ai-lab"
+description: "Advancing artificial intelligence through deep learning, neural networks, and responsible AI research"
+summary: "Our lab focuses on developing cutting-edge machine learning algorithms and AI systems that can solve real-world problems. We work on both theoretical foundations and practical applications."
+realWorldApplications: ["Autonomous systems", "Natural language processing", "Computer vision", "Predictive analytics", "Medical AI"]
+members: ["John Smith", "Emily Rodriguez", "Michael Chen"]
+links: [
+  { title: "Our Publications", url: "https://scholar.google.com" },
+  { title: "Research Blog", url: "https://example.com/blog" },
+  { title: "Lab Website", url: "https://example.com/ml-lab" }
+]
+---
+
+# {name}
+
+## Overview
+
+{description}
+
+{summary}
+
+## Real-World Applications
+
+Our research has practical applications across various industries:
+
+- **Autonomous Systems**: Self-driving vehicles and robotics
+- **Natural Language Processing**: Advanced chatbots and language understanding
+- **Computer Vision**: Image recognition and medical imaging analysis
+- **Predictive Analytics**: Forecasting and trend analysis
+- **Medical AI**: Diagnostic assistance and drug discovery
+
+## Current Projects
+
+- Deep reinforcement learning for robotic control
+- Transformer models for natural language understanding
+- Federated learning for privacy-preserving machine learning
+- Explainable AI for medical diagnosis systems
+
+## Collaboration
+
+We collaborate with leading tech companies, healthcare institutions, and other research universities. We're always interested in partnerships that advance AI for social good.

@@ -1,0 +1,43 @@
+---
+name: "Human-Computer Interaction Lab"
+slug: "hci-lab"
+description: "Creating intuitive and accessible interfaces that enhance human capabilities and user experience"
+summary: "Our HCI research explores how people interact with technology, designing systems that are effective, efficient, and enjoyable to use. We focus on accessibility, usability, and inclusive design."
+realWorldApplications: ["Interface design", "Accessibility technology", "User experience research", "Virtual reality interactions", "Assistive technology"]
+members: ["Casey Williams", "Sarah Johnson", "Alex Miller"]
+links: [
+  { title: "HCI Publications", url: "https://scholar.google.com/hci" },
+  { title: "Usability Testing Resources", url: "https://example.com/usability" },
+  { title: "Design Guidelines", url: "https://example.com/design-guide" }
+]
+---
+
+# {name}
+
+## Overview
+
+{description}
+
+{summary}
+
+## Real-World Applications
+
+HCI research transforms how billions of people interact with technology:
+
+- **Interface Design**: Intuitive user interfaces for web and mobile applications
+- **Accessibility Technology**: Tools and designs for people with disabilities
+- **User Experience Research**: Understanding and improving user satisfaction
+- **Virtual Reality Interactions**: Natural ways to navigate and interact in VR/AR
+- **Assistive Technology**: Tools that help people with disabilities accomplish their goals
+
+## Current Projects
+
+- Accessibility features for AI-powered systems
+- Voice interface design for diverse user populations
+- Eye-tracking interactions for users with mobility impairments
+- Universal design principles for web and mobile
+- User studies on emerging technology adoption
+
+## Impact
+
+Our research directly influences product design at major tech companies and helps create technology that serves everyone. We're committed to inclusive design principles that benefit users of all abilities.

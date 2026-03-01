@@ -1,0 +1,34 @@
+---
+question: "Are there research opportunities for undergraduate students?"
+order: 3
+category: "Research"
+---
+
+# Are there research opportunities for undergraduate students?
+
+**Yes!** We strongly encourage undergraduate students to participate in research.
+
+## Available Opportunities
+
+### Faculty-Led Research
+Work directly with faculty members on cutting-edge projects in:
+- Machine Learning & AI
+- Cybersecurity
+- Human-Computer Interaction
+- Systems & Networks
+
+### Independent Study
+Qualified students can propose their own research projects for credit (CS 499).
+
+### Summer Research Programs
+Apply for our competitive summer research fellowships with stipends available.
+
+### Student Research Assistants
+Paid positions available throughout the academic year.
+
+## How to Get Involved
+1. Browse current research projects on our [research page](/research)
+2. Reach out to faculty members whose work interests you
+3. Attend the **Research Showcase** event (check our [events calendar](/events))
+
+For questions, contact the research coordinator at [research@cs.university.edu](mailto:research@cs.university.edu).

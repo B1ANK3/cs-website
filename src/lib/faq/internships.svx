@@ -1,0 +1,37 @@
+---
+question: "How can I find internships and job opportunities?"
+order: 4
+category: "Career"
+---
+
+# How can I find internships and job opportunities?
+
+The CS department provides extensive support for finding internships and full-time positions.
+
+## Career Services
+
+### Industry Partnerships
+We partner with leading tech companies including:
+- Major tech corporations (Google, Microsoft, Amazon)
+- Local startups and mid-size companies
+- Government research labs
+
+### Career Center
+Our dedicated career center offers:
+- Resume reviews and interview preparation
+- Mock technical interviews
+- Career fairs (Fall and Spring)
+- On-campus recruiting events
+
+### Co-op Program
+Participate in our **cooperative education program** for extended work experience:
+- 6-month paid positions
+- Can be taken during fall or spring semester
+- Counts towards degree requirements
+
+## Resources
+- [Career portal](https://careers.university.edu) for job postings
+- Join our **CS Career Development** mailing list
+- Attend weekly tech talks from industry professionals
+
+Contact the career advisor at [cs-careers@university.edu](mailto:cs-careers@university.edu) for personalized guidance.
