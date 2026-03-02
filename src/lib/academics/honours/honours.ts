@@ -28,12 +28,12 @@ export const honoursLinks: UsefulLink[] = [
     {
         title: 'Honours Programme Handbook',
         description: 'Complete guide to course structure, requirements, and expectations',
-        url: '/academics/honours/handbook'
+        url: '/academics/honours#handbook'
     },
     {
         title: 'Research Project Guidelines',
         description: 'Information about project selection, supervision, and assessment',
-        url: '/academics/honours/research-guidelines'
+        url: '/academics/honours#research-guidelines'
     },
     {
         title: 'Current Research Topics',
@@ -43,11 +43,11 @@ export const honoursLinks: UsefulLink[] = [
     {
         title: 'Postgraduate Student Support',
         description: 'Resources, counseling, and academic support services',
-        url: '/faq/tutoring-support'
+        url: '/faq#tutoring-support'
     },
     {
         title: 'Funding & Scholarships',
         description: 'Explore available funding opportunities for honours students',
-        url: '/academics/honours/funding'
+        url: '/academics/honours#funding'
     }
 ];

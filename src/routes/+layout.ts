@@ -2,5 +2,5 @@
 // Individual routes can still prerender if needed
 
 // Completely destroys all content :: WHYYYYYYYYYYYYYYYYYY
-// export const ssr = false;
-// export const prerender = true;
+export const prerender = true;
+export const trailingSlash = 'always';

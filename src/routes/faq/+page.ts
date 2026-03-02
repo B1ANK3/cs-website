@@ -6,7 +6,7 @@ import type { PageLoad } from './$types';
 // handle this and fails when compiling for SSG.
 // Thus we just have to eat the performance cost of client-side rendering.
 // FIXME: Enable some sort of hash routing to prerender routes.
-export const prerender = false;
+export const prerender = true;
 
 // This runs only in SSR mode, therefore ssg fails to load this
 export const load: PageLoad = async () => {

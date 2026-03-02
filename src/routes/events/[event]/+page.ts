@@ -1,6 +1,6 @@
 import { getAllEvents, getEventBySlug } from '$lib/events';
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
     const events = await getAllEvents();
@@ -14,3 +14,11 @@ export const load: PageLoad = async ({ params }) => {
         event
     };
 };
+
+export const entries: EntryGenerator = async () => {
+    const events = await getAllEvents();
+    // FIXME: Is this stable enough?
+    return events.map(event => ({ event: event.slug! }))
+}
+
+export const prerender = true;

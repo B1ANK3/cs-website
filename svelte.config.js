@@ -6,16 +6,11 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
     kit: {
         adapter: adapter({
-            pages: 'build',
-            assets: 'build',
-            fallback: '404.html',
-            precompress: true,
-            strict: true
+            strict: true,
+            precompress: true
         }),
-        prerender: {
-            crawl: true,
-            entries: ['*'],
-            handleHttpError: 'warn'
+        paths: {
+            base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
         }
     },
     preprocess: [vitePreprocess(), mdsvex()],

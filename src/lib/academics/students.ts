@@ -86,21 +86,21 @@ export const professorTestimonials: ProfessorTestimonial[] = [
     {
         name: 'Dr. Sarah Johnson',
         title: 'Department Chair, AI & Machine Learning',
-        image: '/images/professors/sarah-johnson.jpg',
+        image: '',
         testimonial:
             'Our CS division provides world-class education combining cutting-edge research with practical applications. Students leave here ready to lead the next generation of technology innovation.'
     },
     {
         name: 'Prof. Michael Chen',
         title: 'Director of Graduate Studies',
-        image: '/images/professors/michael-chen.jpg',
+        image: '',
         testimonial:
             "The collaborative environment here fosters groundbreaking research. We are proud of our graduate students' contributions to the field and their career achievements."
     },
     {
         name: 'Dr. Lisa Anderson',
         title: 'Director of Undergraduate Programs',
-        image: '/images/professors/lisa-anderson.jpg',
+        image: '',
         testimonial:
             'We prepare undergraduate students not just for technical excellence, but for responsible leadership in computing. Our holistic approach ensures they thrive in any career path.'
     }

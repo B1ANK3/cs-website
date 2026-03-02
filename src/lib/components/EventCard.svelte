@@ -13,8 +13,8 @@
     const month = $derived(getEventMonth(event.date));
     const day = $derived(getEventDay(event.date));
 
-    const handleCardClick = () => {
-        goto(resolve(`/events/${event.slug}`));
+    const handleCardClick = async () => {
+        await goto(resolve(`/events/${event.slug}`));
     };
 
     const googleCalendarUrl = $derived(generateGoogleCalendarLink(event));
@@ -22,7 +22,8 @@
 
 <div
     class="event-card"
-    onclick={handleCardClick}
+    // onclick={handleCardClick}
+    // YOU ARE FUCKING USELESS, SVELTE, WHY THE FUCK CAN'T I USE ONCLICK ON A DIV WITHOUT IT BEING A FUCKING BUTTON OR LINK
     role="button"
     tabindex="0"
     onkeydown={(e) => e.key === 'Enter' && handleCardClick()}
@@ -34,7 +35,9 @@
 
     <div class="event-content">
         <div class="event-header">
-            <h3 class="event-title">{event.title}</h3>
+            <h3 class="event-title">
+            <a href={resolve(`/events/${event.slug}`)}>{event.title}</a>
+            </h3>
             {#if event.time}
                 <p class="event-time">{event.time}</p>
             {/if}

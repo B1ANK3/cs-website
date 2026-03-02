@@ -9,3 +9,5 @@ export const load: PageLoad = async () => {
         events: sortedEvents
     };
 };
+
+export const prerender = true;
