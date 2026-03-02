@@ -1,19 +1,9 @@
 <script lang="ts">
     import SULogo from '$lib/assets/svg/SULogo.svelte';
-    import Search from '$lib/assets/svg/Search.svelte';
+    import SearchBar from '$lib/components/SearchBar.svelte';
     import { resolve } from '$app/paths';
 
-    let searchQuery = $state('');
     let mobileMenuOpen = $state(false);
-
-    const handleSearch = (e: Event) => {
-        e.preventDefault();
-        const form = e.currentTarget as HTMLFormElement;
-        const query = new FormData(form).get('search');
-        form.reset();
-        console.log('Search query:', query);
-        // Add search functionality here
-    };
 
     const toggleMobileMenu = () => {
         mobileMenuOpen = !mobileMenuOpen;
@@ -44,18 +34,9 @@
             <a href={resolve('/contact')} class="nav-item">Contact</a>
 
             <!-- Search -->
-            <form onsubmit={handleSearch} class="search-form">
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search..."
-                    class="search-input"
-                    bind:value={searchQuery}
-                />
-                <button type="submit" class="search-btn" aria-label="Search">
-                    <Search />
-                </button>
-            </form>
+            <div class="search-wrapper">
+                <SearchBar />
+            </div>
         </nav>
 
         <!-- Hamburger Menu Button (Mobile) -->
@@ -89,24 +70,20 @@
             <a href={resolve('/contact')} class="mobile-nav-item" onclick={closeMobileMenu}
                 >Contact</a
             >
-            <form onsubmit={handleSearch} class="mobile-search-form">
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search..."
-                    class="mobile-search-input"
-                    bind:value={searchQuery}
-                />
-                <button type="submit" class="mobile-search-btn" aria-label="Search">
-                    <Search />
-                </button>
-            </form>
+            <div class="mobile-search-wrapper">
+                <SearchBar />
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     {#if mobileMenuOpen}
-        <div class="mobile-menu-overlay" onclick={closeMobileMenu}></div>
+        <button
+            class="mobile-menu-overlay"
+            onclick={closeMobileMenu}
+            onkeydown={(e) => e.key === 'Enter' && closeMobileMenu()}
+            aria-label="Close menu"
+        ></button>
     {/if}
 </div>
 
@@ -141,12 +118,6 @@
         &:hover :global(svg) {
             transform: scale(1.05);
         }
-    }
-
-    .logo-img {
-        height: 100%;
-        width: auto;
-        @include smooth-transition(transform);
     }
 
     .nav-links {
@@ -184,45 +155,8 @@
         }
     }
 
-    .search-form {
-        @include flex-center;
-        border: 1px solid $border-color;
-        border-radius: 20px;
-        padding: 0 12px;
-        background-color: $light-bg;
-        @include smooth-transition;
-
-        &:focus-within {
-            @include focus-ring;
-        }
-    }
-
-    .search-input {
-        border: none;
-        background: transparent;
-        padding: 8px 10px;
-        font-size: 14px;
-        width: 150px;
-        outline: none;
-        color: $text-color;
-
-        &::placeholder {
-            color: #999;
-        }
-    }
-
-    .search-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        padding: 0;
-        @include flex-center;
-        @include smooth-transition(transform);
-
-        &:hover {
-            transform: scale(1.1);
-        }
+    .search-wrapper {
+        width: 250px;
     }
 
     // ============================================
@@ -293,42 +227,8 @@
         }
     }
 
-    .mobile-search-form {
-        @include flex-center;
+    .mobile-search-wrapper {
         margin: 20px;
-        border: 1px solid $border-color;
-        border-radius: 20px;
-        padding: 0 12px;
-        background-color: $light-bg;
-        @include smooth-transition;
-    }
-
-    .mobile-search-input {
-        border: none;
-        background: transparent;
-        padding: 8px 10px;
-        font-size: 14px;
-        width: 100%;
-        outline: none;
-        color: $text-color;
-
-        &::placeholder {
-            color: #999;
-        }
-    }
-
-    .mobile-search-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        padding: 0;
-        @include flex-center;
-        @include smooth-transition(transform);
-
-        &:hover {
-            transform: scale(1.1);
-        }
     }
 
     .mobile-menu-overlay {
@@ -340,6 +240,9 @@
         height: calc(100vh - $navbar-height - $navbar-border-height);
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 998;
+        border: none;
+        padding: 0;
+        cursor: pointer;
     }
 
     // ============================================
@@ -366,10 +269,6 @@
 
         .mobile-menu-overlay {
             display: block;
-        }
-
-        .logo-img {
-            height: $logo-size-mobile;
         }
     }
 </style>

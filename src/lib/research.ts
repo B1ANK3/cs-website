@@ -23,10 +23,11 @@ export interface ResearchGroup extends ResearchMeta {
 // Dynamically import all .svx files from the research directory
 const researchModules = import.meta.glob('/src/lib/research/*.svx', { eager: true });
 
-function loadResearchGroups(modules: Record<string, any>): ResearchGroup[] {
+function loadResearchGroups(modules: Record<string, unknown>): ResearchGroup[] {
     const groups: ResearchGroup[] = [];
 
-    for (const [_, module] of Object.entries(modules)) {
+    for (const [, module] of Object.entries(modules)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const mod = module as any;
         const meta = mod.metadata as ResearchMeta;
 

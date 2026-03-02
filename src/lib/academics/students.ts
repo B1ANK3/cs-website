@@ -14,10 +14,10 @@ export const studentResources: StudentResource[] = [
         description:
             'Find answers to common questions about courses, requirements, and academic planning.',
         links: [
-            { label: 'Course Requirements', href: '/faq/course-requirements' },
-            { label: 'Getting Started', href: '/faq/getting-started' },
-            { label: 'Internships', href: '/faq/internships' },
-            { label: 'Research Opportunities', href: '/faq/research-opportunities' }
+            { label: 'Course Requirements', href: '/faq#course-requirements' },
+            { label: 'Getting Started', href: '/faq#getting-started' },
+            { label: 'Internships', href: '/faq#internships' },
+            { label: 'Research Opportunities', href: '/faq#research-opportunities' }
         ]
     },
     {
@@ -25,8 +25,8 @@ export const studentResources: StudentResource[] = [
         description:
             'Access important resources and links for student support and academic success.',
         links: [
-            { label: 'Tutoring & Support', href: '/faq/tutoring-support' },
-            { label: 'Clubs & Organizations', href: '/faq/clubs-organizations' },
+            { label: 'Tutoring & Support', href: '/faq#tutoring-support' },
+            { label: 'Clubs & Organizations', href: '/faq#clubs-organizations' },
             { label: 'Faculty & Staff', href: '/people' },
             { label: 'Research Groups', href: '/research' }
         ]

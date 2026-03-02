@@ -13,13 +13,15 @@ import {
 } from './CharacterBehaviors';
 import type {
     CharacterEntity,
-    Transform,
-    Sprite,
-    DialogBubbleState,
+    // Transform,
+    // Sprite,
+    // DialogBubbleState,
     BehaviorConfig,
     PathNode,
     CharacterStateType,
-    State
+    State,
+    DialogContent,
+    SpriteSheetData
 } from './types';
 import type { PathFinding } from './PathFinding';
 
@@ -36,7 +38,7 @@ export class Character {
     constructor(
         id: string,
         initialNode: PathNode,
-        spriteData: any,
+        spriteData: SpriteSheetData,
         behaviorConfig: BehaviorConfig,
         pathFinding: PathFinding
     ) {
@@ -133,7 +135,7 @@ export class Character {
         this.entity.stateEnterTime = Date.now();
     }
 
-    private onIdleUpdate(_: number): void {
+    private onIdleUpdate(_dt: number): void {
         // Check if character should turn and talk (random chance)
         if (this.turnAndTalkBehavior.shouldTurnAndTalk()) {
             this.stateMachine.transition('turning');
@@ -190,7 +192,7 @@ export class Character {
         this.entity.stateEnterTime = Date.now();
     }
 
-    private onTurningUpdate(dt: number): void {
+    private onTurningUpdate(_dt: number): void {
         // Simple turn timing - 500ms to complete turn
         const turnDuration = 500;
         const elapsed = Date.now() - this.entity.stateEnterTime;
@@ -267,7 +269,7 @@ export class Character {
     /**
      * Display a dialog bubble
      */
-    public showDialog(content: any): void {
+    public showDialog(content: DialogContent): void {
         this.entity.dialogBubble.content = content;
         this.entity.dialogBubble.displayTime = 0;
 
@@ -327,7 +329,8 @@ export class Character {
                 this.entity.pathData.currentNodeIndex++;
                 this.entity.pathData.progress = 0;
                 this.entity.pathData.currentNodeId =
-                    nodes[this.entity.pathData.currentNodeIndex]?.id ?? this.entity.pathData.currentNodeId;
+                    nodes[this.entity.pathData.currentNodeIndex]?.id ??
+                    this.entity.pathData.currentNodeId;
                 remaining -= moveDistance;
             } else {
                 remaining = 0;

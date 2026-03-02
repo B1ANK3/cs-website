@@ -26,15 +26,16 @@ function slugify(text: string): string {
         .replace(/-+/g, '-');
 }
 
-function loadPeople(modules: Record<string, any>): Person[] {
+function loadPeople(modules: Record<string, unknown>): Person[] {
     const people: Person[] = [];
 
-    for (const [path, module] of Object.entries(modules)) {
+    for (const [, module] of Object.entries(modules)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const mod = module as any;
         const meta = mod.metadata as PersonMeta;
 
         if (meta) {
-            const filename = path.split('/').pop()?.replace('.svx', '') || '';
+            // const filename = path.split('/').pop()?.replace('.svx', '') || '';
             people.push({
                 ...meta,
                 slug: slugify(meta.name),

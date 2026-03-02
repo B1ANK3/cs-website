@@ -69,7 +69,7 @@ describe('IsometricRenderer.svelte', () => {
             props: { articles, events }
         });
 
-        const debugButton = page.getByRole('button', { name: 'Toggle debug overlay' });
+        // const debugButton = page.getByRole('button', { name: 'Toggle debug overlay' });
 
         window.dispatchEvent(new KeyboardEvent('keydown', { key: 'd' }));
         expect(await getDebugLabel()).toContain('Debug ON');

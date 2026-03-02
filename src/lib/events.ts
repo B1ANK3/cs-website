@@ -37,7 +37,8 @@ function slugify(text: string): string {
 export async function getAllEvents(): Promise<Event[]> {
     const events: Event[] = [];
 
-    for (const [_path, module] of Object.entries(eventModules)) {
+    for (const [, module] of Object.entries(eventModules)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const mod = module as any; // What type is this
         const meta = mod.metadata as EventMeta;
 

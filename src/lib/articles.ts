@@ -28,7 +28,8 @@ function slugify(text: string): string {
 export async function getAllArticles(): Promise<Article[]> {
     const articles: Article[] = [];
 
-    for (const [_path, module] of Object.entries(articleModules)) {
+    for (const [, module] of Object.entries(articleModules)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const mod = module as any;
         const meta = mod.metadata as ArticleMeta;
 

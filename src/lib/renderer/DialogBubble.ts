@@ -56,7 +56,6 @@ export class DialogBubble {
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.hide());
         }
-
     }
 
     /**

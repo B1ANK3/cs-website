@@ -9,6 +9,7 @@
     import buildingAtlasData from '$lib/assets/eng_building_v4.json';
     import buildingSpriteSheetUrl from '$lib/assets/eng_building_v4.png';
     import { onMount } from 'svelte';
+    import { SvelteSet } from 'svelte/reactivity';
 
     interface Article {
         title: string;
@@ -258,7 +259,8 @@
         rendererState.debugRenderer?.clear();
         characters.clear();
 
-        const occupiedStartNodes = new Set<number | string>();
+        const occupiedStartNodes = new SvelteSet<number | string>();
+        // const occupiedStartNodes = new Set<number | string>();
 
         // Spawn new characters
         for (let i = 0; i < characterCount; i++) {
@@ -301,7 +303,8 @@
 
             // Stagger character spawning and pick an unoccupied destination node
             setTimeout(() => {
-                const occupiedCurrentNodes = new Set<number | string>();
+                const occupiedCurrentNodes = new SvelteSet<number | string>();
+                // const occupiedCurrentNodes = new Set<number | string>();
                 characters.forEach((char) => {
                     const nodes = char.getEntity().pathData.nodes;
                     if (nodes.length > 0) {

@@ -1,12 +1,31 @@
 <!-- TODO: Remove legacy mode -->
 <script lang="ts">
     import type { PageData } from './$types';
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
     import { resolve } from '$app/paths';
 
-    export let data: PageData;
+    interface PageProps {
+        data: PageData;
+    }
 
-    let activeSection = '';
+    const { data }: PageProps = $props();
+
+    let activeSection = $state('');
+
+    async function scrollToHashSection(behavior: ScrollBehavior = 'auto') {
+        const hashSlug = decodeURIComponent(window.location.hash.replace('#', '').trim());
+        if (!hashSlug) {
+            return;
+        }
+
+        await tick();
+
+        const element = document.getElementById(hashSlug);
+        if (element) {
+            activeSection = hashSlug;
+            element.scrollIntoView({ behavior, block: 'start' });
+        }
+    }
 
     onMount(() => {
         // Set initial active section
@@ -37,14 +56,25 @@
             }
         });
 
+        const handleHashChange = () => {
+            void scrollToHashSection('smooth');
+        };
+
+        window.addEventListener('hashchange', handleHashChange);
+        void scrollToHashSection('auto');
+
         return () => {
             observer.disconnect();
+            window.removeEventListener('hashchange', handleHashChange);
         };
     });
 
     function scrollToSection(slug: string) {
+        console.log("Scrolling to section...")
         const element = document.getElementById(slug);
         if (element) {
+            window.history.replaceState(null, '', `#${slug}`);
+            activeSection = slug;
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
@@ -68,8 +98,9 @@
                     <ul class="toc-list">
                         {#each data.faqs as faq, index (faq.slug)}
                             <li class="toc-item" class:active={activeSection === faq.slug}>
+                                <!-- Why doesn't this button work in ssg mode? -->
                                 <button
-                                    on:click={() => scrollToSection(faq.slug || '')}
+                                    onclick={() => scrollToSection(faq.slug || '')}
                                     class="toc-link"
                                 >
                                     <span class="toc-number">{index + 1}.</span>
@@ -98,6 +129,8 @@
 
             <div class="faq-list">
                 {#each data.faqs as faq, index (faq.slug)}
+                    {@const FaqComponent = faq.component}
+
                     <article id={faq.slug} class="faq-item">
                         <div class="faq-question-header">
                             <span class="faq-number">{index + 1}</span>
@@ -107,7 +140,7 @@
                             {/if}
                         </div>
                         <div class="faq-answer">
-                            <svelte:component this={faq.component} />
+                            <FaqComponent />
                         </div>
                     </article>
                 {/each}
@@ -154,7 +187,7 @@
 
     .toc-sticky {
         position: sticky;
-        top: 100px;
+        top: 1rem;
         max-height: calc(100vh - 120px);
         overflow-y: auto;
         padding: 20px;

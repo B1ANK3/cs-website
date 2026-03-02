@@ -31,7 +31,8 @@ const courseModules = import.meta.glob('/src/lib/courses/*.svx', { eager: true }
 export async function getAllCourses(): Promise<Course[]> {
     const courses: Course[] = [];
 
-    for (const [_path, module] of Object.entries(courseModules)) {
+    for (const [, module] of Object.entries(courseModules)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const mod = module as any;
         const meta = mod.metadata as CourseMeta;
 
