@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { asset } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -102,7 +103,11 @@
                 <h2 class="section-title">Quick Access</h2>
                 <div class="qr-container">
                     <div class="qr-placeholder">
-                        <img src="/images/site_qr_code.png" alt="Website QR Code" class="qr-code" />
+                        <img
+                            src={asset('/images/site_qr_code.png')}
+                            alt="Website QR Code"
+                            class="qr-code"
+                        />
                     </div>
                     <p class="qr-description">Scan to visit our homepage</p>
                 </div>

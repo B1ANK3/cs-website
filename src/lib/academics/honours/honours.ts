@@ -1,3 +1,5 @@
+import { resolve } from '$app/paths';
+
 export interface HonoursInfo {
     title: string;
     description: string;
@@ -28,26 +30,30 @@ export const honoursLinks: UsefulLink[] = [
     {
         title: 'Honours Programme Handbook',
         description: 'Complete guide to course structure, requirements, and expectations',
-        url: '/academics/honours#handbook'
+        //@ts-expect-error - Typescript, you are honestly the worst at inferring types, you're compiler is hot garbage
+        url: resolve('/academics/honours#handbook')
     },
     {
         title: 'Research Project Guidelines',
         description: 'Information about project selection, supervision, and assessment',
-        url: '/academics/honours#research-guidelines'
+        //@ts-expect-error - See above, typescript is a joke
+        url: resolve('/academics/honours#research-guidelines')
     },
     {
         title: 'Current Research Topics',
         description: 'Browse available research projects and supervisor interests',
-        url: '/research'
+        url: resolve('/research')
     },
     {
         title: 'Postgraduate Student Support',
         description: 'Resources, counseling, and academic support services',
-        url: '/faq#tutoring-support'
+        //@ts-expect-error - See above, typescript is a joke
+        url: resolve('/faq#tutoring-support')
     },
     {
         title: 'Funding & Scholarships',
         description: 'Explore available funding opportunities for honours students',
-        url: '/academics/honours#funding'
+        //@ts-expect-error - See above, typescript is a joke
+        url: resolve('/academics/honours#funding')
     }
 ];

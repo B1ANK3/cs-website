@@ -98,7 +98,11 @@
         <p class="section-subtitle">Choose your path to success in computer science</p>
         <div class="areas-grid">
             {#each academicAreas as area (area.slug)}
-                <a href={area.href} class="academic-card">
+                <a
+                    href={// Should already be resolved
+                    area.href}
+                    class="academic-card"
+                >
                     <div class="card-content">
                         <h3>{area.name}</h3>
                         <p>{area.description}</p>

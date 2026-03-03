@@ -18,21 +18,11 @@ const config = {
             // base: '/some_url'
         },
         prerender: {
-            handleHttpError: ({ path }) => {
-                // Ignore problems with using resolve because of base change in github pages.
-                // When using dynamic links (like from most of UGC), some links redirect outside
-                // the web application. Therefore svelte can't add the base to the link else it
-                // breaks. We ignore any links that start with http as they probably not pointing
-                // to inside the application. Any links that are relative should use `resolve`
-                // to redirect correctly.
-                if (path.startsWith('http')) {
-                    // Ignore
-                    return;
-                }
-                return;
+            handleHttpError: ({ path, message, referrer }) => {
+                console.warn(path + ' is not resolved correctly: In file: ' + referrer);
 
                 // Default
-                // throw new Error(message);
+                throw new Error(message);
             }
         },
         // Added to enforce '@html'

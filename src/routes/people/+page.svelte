@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { resolve } from '$app/paths';
+    import { asset, resolve } from '$app/paths';
     import { getPeopleByType, filterPeopleByName } from '$lib/people';
 
     let searchQuery = $state('');
@@ -67,7 +67,8 @@
                                 <a href={getPersonLink(member.slug)} class="person-card">
                                     {#if member.image}
                                         <div class="card-image">
-                                            <img src={member.image} alt={member.name} />
+                                            <!--  -->
+                                            <img src={asset(member.image)} alt={member.name} />
                                         </div>
                                     {/if}
 

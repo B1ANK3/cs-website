@@ -5,6 +5,7 @@ export interface PersonMeta {
     title: string;
     email: string;
     about: string;
+    // Resolve this
     image: string;
     type: 'staff' | 'student' | 'alumni';
     slug?: string;

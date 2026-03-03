@@ -11,12 +11,12 @@
         {
             slug: 'modules',
             ...modulesData,
-            href: '/academics/undergraduate/modules'
+            href: resolve('/academics/undergraduate/modules')
         },
         {
             slug: 'programme',
             ...programmeData,
-            href: '/academics/undergraduate/programme'
+            href: resolve('/academics/undergraduate/programme')
         }
     ];
 </script>

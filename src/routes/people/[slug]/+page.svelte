@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { PageProps } from './$types';
-    import { resolve } from '$app/paths';
+    import { asset, resolve } from '$app/paths';
 
     const { data }: PageProps = $props();
 
@@ -21,7 +21,7 @@
     <div class="profile-content">
         <div class="profile-sidebar">
             {#if person.image}
-                <img src={person.image} alt={person.name} class="profile-image" />
+                <img src={asset(person.image)} alt={person.name} class="profile-image" />
             {/if}
 
             <div class="profile-metadata">

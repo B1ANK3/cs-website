@@ -1,3 +1,5 @@
+import { resolve } from '$app/paths';
+
 export interface StudentResource {
     title: string;
     description: string;
@@ -14,10 +16,14 @@ export const studentResources: StudentResource[] = [
         description:
             'Find answers to common questions about courses, requirements, and academic planning.',
         links: [
-            { label: 'Course Requirements', href: '/faq#course-requirements' },
-            { label: 'Getting Started', href: '/faq#getting-started' },
-            { label: 'Internships', href: '/faq#internships' },
-            { label: 'Research Opportunities', href: '/faq#research-opportunities' }
+            //@ts-expect-error - i hate you
+            { label: 'Course Requirements', href: resolve('/faq#course-requirements') },
+            //@ts-expect-error - i hate you
+            { label: 'Internships', href: resolve('/faq#internships') },
+            //@ts-expect-error - i hate you
+            { label: 'Getting Started', href: resolve('/faq#getting-started') },
+            //@ts-expect-error - i hate you
+            { label: 'Research Opportunities', href: resolve('/faq#research-opportunities') }
         ]
     },
     {
@@ -25,10 +31,12 @@ export const studentResources: StudentResource[] = [
         description:
             'Access important resources and links for student support and academic success.',
         links: [
-            { label: 'Tutoring & Support', href: '/faq#tutoring-support' },
-            { label: 'Clubs & Organizations', href: '/faq#clubs-organizations' },
-            { label: 'Faculty & Staff', href: '/people' },
-            { label: 'Research Groups', href: '/research' }
+            //@ts-expect-error - i hate you
+            { label: 'Tutoring & Support', href: resolve('/faq#tutoring-support') },
+            //@ts-expect-error - i hate you
+            { label: 'Clubs & Organizations', href: resolve('/faq#clubs-organizations') },
+            { label: 'Faculty & Staff', href: resolve('/people') },
+            { label: 'Research Groups', href: resolve('/research') }
         ]
     }
 ];
@@ -46,39 +54,39 @@ export const academicAreas: AcademicArea[] = [
         slug: 'browse-courses',
         description:
             'Explore our comprehensive course catalog across all academic levels and specializations.',
-        href: '/courses'
+        href: resolve('/courses')
     },
     {
         name: 'Undergraduate',
         slug: 'undergraduate',
         description:
             "Bachelor's degree program in Computer Science with flexible specialization options.",
-        href: '/academics/undergraduate'
+        href: resolve('/academics/undergraduate')
     },
     {
         name: 'Honours',
         slug: 'honours',
         description:
             'Intensive one-year bridging program combining advanced coursework with research.',
-        href: '/academics/honours'
+        href: resolve('/academics/honours')
     },
     {
         name: 'Postgraduate',
         slug: 'postgraduate',
         description: 'Graduate diploma and extended study programs for advanced learners.',
-        href: '/academics/postgraduate'
+        href: resolve('/academics/postgraduate')
     },
     {
         name: "Master's",
         slug: 'masters',
         description: "Rigorous master's programs in specialized areas of computer science.",
-        href: '/academics/masters'
+        href: resolve('/academics/masters')
     },
     {
         name: 'PhD',
         slug: 'phd',
         description: 'Doctoral research programs advancing the boundaries of computer science.',
-        href: '/academics/phd'
+        href: resolve('/academics/phd')
     }
 ];
 

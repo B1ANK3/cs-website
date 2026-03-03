@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { resolve } from '$app/paths';
     interface ProgrammeInfo {
         title: string;
         description: string;
@@ -29,27 +30,29 @@
         {
             title: 'PhD Application Process',
             description: 'Admission criteria, proposal expectations, and submission requirements',
-            url: '/academics/postgraduate#how-do-i-apply'
+            //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+            url: resolve('/academics/postgraduate#how-do-i-apply')
         },
         {
             title: 'Doctoral Research Areas',
             description: 'Explore active focus areas to shape your PhD research direction',
-            url: '/research'
+            url: resolve('/research')
         },
         {
             title: 'Supervisor Matching Guide',
             description: 'How to identify and approach potential supervisors effectively',
-            url: '/people'
+            url: resolve('/people')
         },
         {
             title: 'Publication & Conference Support',
             description: 'Resources for presenting, publishing, and building your research profile',
-            url: '/events'
+            url: resolve('/events')
         },
         {
             title: 'Funding & Doctoral Scholarships',
             description: 'Scholarships, grants, and assistantship opportunities for PhD students',
-            url: '/academics/postgraduate#funding'
+            //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+            url: resolve('/academics/postgraduate#funding')
         }
     ];
 </script>

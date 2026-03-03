@@ -1,4 +1,4 @@
-// import { compile } from 'mdsvex';
+import { resolve } from '$app/paths';
 
 export interface SearchResult {
     title: string;
@@ -125,10 +125,12 @@ async function buildIndex(): Promise<IndexedContent[]> {
             const { metadata, body } = await parseFrontmatter(content);
             const slug = getSlugFromPath(path);
             const derivedFaqSlug = slugify(metadata.slug || metadata.question || slug) || slug;
-            const url =
+            const url = resolve(
+                //@ts-expect-error - **** you and your types
                 type === 'faq'
                     ? metadata.link || `${urlPrefix}#${derivedFaqSlug}`
-                    : metadata.link || `${urlPrefix}/${slug}`;
+                    : metadata.link || `${urlPrefix}/${slug}`
+            );
             const title = metadata.title || metadata.name || metadata.question || slug;
 
             indexed.push({
@@ -226,6 +228,7 @@ export function search(query: string, limit: number = 10): SearchResult[] {
 
             results.push({
                 title: item.title,
+                // Should be safe after building from the index
                 url: item.url,
                 excerpt: highlightedExcerpt,
                 type: item.type

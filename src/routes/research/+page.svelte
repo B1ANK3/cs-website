@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { PageProps } from './$types';
     import { getGroupColor } from '$lib/research';
+    import { asset, resolve } from '$app/paths';
 
     const { data }: PageProps = $props();
 
@@ -75,14 +76,17 @@
                                 {#each group.members as memberName (memberName)}
                                     {@const profile = getMemberProfile(memberName)}
                                     <a
-                                        href={profile ? `/people/${profile.slug}` : '#'}
+                                        href={profile
+                                            ? //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+                                              resolve(`/people/${profile.slug}`)
+                                            : '#'}
                                         class="member-card"
                                         class:no-profile={!profile}
                                     >
                                         <div class="member-image">
                                             {#if profile?.image}
                                                 <img
-                                                    src={profile.image}
+                                                    src={asset(profile.image)}
                                                     alt={profile.name}
                                                     loading="lazy"
                                                 />

@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { resolve } from '$app/paths';
+
     interface ProgrammeInfo {
         title: string;
         description: string;
@@ -29,27 +31,30 @@
         {
             title: "Master's Admission Requirements",
             description: 'Entry criteria, supporting documents, and application timelines',
-            url: '/academics/postgraduate#entry-requirements'
+            //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+            url: resolve('/academics/postgraduate#entry-requirements')
         },
         {
             title: 'Coursework & Module Planning',
             description: 'Guidance for selecting modules and structuring your degree pathway',
-            url: '/courses'
+            url: resolve('/courses')
         },
         {
             title: 'Dissertation & Thesis Guidelines',
             description: 'Milestones, supervision process, and submission requirements',
-            url: '/academics/masters#thesis-guidelines'
+            //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+            url: resolve('/academics/masters#thesis-guidelines')
         },
         {
             title: 'Research Areas & Supervisors',
             description: 'Explore faculty expertise and identify potential supervisors',
-            url: '/research'
+            url: resolve('/research')
         },
         {
             title: 'Funding & Scholarships',
             description: 'Scholarships, bursaries, and assistantship opportunities for students',
-            url: '/academics/postgraduate#funding'
+            //@ts-expect-error - iNclUde WHy A dIrecTive is NeEded. CaUsE Svelte
+            url: resolve('/academics/postgraduate#funding')
         }
     ];
 </script>

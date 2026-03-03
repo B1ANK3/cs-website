@@ -1,6 +1,7 @@
 import { getAllEvents } from '$lib/events';
 import { getAllArticles } from '$lib/articles';
 import type { PageLoad } from './$types';
+import { resolve } from '$app/paths';
 
 type CarouselSlide = {
     id: string;
@@ -68,7 +69,7 @@ export const load: PageLoad = async () => {
         summary: event.summary || event.description,
         date: event.date,
         mainImage: event.mainImage,
-        link: `/events/${event.slug}`
+        link: resolve(`/events/${event.slug}`)
     }));
 
     const newsSlides: CarouselSlide[] = pickExactlyFive(recentNews).map((article, index) => ({
@@ -78,7 +79,7 @@ export const load: PageLoad = async () => {
         summary: article.summary,
         date: article.date,
         mainImage: article.mainImage,
-        link: `/news/${getAuthorPath(article.author)}/${article.slug}`
+        link: resolve(`/news/${getAuthorPath(article.author)}/${article.slug}`)
     }));
 
     const slides = shuffle([...eventSlides, ...newsSlides]);
@@ -87,14 +88,14 @@ export const load: PageLoad = async () => {
     const formattedArticles = recentNews.map((article) => ({
         title: article.title,
         summary: article.summary,
-        url: `/news/${getAuthorPath(article.author)}/${article.slug}`,
+        url: resolve(`/news/${getAuthorPath(article.author)}/${article.slug}`),
         date: article.date
     }));
 
     const formattedEvents = futureEvents.map((event) => ({
         title: event.title,
         summary: event.summary || event.description,
-        url: `/events/${event.slug}`,
+        url: resolve(`/events/${event.slug}`),
         date: event.date
     }));
 
