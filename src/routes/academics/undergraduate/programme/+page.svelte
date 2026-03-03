@@ -32,14 +32,9 @@
 
 <div class="programme-page">
     <section class="hero-section">
-        <div class="hero-image" style="background-image: url({programmeData.frontImage})">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="container">
-                    <h1>{programmeData.title}</h1>
-                    <p class="lead">{programmeData.summary}</p>
-                </div>
-            </div>
+        <div class="container">
+            <h1>{programmeData.title}</h1>
+            <p class="lead">{programmeData.summary}</p>
         </div>
     </section>
 
@@ -157,6 +152,8 @@
 </div>
 
 <style lang="scss">
+    @use '$lib/styles/globals.scss' as *;
+
     .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -164,23 +161,10 @@
     }
 
     .hero-section {
+        background: $primary-color;
+        color: white;
+        padding: 5rem 0;
         position: relative;
-        height: 400px;
-        overflow: hidden;
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-
-            .hero-overlay {
-                position: absolute;
-                inset: 0;
-                background: rgba(97, 34, 59, 0.9);
-            }
-        }
 
         &::after {
             content: '';
@@ -189,30 +173,20 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: #d22730;
-            z-index: 10;
+            background: $accent-color;
         }
 
-        .hero-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-            h1 {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-                font-weight: 700;
-            }
-
-            .lead {
-                font-size: 1.2rem;
-                max-width: 800px;
-                line-height: 1.6;
-            }
+        .lead {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+            opacity: 0.95;
         }
     }
 
@@ -233,13 +207,26 @@
         background: white;
         padding: 3rem;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px $shadow-color;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            border-color: rgba(210, 39, 48, 0.1);
+        }
 
         h2 {
             font-size: 2rem;
-            color: #333;
-            margin-bottom: 1rem;
+            color: $primary-color;
+            margin-bottom: 1.5rem;
         }
+    }
+
+    .overview-card p,
+    .pathways-card > p {
+        color: $text-color;
+        line-height: 1.7;
     }
 
     .year-structure {
@@ -250,26 +237,34 @@
 
         .year {
             background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #d22730;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border-left: 4px solid $accent-color;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: white;
+                box-shadow: 0 4px 12px $shadow-color;
+                transform: translateY(-2px);
+            }
 
             h3 {
-                font-size: 1.2rem;
-                color: #61223b;
+                font-size: 1.25rem;
+                color: $primary-color;
                 margin-bottom: 0.75rem;
+                font-weight: 600;
             }
 
             p {
-                color: #666;
+                color: $text-color;
                 font-size: 0.95rem;
-                line-height: 1.5;
+                line-height: 1.6;
                 margin-bottom: 1rem;
             }
 
             .credits {
                 font-weight: 600;
-                color: #333;
+                color: $accent-color;
                 font-size: 0.9rem;
             }
         }
@@ -283,27 +278,30 @@
 
         .pathway {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             background: #f8f9fa;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
 
             &:hover {
                 background: white;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 16px $shadow-color;
                 transform: translateY(-4px);
+                border-color: $accent-color;
             }
 
             h3 {
-                font-size: 1.2rem;
-                color: #333;
-                margin-bottom: 0.5rem;
+                font-size: 1.25rem;
+                color: $primary-color;
+                margin-bottom: 0.75rem;
+                font-weight: 600;
             }
 
             p {
-                color: #666;
+                color: $text-color;
                 font-size: 0.95rem;
-                line-height: 1.5;
+                line-height: 1.6;
                 margin: 0;
             }
         }
@@ -317,12 +315,21 @@
         .requirement {
             background: #f8f9fa;
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: white;
+                border-color: rgba(210, 39, 48, 0.2);
+                box-shadow: 0 2px 12px $shadow-color;
+            }
 
             h3 {
                 font-size: 1.3rem;
-                color: #61223b;
+                color: $primary-color;
                 margin-bottom: 1rem;
+                font-weight: 600;
             }
 
             ul {
@@ -331,17 +338,19 @@
                 margin: 0;
 
                 li {
-                    padding: 0.5rem 0;
-                    color: #666;
+                    padding: 0.75rem 0;
+                    color: $text-color;
                     position: relative;
-                    padding-left: 1.5rem;
+                    padding-left: 1.75rem;
+                    line-height: 1.6;
 
                     &::before {
                         content: '✓';
                         position: absolute;
                         left: 0;
-                        color: #d22730;
+                        color: $accent-color;
                         font-weight: bold;
+                        font-size: 1.1rem;
                     }
                 }
             }
@@ -350,16 +359,14 @@
 
     @media (max-width: 768px) {
         .hero-section {
-            height: 300px;
+            padding: 3rem 0;
 
-            .hero-content {
-                h1 {
-                    font-size: 2rem;
-                }
+            h1 {
+                font-size: 2rem;
+            }
 
-                .lead {
-                    font-size: 1rem;
-                }
+            .lead {
+                font-size: 1rem;
             }
         }
 
@@ -387,6 +394,10 @@
 
         .requirements-content {
             grid-template-columns: 1fr;
+        }
+
+        .container {
+            padding: 0 1rem;
         }
     }
 </style>

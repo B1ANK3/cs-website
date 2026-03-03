@@ -1,6 +1,10 @@
 <script lang="ts">
     import SUSlogan from '$lib/assets/svg/SUSlogan.svelte';
     import { resolve } from '$app/paths';
+    import SUFacebook from '$lib/assets/svg/SUFacebook.svelte';
+    import SUTwitter from '$lib/assets/svg/SUTwitter.svelte';
+    import SUInstagram from '$lib/assets/svg/SUInstagram.svelte';
+    import SULinkedin from '$lib/assets/svg/SULinkedin.svelte';
 </script>
 
 <footer class="footer">
@@ -17,14 +21,6 @@
 
         <!-- Middle Section: Contact + CS Division Links -->
         <div class="footer-section footer-middle">
-            <div class="footer-contact">
-                <p class="address">
-                    Computer Science, Stellenbosch University <br />
-                    Decanting Facility, Hammanshand Road <br />
-                    7600 Stellenbosch, SOUTH AFRICA
-                </p>
-                <p class="phone">Phone: +27 21 808 4232</p>
-            </div>
             <div>
                 <h3 class="section-title">CS Division</h3>
                 <ul class="footer-links">
@@ -35,6 +31,14 @@
                     <li><a href={resolve('/research')}>Research</a></li>
                 </ul>
             </div>
+            <div class="footer-contact">
+                <p class="address">
+                    Computer Science, Stellenbosch University <br />
+                    Decanting Facility, Hammanshand Road <br />
+                    7600 Stellenbosch, SOUTH AFRICA
+                </p>
+                <p class="phone">Phone: +27 21 808 4232</p>
+            </div>
         </div>
 
         <!-- Divider -->
@@ -44,19 +48,50 @@
         <div class="footer-section footer-right">
             <div class="socials">
                 <div class="social-icons">
-                    <a href="#" aria-label="Facebook" class="social-icon">f</a>
-                    <a href="#" aria-label="Twitter" class="social-icon">𝕏</a>
-                    <a href="#" aria-label="Instagram" class="social-icon">📷</a>
-                    <a href="#" aria-label="LinkedIn" class="social-icon">in</a>
+                    <a
+                        href="https://www.facebook.com/stellenboschuniversity/"
+                        title="Facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                    >
+                        <SUFacebook />
+                    </a>
+                    <a
+                        href="https://twitter.com/StellenboschUni"
+                        title="Twitter"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                    >
+                        <SUTwitter />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/stellenboschuni/"
+                        title="Instagram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                    >
+                        <SUInstagram />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/school/stellenbosch-university"
+                        title="LinkedIn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                    >
+                        <SULinkedin />
+                    </a>
                 </div>
             </div>
 
             <div class="helpful-links">
                 <ul class="footer-links">
-                    <li><a href="#">Sitemap</a></li>
-                    <li><a href="mailto:help@university.edu">Report Issues</a></li>
                     <li><a href={resolve('/faq')}>FAQ</a></li>
-                    <li><a href="#">Accessibility</a></li>
+                    <li><a href={resolve('/courses')}>Courses</a></li>
+                    <li><a href="mailto:tech@cs.sun.ac.za">Report Issues</a></li>
                 </ul>
             </div>
 
@@ -122,6 +157,8 @@
     .footer-contact {
         font-size: 13px;
         line-height: 1.6;
+        border-top: 1px solid rgba($secondary-color, 0.3);
+        padding-top: 1rem;
 
         p {
             margin: 0;
@@ -209,18 +246,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba($text-color-inverted, 0.2);
         border-radius: 50%;
         color: $text-color-inverted;
         text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
         @include smooth-transition(background-color, color);
 
         &:hover {
-            background-color: rgba($secondary-color, 0.4);
-            color: $secondary-color;
-            font-weight: 700;
+            // Make the icon pop
+            border: 1px solid $secondary-color;
         }
     }
 

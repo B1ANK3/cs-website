@@ -1,0 +1,40 @@
+---
+name: "Theory and Applications of Automata and Grammars"
+slug: "automata-theory"
+description: "We are interested in the theory of nondeterministic finite automata (NFA), and in particular the descriptional complexity of symmetric difference NFA. More generally, we also consider the application of automata and grammars to a wide selection of problems, such as pattern layout optimization with cellular automata, image processing with cellular automata, music generation in the style of a given composer using probabilistic automata, and using probabilistic automata on parse trees of English sentences for automatic grammar correction of English text. Automata and grammars have a rich and well-developed body of theory that can be applied, but often practice dictates that the theory should be extended in novel ways. For the pattern layout optimisation problem, for example, cellular automata with cell clustering, i.e., cellular automata with changes in neighborhood topology over time, were defined and shown to be advantageous in practical applications."
+summary: "Automata go brrrrr"
+members: ["Willem Bester", "Walter Schulze", "Brink van der Merwe", "Steyn van Litsenborgh", "Lynette van Zijl"]
+links: [
+  { title: "Theory and Applications of Automata and Grammars", url: "http://www.cs.sun.ac.za/~lvzijl/research.html" },
+  { title: "Regular Expression Static Analysis Project Description", url: "http://www.cs.sun.ac.za/~abvdm/regex.html" }
+]
+---
+<!-- TODO: Find a nicer way to write in description data, maybe in a custom component -->
+<!-- Component can take data and add it to frontmatter? -->
+
+# {name}
+
+## Overview
+
+{description}
+
+{summary}
+
+## Real-World Applications
+
+(Not automata)
+Our cybersecurity research directly impacts security practices worldwide:
+
+- **Network Security**: Firewalls, intrusion detection, and defense systems
+- **Cryptographic Protocols**: Secure communication and key exchange
+- **Privacy-Preserving Analytics**: Analyzing data while maintaining user privacy
+- **Vulnerability Detection**: Finding and fixing security flaws before exploitation
+- **Threat Intelligence**: Understanding attack patterns and adversarial tactics
+
+## Current Projects
+
+- List of all projects being developed or research papers, i guess
+
+## Another section
+
+Improving automata since 1234

@@ -7,6 +7,7 @@ describe('/+page.svelte', () => {
     it('should render h1', async () => {
         render(Page, {
             props: {
+                params: {},
                 data: {
                     slides: [],
                     articles: [],

@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+    import type { PageProps } from './$types';
     import { getGroupColor } from '$lib/research';
-    import { resolve } from '$app/paths';
 
-    export let data: PageData;
+    const { data }: PageProps = $props();
 
     // Match research group members with people data
     function getMemberProfile(memberName: string) {
@@ -53,7 +52,7 @@
                         <div class="header-content">
                             <h2 class="group-name">{group.name}</h2>
                             <p class="group-description">
-                                {group.description}
+                                {group.summary}
                             </p>
                         </div>
                         <div class="header-accent"></div>
@@ -65,21 +64,8 @@
                         <section class="group-section">
                             <h3>Overview</h3>
                             <p class="group-summary">
-                                {group.summary}
+                                {group.description}
                             </p>
-                        </section>
-
-                        <!-- Real-World Applications -->
-                        <section class="group-section">
-                            <h3>Real-World Applications</h3>
-                            <div class="applications-list">
-                                {#each group.realWorldApplications as app (app)}
-                                    <div class="application-badge">
-                                        <span class="badge-icon">→</span>
-                                        {app}
-                                    </div>
-                                {/each}
-                            </div>
                         </section>
 
                         <!-- Members -->
@@ -89,13 +75,7 @@
                                 {#each group.members as memberName (memberName)}
                                     {@const profile = getMemberProfile(memberName)}
                                     <a
-                                        href={profile
-                                            ? resolve(
-                                                  `/people/${profile.title
-                                                      .toLowerCase()
-                                                      .replace(/\s+/g, '-')}`
-                                              )
-                                            : '#'}
+                                        href={profile ? `/people/${profile.slug}` : '#'}
                                         class="member-card"
                                         class:no-profile={!profile}
                                     >
@@ -139,9 +119,12 @@
                                             rel="noopener noreferrer"
                                             class="info-link"
                                         >
-                                            <span class="link-icon"> 🔗 </span>
+                                            <span class="link-icon">»</span>
                                             <span class="link-text">
                                                 {link.title}
+                                            </span>
+                                            <span class="link-url">
+                                                {link.url}
                                             </span>
                                         </a>
                                     {/each}
@@ -193,7 +176,7 @@
 
     .research-subtitle {
         font-size: 1.3rem;
-        color: $secondary-color;
+        color: $text-color;
         margin: 0 0 25px 0;
         font-weight: 500;
 
@@ -230,7 +213,7 @@
 
         &:hover {
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-2px);
+            // transform: translateY(-2px);
         }
     }
 
@@ -336,39 +319,6 @@
         }
     }
 
-    /* Applications List */
-    .applications-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .application-badge {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        background: var(--group-bg);
-        border-left: 3px solid var(--group-border);
-        border-radius: 6px;
-        color: $text-color;
-        font-weight: 500;
-        transition: all 0.2s ease;
-
-        &:hover {
-            background: var(--group-border, $accent-color);
-            color: white;
-            background: rgba(var(--group-border, $accent-color), 0.2);
-            transform: translateX(4px);
-        }
-    }
-
-    .badge-icon {
-        flex-shrink: 0;
-        font-weight: bold;
-        color: var(--group-border);
-    }
-
     /* Members Grid */
     .members-grid {
         display: grid;
@@ -392,7 +342,7 @@
 
         &:hover:not(.no-profile) {
             background: var(--group-bg);
-            transform: translateY(-4px);
+            // transform: translateY(-4px);
         }
 
         &.no-profile {
@@ -476,7 +426,7 @@
     .links-list {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 0.67rem;
     }
 
     .info-link {
@@ -485,7 +435,7 @@
         gap: 10px;
         padding: 12px 16px;
         background: var(--group-bg);
-        border-left: 3px solid var(--group-border);
+        border: 1px solid $text-color-inverted;
         border-radius: 6px;
         color: $text-color;
         text-decoration: none;
@@ -493,13 +443,7 @@
         transition: all 0.2s ease;
 
         &:hover {
-            color: white;
-            background: var(--group-border);
-            transform: translateX(4px);
-        }
-
-        &:active {
-            transform: translateX(2px);
+            border: 1px solid var(--group-border);
         }
     }
 
@@ -510,5 +454,11 @@
 
     .link-text {
         flex: 1;
+    }
+
+    .link-url {
+        font-size: 0.8rem;
+        color: $light-text-color;
+        margin-left: auto;
     }
 </style>

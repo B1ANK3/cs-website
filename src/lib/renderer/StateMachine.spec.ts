@@ -33,18 +33,18 @@ describe('StateMachine', () => {
                 'idle',
                 {
                     name: 'idle',
-                    onEnter: idleEnter,
-                    onExit: idleExit,
-                    onUpdate: idleUpdate
+                    onEnter: idleEnter as () => void,
+                    onExit: idleExit as () => void,
+                    onUpdate: idleUpdate as (deltaTime: number) => void
                 }
             ],
             [
                 'walking',
                 {
                     name: 'walking',
-                    onEnter: walkingEnter,
-                    onExit: walkingExit,
-                    onUpdate: walkingUpdate
+                    onEnter: walkingEnter as () => void,
+                    onExit: walkingExit as () => void,
+                    onUpdate: walkingUpdate as (deltaTime: number) => void
                 }
             ]
         ]);

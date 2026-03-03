@@ -356,7 +356,6 @@
         min-height: auto;
         width: 100%;
         padding: 60px 20px;
-        background-color: #ffffff;
         scroll-snap-align: start;
         display: flex;
         align-items: center;

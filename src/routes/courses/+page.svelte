@@ -241,7 +241,6 @@
         background: linear-gradient(135deg, $primary-color 0%, #8b2f4a 100%);
         color: white;
         padding: 4rem 0 3rem;
-        border-bottom: 4px solid $accent-color;
         position: relative;
         overflow: hidden;
 

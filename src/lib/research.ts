@@ -10,7 +10,8 @@ export interface ResearchMeta {
     slug: string;
     description: string;
     summary: string;
-    realWorldApplications: string[];
+    /** @deprecated Just for types */
+    _realWorldApplications: string[];
     members: string[];
     links: ResearchLink[];
 }
@@ -60,7 +61,7 @@ export function searchResearchGroups(groups: ResearchGroup[], query: string): Re
         (group) =>
             group.name.toLowerCase().includes(lowerQuery) ||
             group.description.toLowerCase().includes(lowerQuery) ||
-            group.realWorldApplications.some((app) => app.toLowerCase().includes(lowerQuery))
+            group._realWorldApplications.some((app) => app.toLowerCase().includes(lowerQuery))
     );
 }
 

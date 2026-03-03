@@ -27,28 +27,34 @@
     tabindex="0"
     onkeydown={(e) => e.key === 'Enter' && handleCardClick()}
 >
-    <div class="date-sidebar">
+    <div class="date-square">
         <div class="month text-accent">{month}</div>
         <div class="day text-accent">{day}</div>
     </div>
 
     <div class="event-content">
         <div class="event-header">
-            <h3 class="event-title">
-                {event.title}
-            </h3>
+            <div class="title-wrapper">
+                <h3 class="event-title">
+                    {event.title}
+                </h3>
+                {#if event.pinned}
+                    <div class="pinned-badge">Pinned</div>
+                {/if}
+            </div>
+        </div>
+        <div>
             {#if event.time}
                 <p class="event-time">{event.time}</p>
             {/if}
-        </div>
 
-        <div class="event-meta">
-            <div class="meta-item">
-                <span class="label">Location:</span>
-                <span>{event.location}</span>
+            <div class="event-meta">
+                <div class="meta-item">
+                    <span class="label">Location:</span>
+                    <span>{event.location}</span>
+                </div>
             </div>
         </div>
-
         <p class="event-description">{event.description}</p>
 
         <div class="event-footer">
@@ -63,13 +69,11 @@
             </a>
         </div>
     </div>
-
-    {#if event.pinned}
-        <div class="pinned-badge">Pinned</div>
-    {/if}
 </div>
 
 <style lang="scss">
+    @use '$lib/styles/globals' as *;
+
     .event-card {
         display: flex;
         gap: 1.5rem;
@@ -83,37 +87,40 @@
 
         &:hover {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            border-color: #d22730;
+            border-color: $accent-color;
             transform: translateY(-2px);
         }
 
         &:focus-visible {
-            outline: 2px solid #d22730;
+            outline: 2px solid $accent-color;
             outline-offset: 2px;
         }
     }
 
-    .date-sidebar {
+    .date-square {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-width: 70px;
-        padding: 0.5rem;
+        width: fit-content;
+        height: fit-content;
+        flex-shrink: 0;
         text-align: center;
         border-radius: 8px;
-        background: rgba(97, 34, 59, 0.08);
-        border-left: 3px solid #d22730;
+        // background: rgba(97, 34, 59, 0.08);
+        border: 1px solid $primary-color;
+        padding: 1rem;
 
         .month {
-            font-size: 0.75rem;
+            font-size: 1rem;
             font-weight: 700;
             letter-spacing: 0.05em;
         }
 
         .day {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 700;
+            line-height: 1;
         }
     }
 
@@ -130,6 +137,13 @@
         gap: 0.25rem;
     }
 
+    .title-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
     .event-title {
         margin: 0;
         font-size: 1.25rem;
@@ -138,22 +152,22 @@
         transition: color 0.3s ease;
 
         .event-card:hover & {
-            color: #61223b;
+            color: $primary-color;
         }
     }
 
     .event-time {
         margin: 0;
-        font-size: 0.875rem;
-        color: #666;
+        font-size: 0.8rem;
+        color: $light-text-color;
     }
 
     .event-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.875rem;
-        color: #666;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: $light-text-color;
 
         .meta-item {
             display: flex;
@@ -168,8 +182,8 @@
 
     .event-description {
         margin: 0.5rem 0 0 0;
-        font-size: 0.95rem;
-        color: #666;
+        font-size: 1rem;
+        color: $text-color;
         line-height: 1.5;
         display: -webkit-box;
         line-clamp: 2;
@@ -186,54 +200,42 @@
 
     .calendar-link {
         font-size: 0.875rem;
-        color: #d22730;
+        color: $accent-color;
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s ease;
 
         &:hover {
-            color: #61223b;
-            text-decoration: underline;
+            color: $secondary-color;
+            text-decoration: none;
         }
     }
 
     .pinned-badge {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        color: #ffffff;
-        background: #61223b;
+        color: $text-color-inverted;
+        background: $primary-color;
         border-radius: 999px;
         padding: 0.25rem 0.6rem;
         font-weight: 600;
+        flex-shrink: 0;
     }
 
     .text-accent {
-        color: #61223b;
+        color: $primary-color;
     }
 
     @media (max-width: 640px) {
         .event-card {
-            flex-direction: column;
+            flex-direction: row;
             gap: 1rem;
         }
 
-        .date-sidebar {
-            flex-direction: row;
-            width: 100%;
-            min-width: unset;
-            gap: 1rem;
-
-            .month {
-                font-size: 0.625rem;
-            }
-
-            .day {
-                font-size: 1.5rem;
-            }
+        .title-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .event-title {

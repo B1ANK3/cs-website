@@ -24,11 +24,13 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1>Our People</h1>
-            <p class="subtitle">
-                Meet the dedicated faculty, talented students, and accomplished alumni who make our
-                Computer Science department a world-class institution
-            </p>
+            <div class="hero-content">
+                <h1>Our People</h1>
+                <p class="subtitle">
+                    Meet the dedicated faculty, talented students, and accomplished alumni who make
+                    our Computer Science department a world-class institution
+                </p>
+            </div>
         </div>
     </section>
 
@@ -206,7 +208,7 @@
 
 <style lang="scss">
     .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
     }
@@ -218,20 +220,43 @@
 
     /* Hero Section */
     .hero-section {
-        background: #61223b;
+        background: linear-gradient(135deg, #61223b 0%, #8b2f4a 100%);
         color: white;
-        padding: 4rem 0;
-        text-align: center;
+        padding: 4rem 0 3rem;
         position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--hero-image);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
 
         &::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #d22730;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(97, 34, 59, 0.9) 0%,
+                rgba(139, 47, 74, 0.9) 100%
+            );
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 600px;
         }
 
         h1 {
@@ -245,8 +270,6 @@
             font-size: 1.125rem;
             line-height: 1.6;
             opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
         }
     }
 
@@ -458,6 +481,10 @@
 
             .subtitle {
                 font-size: 1rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
             }
         }
 

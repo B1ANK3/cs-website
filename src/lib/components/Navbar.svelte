@@ -122,7 +122,7 @@
 
     .nav-links {
         @include flex-center;
-        gap: 30px;
+        gap: 1rem;
         flex: 1;
         justify-content: flex-end;
     }
@@ -131,7 +131,7 @@
         text-decoration: none;
         color: $text-color-inverted;
         font-weight: 500;
-        font-size: 1.2em;
+        font-size: 1.1em;
         @include smooth-transition(color);
         position: relative;
 
@@ -156,7 +156,7 @@
     }
 
     .search-wrapper {
-        width: 250px;
+        width: fit-content;
     }
 
     // ============================================

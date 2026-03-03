@@ -42,6 +42,13 @@ export interface AcademicArea {
 
 export const academicAreas: AcademicArea[] = [
     {
+        name: 'Browse Courses',
+        slug: 'browse-courses',
+        description:
+            'Explore our comprehensive course catalog across all academic levels and specializations.',
+        href: '/courses'
+    },
+    {
         name: 'Undergraduate',
         slug: 'undergraduate',
         description:
