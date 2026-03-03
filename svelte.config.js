@@ -11,6 +11,16 @@ const config = {
         }),
         paths: {
             base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+        },
+        // Added to enforce '@html'
+        csp: {
+            directives: {
+                'script-src': ['self']
+            },
+            reportOnly: {
+                'script-src': ['self'],
+                "report-uri": ['/']
+            }
         }
     },
     preprocess: [vitePreprocess(), mdsvex()],

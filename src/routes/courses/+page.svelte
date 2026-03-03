@@ -1,10 +1,5 @@
 <script lang="ts">
-    import {
-        type Course,
-        type CourseType,
-        type Stream,
-        type Semester
-    } from '$lib/courses';
+    import { type Course, type CourseType, type Stream, type Semester } from '$lib/courses';
 
     let { data }: { data: { courses: Course[] } } = $props();
     const heroBackgroundImage: string | null = null;
@@ -266,7 +261,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            background: linear-gradient(
+                135deg,
+                rgba(97, 34, 59, 0.9) 0%,
+                rgba(139, 47, 74, 0.9) 100%
+            );
             pointer-events: none;
         }
 

@@ -3,15 +3,17 @@
     import { onMount } from 'svelte';
     import type { Article } from '$lib/articles';
     import { resolve } from '$app/paths';
+    import type { PageProps } from './$types';
 
-    export let data;
+    const { data }: PageProps = $props();
 
-    const article: Article = data.article;
-    const allArticles: Article[] = data.allArticles;
+    const article: Article = $derived(data.article);
+    const ArticleComponent = $derived(article.component);
+    const allArticles: Article[] = $derived(data.allArticles);
 
     // Find related articles by the same author
-    const relatedArticles = allArticles.filter(
-        (a) => a.author === article.author && a.slug !== article.slug
+    const relatedArticles: Article[] = $derived(
+        allArticles.filter((a) => a.author === article.author && a.slug !== article.slug)
     );
 
     interface Heading {
@@ -20,9 +22,9 @@
         level: number;
     }
 
-    let headings: Heading[] = [];
-    let activeHeading = '';
-    let contentElement: HTMLElement;
+    let headings: Heading[] = $state([]);
+    let activeHeading = $state('');
+    let contentElement: HTMLElement | undefined = $state();
 
     function getArticleLink(art: Article): string {
         const authorPath = art.author.toLowerCase().replace(/\s+/g, '-');
@@ -46,7 +48,7 @@
         const contentDiv = contentElement.querySelector('.article-content');
         if (!contentDiv) return;
 
-        const headingElements = contentDiv.querySelectorAll('h2, h3');
+        const headingElements = contentDiv.querySelectorAll<HTMLElement>('h2, h3');
         const extractedHeadings: Heading[] = [];
 
         headingElements.forEach((element, index) => {
@@ -57,7 +59,7 @@
             extractedHeadings.push({
                 id: element.id,
                 text: element.textContent || '',
-                level: parseInt(element.tagName[1])
+                level: parseInt(element.tagName[1], 10)
             });
         });
 
@@ -94,6 +96,11 @@
     }
 </script>
 
+<svelte:head>
+    <title>{article.title} | CS Department</title>
+    <meta name="description" content={article.summary || article.title} />
+</svelte:head>
+
 <div class="article-layout">
     <article class="article-detail" bind:this={contentElement}>
         <div class="article-header">
@@ -112,7 +119,7 @@
         </div>
 
         <div class="article-content">
-            <svelte:component this={article.component} />
+            <ArticleComponent />
         </div>
 
         {#if relatedArticles.length > 0}
@@ -145,7 +152,7 @@
                         <button
                             class="toc-link"
                             class:active={activeHeading === heading.id}
-                            on:click={() => scrollToHeading(heading.id)}
+                            onclick={() => scrollToHeading(heading.id)}
                         >
                             {heading.text}
                         </button>

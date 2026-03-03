@@ -17,6 +17,11 @@
     }
 </script>
 
+<svelte:head>
+    <title>{event.title} | CS Department</title>
+    <meta name="description" content={event.description} />
+</svelte:head>
+
 <main class="event-detail-page">
     <div class="event-hero">
         <h1 class="event-title">{event.title}</h1>

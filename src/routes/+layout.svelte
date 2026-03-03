@@ -4,11 +4,12 @@
     import Footer from '$lib/components/Footer.svelte';
     import Navbar from '$lib/components/Navbar.svelte';
     import { afterNavigate } from '$app/navigation';
+    import { SvelteMap } from 'svelte/reactivity';
 
     let { children } = $props();
 
     let mainContent: HTMLElement;
-    const scrollPositions = new Map<string, number>();
+    const scrollPositions = new SvelteMap<string, number>();
 
     afterNavigate(({ from, to, type }) => {
         if (!mainContent) return;

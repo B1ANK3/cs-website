@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <svelte:head>
@@ -57,8 +56,8 @@
                 <div class="contact-item">
                     <p class="address-line">Computer Science Division</p>
                     <p class="address-line">Dept of Mathematical Sciences</p>
-                    <p class="address-line">Stellenbosch University </p>
-                    <p class="address-line"> Private Bag X1, 7602 Matieland, SOUTH AFRICA</p>
+                    <p class="address-line">Stellenbosch University</p>
+                    <p class="address-line">Private Bag X1, 7602 Matieland, SOUTH AFRICA</p>
                 </div>
             </section>
 
@@ -103,11 +102,7 @@
                 <h2 class="section-title">Quick Access</h2>
                 <div class="qr-container">
                     <div class="qr-placeholder">
-                        <img
-                            src="/images/site_qr_code.png"
-                            alt="Website QR Code"
-                            class="qr-code"
-                        />                        
+                        <img src="/images/site_qr_code.png" alt="Website QR Code" class="qr-code" />
                     </div>
                     <p class="qr-description">Scan to visit our homepage</p>
                 </div>
@@ -284,12 +279,6 @@
         font-weight: 600;
         color: #2d3748;
         margin-bottom: 0.5rem;
-    }
-
-    .qr-note {
-        font-size: 0.875rem;
-        color: #a0aec0;
-        font-style: italic;
     }
 
     .office-hours {

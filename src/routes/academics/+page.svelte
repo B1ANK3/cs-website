@@ -6,6 +6,14 @@
     } from '$lib/academics/students';
 </script>
 
+<svelte:head>
+    <title>Academics | CS Department</title>
+    <meta
+        name="description"
+        content="Explore the academic programs, student resources, and faculty testimonials in the Computer Science division."
+    />
+</svelte:head>
+
 <!-- Academic Summary Section -->
 <section class="summary-section">
     <div class="container">

@@ -99,6 +99,8 @@
                         <span class="result-type">{getTypeLabel(result.type)}</span>
                     </div>
                     <div class="result-excerpt">
+                        <!-- SAFETY: CSP rules are added to prevent XSS. Content used should only ever come from the hosting platform which is curated by the webmaster -->
+                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html result.excerpt}
                     </div>
                 </button>

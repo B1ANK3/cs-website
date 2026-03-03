@@ -88,7 +88,8 @@
                             <input
                                 type="checkbox"
                                 checked={sortOrder === 'asc'}
-                                onchange={(e) => (sortOrder = e.currentTarget.checked ? 'asc' : 'desc')}
+                                onchange={(e) =>
+                                    (sortOrder = e.currentTarget.checked ? 'asc' : 'desc')}
                             />
                             Ascending Order
                         </label>
@@ -175,7 +176,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            background: linear-gradient(
+                135deg,
+                rgba(97, 34, 59, 0.9) 0%,
+                rgba(139, 47, 74, 0.9) 100%
+            );
             pointer-events: none;
         }
 

@@ -1,20 +1,22 @@
 <script lang="ts">
     import { getPeopleByType, filterPeopleByName } from '$lib/people';
-    import { resolve } from '$app/paths';
 
-    let searchQuery = '';
+    let searchQuery = $state('');
 
-    let staff = getPeopleByType('staff');
-    let students = getPeopleByType('student');
-    let alumni = getPeopleByType('alumni');
+    const staff = getPeopleByType('staff');
+    const students = getPeopleByType('student');
+    const alumni = getPeopleByType('alumni');
 
-    $: filteredStaff = filterPeopleByName(staff, searchQuery);
-    $: filteredStudents = filterPeopleByName(students, searchQuery);
-    $: filteredAlumni = filterPeopleByName(alumni, searchQuery);
+    const filteredStaff = $derived(filterPeopleByName(staff, searchQuery));
+    const filteredStudents = $derived(filterPeopleByName(students, searchQuery));
+    const filteredAlumni = $derived(filterPeopleByName(alumni, searchQuery));
 
-    function handleSearch(e: Event) {
-        const target = e.target as HTMLInputElement;
-        searchQuery = target.value;
+    function getPersonLink(slug?: string): string {
+        if (!slug) {
+            return '/people';
+        }
+
+        return `/people/${slug}`;
     }
 </script>
 
@@ -38,8 +40,7 @@
                     type="text"
                     placeholder="Search by name or title..."
                     class="search-input"
-                    value={searchQuery}
-                    oninput={handleSearch}
+                    bind:value={searchQuery}
                 />
                 <p class="results-count">
                     {filteredStaff.length + filteredStudents.length + filteredAlumni.length} result(s)
@@ -58,7 +59,7 @@
                     {#if filteredStaff.length > 0}
                         <div class="people-grid">
                             {#each filteredStaff as member (member.slug)}
-                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                <a href={getPersonLink(member.slug)} class="person-card">
                                     {#if member.image}
                                         <div class="card-image">
                                             <img src={member.image} alt={member.name} />
@@ -107,7 +108,7 @@
                     {#if filteredStudents.length > 0}
                         <div class="people-grid">
                             {#each filteredStudents as member (member.slug)}
-                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                <a href={getPersonLink(member.slug)} class="person-card">
                                     {#if member.image}
                                         <div class="card-image">
                                             <img src={member.image} alt={member.name} />
@@ -156,7 +157,7 @@
                     {#if filteredAlumni.length > 0}
                         <div class="people-grid">
                             {#each filteredAlumni as member (member.slug)}
-                                <a href={resolve(`/people/${member.slug}`)} class="person-card">
+                                <a href={getPersonLink(member.slug)} class="person-card">
                                     {#if member.image}
                                         <div class="card-image">
                                             <img src={member.image} alt={member.name} />

@@ -78,6 +78,14 @@
     });
 </script>
 
+<svelte:head>
+    <title>Home | CS Department</title>
+    <meta
+        name="description"
+        content="Welcome to the Computer Science Department. Explore our latest news, events, and academic programs."
+    />
+</svelte:head>
+
 <!-- Hero Section with Carousel -->
 <section class="hero-section">
     <!-- Animated Logo -->

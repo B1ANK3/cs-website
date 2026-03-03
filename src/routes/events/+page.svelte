@@ -47,9 +47,7 @@
     >
         <div class="container">
             <h1>Events</h1>
-            <p class="subtitle">
-                Discover upcoming seminars, workshops, and research showcases
-            </p>
+            <p class="subtitle">Discover upcoming seminars, workshops, and research showcases</p>
         </div>
     </section>
 
@@ -169,7 +167,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            background: linear-gradient(
+                135deg,
+                rgba(97, 34, 59, 0.9) 0%,
+                rgba(139, 47, 74, 0.9) 100%
+            );
             pointer-events: none;
         }
 

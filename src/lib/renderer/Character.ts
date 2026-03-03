@@ -135,6 +135,8 @@ export class Character {
         this.entity.stateEnterTime = Date.now();
     }
 
+    // dt parameter can be used in the future but not needed now.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private onIdleUpdate(_dt: number): void {
         // Check if character should turn and talk (random chance)
         if (this.turnAndTalkBehavior.shouldTurnAndTalk()) {
@@ -192,6 +194,8 @@ export class Character {
         this.entity.stateEnterTime = Date.now();
     }
 
+    // dt parameter can be used in the future but not needed now.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private onTurningUpdate(_dt: number): void {
         // Simple turn timing - 500ms to complete turn
         const turnDuration = 500;

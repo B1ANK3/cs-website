@@ -10,28 +10,23 @@ FYI: Went through all copilot tokens for the month the day I got copilot.
 
 ### High
 
-#### Fast
-
 - [x] Contact information
     - Simple enough, fun way to present it?
     - [ ] Phone, email, location, qr codes? (Update style, information)
 - [x] Events
-    - Calendar
-    - RSS feed? (Later)
-
-#### Slow
-
+    - [ ] Calendar
+    - [ ] Number fix
+    - [ ] RSS feed? (Later)
 - [x] Figure out where I can put academics. Undergrad, postgrad, masters and phds
     - [ ] Not another grid card list (boring at this point). Find something else (trees/graphs?)
 - [x] Student resources
     - [x] From rulebook: FAQ, forms, useful links
     - How to structure this data
-
 - [x] Details about departments. Facility profiles
     - [x] Redirects to courses pages
     - [ ] These pages are either hosted and need a redirect or use a different layout
-- Research output, publications (linked to profiles)
-    - Arxiv like interface or a markdown interface?
+- [ ] Research output, publications (linked to profiles)
+    - [ ] Arxiv like interface or a markdown interface?
     - [x] Groups
 - [x] Course catalogs
     - [ ] Courses with own websites (redirects) or not.
@@ -60,6 +55,7 @@ FYI: Went through all copilot tokens for the month the day I got copilot.
     - Bugs
     - Animations
     - Logical bugs (testing required). Things like searching using regex
+    - Theming
 - [ ] Tests
     - e2e
     - frontend
@@ -70,4 +66,4 @@ FYI: Went through all copilot tokens for the month the day I got copilot.
 - [ ] FAQ : TODO
     - [ ] Allow nesting of questions
     - [x] Add searching via tags
-    - [ ] Jump to top of page when redirected from /faq link
+    - [x] Jump to top of page when redirected from /faq link
