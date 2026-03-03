@@ -11,12 +11,14 @@ FYI: Went through all copilot tokens for the month the day I got copilot.
 ### DO NOW!
 
 - [ ] Github Pipeline
+    - [ ] Git pages up
 - [ ] Theming - secondary colors and highlights
 - [ ] Fix dialog boxes
 - [ ] Add cs character (a drone or something IDK)
 - [ ] Theming - Add images instead of gradients in hero sections
 - [ ] Theming - Make contact area consistent
 - [ ] Theming - Background consistency
+- [ ] Send in application
 
 ### High
 
