@@ -4,6 +4,7 @@
     import type { PageProps } from './$types';
 
     let { data }: PageProps = $props();
+    const heroBackgroundImage: string | null = null;
 
     let searchQuery: string = $state('');
     let filterType: 'all' | 'upcoming' | 'past' = $state('upcoming');
@@ -23,98 +24,162 @@
 
         return filtered;
     });
+
+    function resetFilters() {
+        searchQuery = '';
+        filterType = 'upcoming';
+    }
 </script>
 
-<main class="events-page">
-    <section class="events-hero">
+<svelte:head>
+    <title>Events | CS Department</title>
+    <meta
+        name="description"
+        content="Discover upcoming seminars, workshops, and showcases in the Computer Science division."
+    />
+</svelte:head>
+
+<main class="events-page page-shell">
+    <section
+        class="events-hero hero-section"
+        class:has-image={Boolean(heroBackgroundImage)}
+        style={heroBackgroundImage ? `--hero-image: url('${heroBackgroundImage}')` : undefined}
+    >
         <div class="container">
             <h1>Events</h1>
-            <p class="subtitle">Discover upcoming seminars, workshops, and research showcases</p>
+            <p class="subtitle">
+                Discover upcoming seminars, workshops, and research showcases
+            </p>
         </div>
     </section>
 
-    <section class="events-content">
+    <section class="events-content content-section">
         <div class="container">
-            <div class="events-controls">
-                <div class="search-box">
-                    <input
-                        type="text"
-                        placeholder="Search events..."
-                        bind:value={searchQuery}
-                        class="search-input"
-                    />
-                </div>
+            <div class="events-layout page-layout">
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h2>Filters</h2>
+                        <button class="reset-btn" onclick={resetFilters}>Reset</button>
+                    </div>
 
-                <div class="filter-buttons">
-                    <button
-                        class="filter-btn"
-                        class:active={filterType === 'upcoming'}
-                        onclick={() => (filterType = 'upcoming')}
-                    >
-                        Upcoming Events
-                    </button>
-                    <button
-                        class="filter-btn"
-                        class:active={filterType === 'all'}
-                        onclick={() => (filterType = 'all')}
-                    >
-                        All Events
-                    </button>
-                    <button
-                        class="filter-btn"
-                        class:active={filterType === 'past'}
-                        onclick={() => (filterType = 'past')}
-                    >
-                        Past Events
-                    </button>
+                    <div class="filter-section">
+                        <label for="event-search">Search</label>
+                        <input
+                            id="event-search"
+                            type="text"
+                            placeholder="Title, location, host, speaker..."
+                            bind:value={searchQuery}
+                            class="search-input"
+                        />
+                    </div>
+
+                    <div class="filter-section">
+                        <fieldset>
+                            <legend>Event Type</legend>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input
+                                        type="radio"
+                                        name="event-filter"
+                                        value="upcoming"
+                                        bind:group={filterType}
+                                    />
+                                    Upcoming Events
+                                </label>
+                                <label class="radio-label">
+                                    <input
+                                        type="radio"
+                                        name="event-filter"
+                                        value="all"
+                                        bind:group={filterType}
+                                    />
+                                    All Events
+                                </label>
+                                <label class="radio-label">
+                                    <input
+                                        type="radio"
+                                        name="event-filter"
+                                        value="past"
+                                        bind:group={filterType}
+                                    />
+                                    Past Events
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="results-count">
+                        {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''} found
+                    </div>
+                </aside>
+
+                <div class="events-main content-main">
+                    {#if filteredEvents.length === 0}
+                        <div class="no-events no-results">
+                            <p>No events found matching your criteria.</p>
+                            <button class="reset-btn" onclick={resetFilters}>Reset Filters</button>
+                        </div>
+                    {:else}
+                        <div class="events-list">
+                            {#each filteredEvents as event (event.slug)}
+                                <EventCard {event} />
+                            {/each}
+                        </div>
+                    {/if}
                 </div>
             </div>
-
-            {#if filteredEvents.length === 0}
-                <div class="no-events">
-                    <p>No events found matching your criteria.</p>
-                </div>
-            {:else}
-                <div class="events-list">
-                    <p class="event-count">
-                        {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''}
-                    </p>
-                    {#each filteredEvents as event (event.slug)}
-                        <EventCard {event} />
-                    {/each}
-                </div>
-            {/if}
         </div>
     </section>
 </main>
 
 <style lang="scss">
+    @use '$lib/styles/globals.scss' as *;
+
     .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
     }
 
-    .events-page {
+    .page-shell {
         background: #f8f9fa;
         min-height: 100vh;
     }
 
-    .events-hero {
-        background: #61223b;
+    .hero-section {
+        background: linear-gradient(135deg, $primary-color 0%, #8b2f4a 100%);
         color: white;
-        padding: 4rem 0;
-        text-align: center;
+        padding: 4rem 0 3rem;
         position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--hero-image);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
 
         &::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #d22730;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        &.has-image::before {
+            opacity: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
@@ -128,125 +193,167 @@
             font-size: 1.125rem;
             line-height: 1.6;
             opacity: 0.95;
+            max-width: 800px;
         }
     }
 
-    .events-content {
+    .content-section {
         padding: 3rem 0;
     }
 
-    .events-controls {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .page-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+        align-items: start;
 
-        @media (min-width: 768px) {
-            flex-direction: row;
-            align-items: flex-end;
-            justify-content: space-between;
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
         }
     }
 
-    .search-box {
-        flex: 1;
-        display: flex;
-        align-items: center;
+    .filters-sidebar {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 2rem;
 
-        @media (min-width: 768px) {
-            max-width: 400px;
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+            h2 {
+                font-size: 1.5rem;
+                color: #333;
+                margin: 0;
+            }
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+
+            label,
+            legend {
+                display: block;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            fieldset {
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
         }
     }
 
     .search-input {
         width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: #ffffff;
-        color: #333;
-
-        &::placeholder {
-            color: #999;
-        }
+        padding: 0.75rem;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        background: white;
+        transition: border-color 0.2s;
 
         &:focus {
             outline: none;
-            border-color: #d22730;
-            box-shadow: 0 0 0 3px rgba(210, 39, 48, 0.15);
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba(97, 34, 59, 0.15);
         }
     }
 
-    .filter-buttons {
+    .radio-group {
         display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0;
 
-        @media (min-width: 768px) {
-            flex-wrap: nowrap;
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: normal;
+            cursor: pointer;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+
+            &:hover {
+                background: #f8f9fa;
+            }
+
+            input[type='radio'] {
+                cursor: pointer;
+                accent-color: $primary-color;
+            }
         }
     }
 
-    .filter-btn {
-        padding: 0.625rem 1.25rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: #f8f9fa;
-        color: #333;
+    .results-count {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+        color: #666;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .reset-btn {
+        background: none;
+        border: 1px solid $accent-color;
+        color: $accent-color;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s;
+        font-weight: 500;
 
         &:hover {
-            background: #ffffff;
-            border-color: #d22730;
-        }
-
-        &.active {
-            background: #d22730;
+            background: $accent-color;
             color: white;
-            border-color: #d22730;
         }
+    }
 
-        &:focus-visible {
-            outline: 2px solid #d22730;
-            outline-offset: 2px;
-        }
+    .content-main {
+        min-height: 400px;
     }
 
     .events-list {
-        margin-top: 2rem;
-
-        .event-count {
-            font-size: 0.875rem;
-            color: #666;
-            margin: 0 0 1rem 0;
-            font-weight: 500;
-        }
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
-    .no-events {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: #666;
+    .no-results {
         background: white;
+        padding: 3rem;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        box-shadow: 0 2px 8px $shadow-color;
+        color: #666;
 
         p {
-            font-size: 1.125rem;
-            margin: 0;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
     }
 
-    @media (max-width: 640px) {
-        .events-hero {
+    @media (max-width: 1024px) {
+        .filters-sidebar {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
             h1 {
                 font-size: 2rem;
             }
@@ -254,6 +361,10 @@
             .subtitle {
                 font-size: 1rem;
             }
+        }
+
+        .filters-sidebar {
+            padding: 1.5rem;
         }
 
         .container {

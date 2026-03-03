@@ -1,15 +1,15 @@
 <script lang="ts">
     import {
-        getAllCourses,
-        sortCoursesByCode,
         type Course,
         type CourseType,
         type Stream,
         type Semester
     } from '$lib/courses';
 
-    let allCourses: Course[] = $state([]);
-    let filteredCourses: Course[] = $state([]);
+    let { data }: { data: { courses: Course[] } } = $props();
+    const heroBackgroundImage: string | null = null;
+
+    let allCourses: Course[] = $derived(data.courses);
     let searchQuery = $state('');
     let selectedType = $state<CourseType | 'all'>('all');
     let selectedStream = $state<Stream | 'all'>('all');
@@ -23,13 +23,7 @@
         Array.from(new Set(allCourses.map((c) => c.semester).filter(Boolean))) as Semester[]
     );
 
-    async function loadCourses() {
-        allCourses = await getAllCourses();
-        allCourses = sortCoursesByCode(allCourses);
-        filterCourses();
-    }
-
-    function filterCourses() {
+    let filteredCourses: Course[] = $derived.by(() => {
         let results = allCourses;
 
         // Search filter (code, title, description, professor)
@@ -59,26 +53,15 @@
             results = results.filter((course) => course.semester === selectedSemester);
         }
 
-        filteredCourses = results;
-    }
-
-    function handleSearchInput() {
-        filterCourses();
-    }
+        return results;
+    });
 
     function resetFilters() {
         searchQuery = '';
         selectedType = 'all';
         selectedStream = 'all';
         selectedSemester = 'all';
-        filterCourses();
     }
-
-    loadCourses();
-
-    $effect(() => {
-        filterCourses();
-    });
 </script>
 
 <svelte:head>
@@ -90,7 +73,11 @@
 </svelte:head>
 
 <div class="courses-page">
-    <section class="hero-section">
+    <section
+        class="hero-section"
+        class:has-image={Boolean(heroBackgroundImage)}
+        style={heroBackgroundImage ? `--hero-image: url('${heroBackgroundImage}')` : undefined}
+    >
         <div class="container">
             <h1>Course Catalog</h1>
             <p class="lead">
@@ -119,7 +106,6 @@
                             id="search"
                             placeholder="Course code, name, or professor..."
                             bind:value={searchQuery}
-                            oninput={handleSearchInput}
                         />
                     </div>
 
@@ -243,6 +229,8 @@
 </div>
 
 <style lang="scss">
+    @use '$lib/styles/globals.scss' as *;
+
     .container {
         max-width: 1400px;
         margin: 0 auto;
@@ -255,10 +243,41 @@
     }
 
     .hero-section {
-        background: linear-gradient(135deg, #61223b 0%, #8b2f4a 100%);
+        background: linear-gradient(135deg, $primary-color 0%, #8b2f4a 100%);
         color: white;
         padding: 4rem 0 3rem;
-        border-bottom: 4px solid #d22730;
+        border-bottom: 4px solid $accent-color;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--hero-image);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        &.has-image::before {
+            opacity: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
 
         h1 {
             font-size: 3rem;
@@ -328,21 +347,21 @@
             input[type='text'] {
                 width: 100%;
                 padding: 0.75rem;
-                border: 1px solid #ddd;
+                border: 1px solid $border-color;
                 border-radius: 6px;
                 font-size: 0.95rem;
                 transition: border-color 0.2s;
 
                 &:focus {
                     outline: none;
-                    border-color: #d22730;
+                    border-color: $primary-color;
                 }
             }
 
             select {
                 width: 100%;
                 padding: 0.75rem;
-                border: 1px solid #ddd;
+                border: 1px solid $border-color;
                 border-radius: 6px;
                 font-size: 0.95rem;
                 background: white;
@@ -351,7 +370,7 @@
 
                 &:focus {
                     outline: none;
-                    border-color: #d22730;
+                    border-color: $primary-color;
                 }
             }
         }
@@ -359,7 +378,7 @@
         .radio-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0;
 
             .radio-label {
                 display: flex;
@@ -367,7 +386,7 @@
                 gap: 0.5rem;
                 font-weight: normal;
                 cursor: pointer;
-                padding: 0.5rem;
+                // padding: 0.35rem 0.5rem;
                 border-radius: 4px;
                 transition: background 0.2s;
 
@@ -377,6 +396,7 @@
 
                 input[type='radio'] {
                     cursor: pointer;
+                    accent-color: $primary-color;
                 }
             }
         }
@@ -393,8 +413,8 @@
 
     .reset-btn {
         background: none;
-        border: 1px solid #d22730;
-        color: #d22730;
+        border: 1px solid $accent-color;
+        color: $accent-color;
         padding: 0.5rem 1rem;
         border-radius: 6px;
         font-size: 0.9rem;
@@ -403,7 +423,7 @@
         font-weight: 500;
 
         &:hover {
-            background: #d22730;
+            background: $accent-color;
             color: white;
         }
     }
@@ -420,7 +440,7 @@
         padding: 3rem;
         border-radius: 12px;
         text-align: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px $shadow-color;
 
         p {
             color: #666;
@@ -433,16 +453,17 @@
         background: white;
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        border-left: 4px solid transparent;
+        display: flex;
+        flex-direction: column;
 
         &:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-            border-left-color: #d22730;
+            border: 1px solid $accent-color;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
 
         .course-header {
@@ -460,7 +481,7 @@
         .course-code {
             display: inline-block;
             font-weight: 600;
-            color: #d22730;
+            color: $accent-color;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             margin-bottom: 0.5rem;

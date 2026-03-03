@@ -3,8 +3,36 @@
     import favicon from '$lib/assets/favicon.svg';
     import Footer from '$lib/components/Footer.svelte';
     import Navbar from '$lib/components/Navbar.svelte';
+    import { afterNavigate } from '$app/navigation';
 
     let { children } = $props();
+
+    let mainContent: HTMLElement;
+    const scrollPositions = new Map<string, number>();
+
+    afterNavigate(({ from, to, type }) => {
+        if (!mainContent) return;
+
+        // Save scroll position when leaving a page
+        if (from) {
+            scrollPositions.set(from.url.pathname, mainContent.scrollTop);
+        }
+
+        // On back/forward navigation (popstate), restore the previous scroll position
+        if (type === 'popstate' && to) {
+            const savedPosition = scrollPositions.get(to.url.pathname);
+            if (savedPosition !== undefined) {
+                setTimeout(() => {
+                    mainContent.scrollTop = savedPosition;
+                }, 0);
+            } else {
+                mainContent.scrollTop = 0;
+            }
+        } else {
+            // On normal navigation (link click), scroll to top
+            mainContent.scrollTop = 0;
+        }
+    });
 </script>
 
 <svelte:head>
@@ -13,7 +41,7 @@
 
 <Navbar />
 
-<main class="main-content">
+<main class="main-content" bind:this={mainContent}>
     {@render children()}
     <!-- TODO: Fix footer on scroll bad pages -->
     <Footer />

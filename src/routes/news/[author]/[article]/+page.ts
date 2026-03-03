@@ -1,8 +1,8 @@
 import { getAllArticles, getArticleBySlug } from '$lib/articles';
 import { error } from '@sveltejs/kit';
-import type { EntryGenerator } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 
-export async function load({ params }) {
+export const load: PageLoad = async ({ params }) => {
     const articles = await getAllArticles();
     const article = getArticleBySlug(articles, params.article);
 
@@ -20,11 +20,14 @@ export async function load({ params }) {
         article,
         allArticles: articles
     };
-}
+};
 
 export const entries: EntryGenerator = async () => {
     const articles = await getAllArticles();
-    return articles.map((article) => ({ article: article.slug!, author: article.author.toLowerCase().replace(/ /g, '-') }));
-}
+    return articles.map((article) => ({
+        article: article.slug!,
+        author: article.author.toLowerCase().replace(/ /g, '-')
+    }));
+};
 
 export const prerender = true;

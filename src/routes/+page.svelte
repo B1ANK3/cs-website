@@ -301,7 +301,7 @@
         width: 100%;
         height: 100%;
         @include flex-center;
-        color: #fff;
+        color: $text-color-inverted;
         background: #61223b;
         font-size: 20px;
         text-align: center;
@@ -383,9 +383,9 @@
     }
 
     .welcome-heading {
+        color: $primary-color;
         font-size: 48px;
         margin: 0 0 30px 0;
-        color: $text-color;
     }
 
     .welcome-paragraph {
@@ -459,6 +459,7 @@
         }
 
         .welcome-heading {
+            color: $primary-color;
             font-size: 32px;
             margin-bottom: 20px;
         }

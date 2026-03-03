@@ -1,10 +1,12 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+    import type { PageProps } from './$types';
     import { resolve } from '$app/paths';
 
-    export let data: PageData;
+    const { data }: PageProps = $props();
 
-    const { person } = data;
+    // Don't know if this is even needed cause eveything is static
+    const { person } = $derived(data);
+    const PersonComponent = $derived(person.component);
 </script>
 
 <svelte:head>
@@ -17,29 +19,45 @@
     </div>
 
     <div class="profile-content">
-        <div class="profile-image-section">
-            <img src={person.image} alt={person.name} class="profile-image" />
+        <div class="profile-sidebar">
+            {#if person.image}
+                <img src={person.image} alt={person.name} class="profile-image" />
+            {/if}
+
+            <div class="profile-metadata">
+                <h1 class="profile-name">{person.name}</h1>
+                {#if person.title}
+                    <p class="profile-title">{person.title}</p>
+                {/if}
+                {#if person.email}
+                    <span
+                        class="profile-email"
+                        role="button"
+                        tabindex="0"
+                        onclick={() => (window.location.href = `mailto:${person.email}`)}
+                        onkeydown={(e) =>
+                            e.key === 'Enter' && (window.location.href = `mailto:${person.email}`)}
+                    >
+                        {person.email}
+                    </span>
+                {/if}
+                {#if person.about}
+                    <div class="profile-about">
+                        <h3>Research Interests</h3>
+                        <p>{person.about}</p>
+                    </div>
+                {/if}
+                {#if person.type}
+                    <div class="profile-type">
+                        <span class="type-badge">{person.type}</span>
+                    </div>
+                {/if}
+            </div>
         </div>
 
-        <div class="profile-info">
-            <h1 class="profile-name">{person.name}</h1>
-            <p class="profile-title">{person.title}</p>
-
-            <span
-                class="profile-email"
-                role="button"
-                tabindex="0"
-                on:click={() => (window.location.href = `mailto:${person.email}`)}
-                on:keydown={(e) =>
-                    e.key === 'Enter' && (window.location.href = `mailto:${person.email}`)}
-            >
-                {person.email}
-            </span>
-
-            <div class="profile-divider"></div>
-
+        <div class="profile-main">
             <div class="profile-body">
-                <svelte:component this={person.component} />
+                <PersonComponent />
             </div>
         </div>
     </div>
@@ -49,7 +67,7 @@
     @use '$lib/styles/globals' as *;
 
     .profile-container {
-        max-width: 900px;
+        max-width: 75%;
         margin: 0 auto;
         padding: 40px 20px;
         min-height: 100vh;
@@ -73,19 +91,20 @@
 
     .profile-content {
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 320px 1fr;
         gap: 40px;
         background-color: #ffffff;
         border: 1px solid $border-color;
         border-radius: 8px;
         padding: 40px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        align-items: start;
     }
 
-    .profile-image-section {
+    .profile-sidebar {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .profile-image {
@@ -95,22 +114,24 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .profile-info {
+    .profile-metadata {
         display: flex;
         flex-direction: column;
+        gap: 12px;
     }
 
     .profile-name {
-        font-size: 36px;
-        margin: 0 0 8px 0;
+        font-size: 28px;
+        margin: 0;
         color: $text-color;
+        line-height: 1.2;
     }
 
     .profile-title {
-        font-size: 18px;
+        font-size: 16px;
         color: $primary-color;
         font-weight: 600;
-        margin: 0 0 15px 0;
+        margin: 0;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
@@ -119,8 +140,8 @@
         color: $primary-color;
         text-decoration: none;
         font-weight: 500;
-        margin-bottom: 15px;
         cursor: pointer;
+        font-size: 14px;
         @include smooth-transition(all);
 
         &:hover {
@@ -128,10 +149,43 @@
         }
     }
 
-    .profile-divider {
-        height: 1px;
-        background-color: $border-color;
-        margin: 20px 0;
+    .profile-about {
+        margin-top: 8px;
+
+        h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text-color;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            margin: 0;
+        }
+    }
+
+    .profile-type {
+        margin-top: 4px;
+    }
+
+    .type-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        background-color: rgba($primary-color, 0.1);
+        color: $primary-color;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    .profile-main {
+        min-width: 0;
     }
 
     .profile-body {
@@ -144,6 +198,10 @@
             color: $text-color;
             margin: 30px 0 15px 0;
             font-weight: 600;
+
+            &:first-child {
+                margin-top: 0;
+            }
         }
 
         :global(h3) {
@@ -174,24 +232,29 @@
     }
 
     @media (max-width: $tablet-breakpoint) {
+        .profile-container {
+            max-width: 90%;
+        }
+
         .profile-content {
             grid-template-columns: 1fr;
             padding: 30px;
             gap: 30px;
         }
 
-        .profile-name {
-            font-size: 28px;
+        .profile-sidebar {
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        .profile-image-section {
-            max-width: 250px;
-            margin: 0 auto;
+        .profile-name {
+            font-size: 24px;
         }
     }
 
     @media (max-width: $mobile-breakpoint) {
         .profile-container {
+            max-width: 100%;
             padding: 20px;
         }
 
@@ -200,7 +263,7 @@
         }
 
         .profile-name {
-            font-size: 24px;
+            font-size: 22px;
         }
 
         .profile-title {

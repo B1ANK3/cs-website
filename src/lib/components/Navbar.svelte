@@ -129,9 +129,9 @@
 
     .nav-item {
         text-decoration: none;
-        color: $secondary-color;
+        color: $text-color-inverted;
         font-weight: 500;
-        font-size: 15px;
+        font-size: 1.2em;
         @include smooth-transition(color);
         position: relative;
 
@@ -214,9 +214,9 @@
 
     .mobile-nav-item {
         text-decoration: none;
-        color: $secondary-color;
+        color: $text-color-inverted;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 1.2em;
         padding: 16px 20px;
         @include smooth-transition(background-color);
         border-left: 4px solid transparent;
@@ -224,6 +224,7 @@
         &:hover {
             background-color: rgba(0, 0, 0, 0.1);
             border-left-color: $secondary-color;
+            color: $secondary-color;
         }
     }
 

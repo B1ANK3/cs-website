@@ -1,5 +1,5 @@
 <script lang="ts">
-    // Contact page for the Computer Science department
+
 </script>
 
 <svelte:head>
@@ -19,20 +19,20 @@
                 <div class="contact-list">
                     <div class="contact-item">
                         <h3>Administrative Enquiries</h3>
-                        <a href="mailto:admin@cs.university.edu" class="contact-link">
-                            admin@cs.university.edu
+                        <a href="mailto:admin@cs.sun.ac.za" class="contact-link">
+                            admin@cs.sun.ac.za
                         </a>
                     </div>
                     <div class="contact-item">
                         <h3>Postgraduate Enquiries</h3>
-                        <a href="mailto:postgrad@cs.university.edu" class="contact-link">
-                            postgrad@cs.university.edu
+                        <a href="mailto:postgrad@cs.sun.ac.za" class="contact-link">
+                            postgrad@cs.sun.ac.za
                         </a>
                     </div>
                     <div class="contact-item">
                         <h3>Undergraduate Enquiries</h3>
-                        <a href="mailto:undergrad@cs.university.edu" class="contact-link">
-                            undergrad@cs.university.edu
+                        <a href="mailto:undergrad@cs.sun.ac.za" class="contact-link">
+                            undergrad@cs.sun.ac.za
                         </a>
                     </div>
                 </div>
@@ -42,12 +42,12 @@
             <section class="contact-section">
                 <h2 class="section-title">Physical Address</h2>
                 <div class="contact-item">
-                    <p class="address-line">Computer Science Department</p>
-                    <p class="address-line">School of Computing</p>
-                    <p class="address-line">University Campus</p>
-                    <p class="address-line">Building 42, Room 301</p>
-                    <p class="address-line">123 University Drive</p>
-                    <p class="address-line">City, State 12345</p>
+                    <p class="address-line">Computer Science</p>
+                    <p class="address-line">Stellenbosch University</p>
+                    <p class="address-line">Decanting Facility</p>
+                    <p class="address-line">Hammanshand Road</p>
+                    <p class="address-line">7600 Stellenbosch</p>
+                    <p class="address-line">SOUTH AFRICA</p>
                 </div>
             </section>
 
@@ -55,10 +55,10 @@
             <section class="contact-section">
                 <h2 class="section-title">Postal Address</h2>
                 <div class="contact-item">
-                    <p class="address-line">Computer Science Department</p>
-                    <p class="address-line">P.O. Box 5678</p>
-                    <p class="address-line">University Station</p>
-                    <p class="address-line">City, State 12345-5678</p>
+                    <p class="address-line">Computer Science Division</p>
+                    <p class="address-line">Dept of Mathematical Sciences</p>
+                    <p class="address-line">Stellenbosch University </p>
+                    <p class="address-line"> Private Bag X1, 7602 Matieland, SOUTH AFRICA</p>
                 </div>
             </section>
 
@@ -68,11 +68,11 @@
                 <div class="contact-list">
                     <div class="contact-item">
                         <h3>Telephone</h3>
-                        <a href="tel:+15551234567" class="contact-link"> +1 (555) 123-4567 </a>
+                        <a href="tel:+27218084232" class="contact-link"> +27 21 808 4232 </a>
                     </div>
                     <div class="contact-item">
                         <h3>Fax</h3>
-                        <p class="contact-link">+1 (555) 123-4568</p>
+                        <p class="contact-link">+27 86 603 7130</p>
                     </div>
                 </div>
             </section>
@@ -82,13 +82,13 @@
                 <h2 class="section-title">Coordinates</h2>
                 <div class="contact-item">
                     <p class="coordinate-line">
-                        <strong>Latitude:</strong> 40.7128° N
+                        <strong>Latitude:</strong> 33° 55' 30.90" South
                     </p>
                     <p class="coordinate-line">
-                        <strong>Longitude:</strong> 74.0060° W
+                        <strong>Longitude:</strong> 18° 51' 55" East
                     </p>
                     <a
-                        href="https://www.google.com/maps?q=40.7128,-74.0060"
+                        href="https://www.google.com/maps?q=-33.9265319,18.8651232"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="map-link"
@@ -103,41 +103,13 @@
                 <h2 class="section-title">Quick Access</h2>
                 <div class="qr-container">
                     <div class="qr-placeholder">
-                        <svg viewBox="0 0 200 200" class="qr-code">
-                            <!-- Simple QR code placeholder pattern -->
-                            <rect width="200" height="200" fill="white" />
-                            <rect x="10" y="10" width="30" height="30" fill="black" />
-                            <rect x="160" y="10" width="30" height="30" fill="black" />
-                            <rect x="10" y="160" width="30" height="30" fill="black" />
-                            <rect x="50" y="30" width="10" height="10" fill="black" />
-                            <rect x="70" y="30" width="10" height="10" fill="black" />
-                            <rect x="90" y="30" width="10" height="10" fill="black" />
-                            <rect x="110" y="30" width="10" height="10" fill="black" />
-                            <rect x="130" y="30" width="10" height="10" fill="black" />
-                            <rect x="50" y="50" width="10" height="10" fill="black" />
-                            <rect x="90" y="50" width="10" height="10" fill="black" />
-                            <rect x="130" y="50" width="10" height="10" fill="black" />
-                            <rect x="50" y="70" width="10" height="10" fill="black" />
-                            <rect x="70" y="70" width="10" height="10" fill="black" />
-                            <rect x="110" y="70" width="10" height="10" fill="black" />
-                            <rect x="130" y="70" width="10" height="10" fill="black" />
-                            <rect x="30" y="90" width="10" height="10" fill="black" />
-                            <rect x="70" y="90" width="10" height="10" fill="black" />
-                            <rect x="90" y="90" width="10" height="10" fill="black" />
-                            <rect x="110" y="90" width="10" height="10" fill="black" />
-                            <rect x="50" y="110" width="10" height="10" fill="black" />
-                            <rect x="90" y="110" width="10" height="10" fill="black" />
-                            <rect x="130" y="110" width="10" height="10" fill="black" />
-                            <rect x="70" y="130" width="10" height="10" fill="black" />
-                            <rect x="110" y="130" width="10" height="10" fill="black" />
-                            <rect x="30" y="150" width="10" height="10" fill="black" />
-                            <rect x="70" y="150" width="10" height="10" fill="black" />
-                            <rect x="90" y="150" width="10" height="10" fill="black" />
-                            <rect x="130" y="150" width="10" height="10" fill="black" />
-                        </svg>
+                        <img
+                            src="/images/site_qr_code.png"
+                            alt="Website QR Code"
+                            class="qr-code"
+                        />                        
                     </div>
                     <p class="qr-description">Scan to visit our homepage</p>
-                    <p class="qr-note">Replace this SVG with an actual QR code</p>
                 </div>
             </section>
         </div>

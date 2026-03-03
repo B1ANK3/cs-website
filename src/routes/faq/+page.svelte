@@ -70,7 +70,7 @@
     });
 
     function scrollToSection(slug: string) {
-        console.log("Scrolling to section...")
+        console.log('Scrolling to section...');
         const element = document.getElementById(slug);
         if (element) {
             window.history.replaceState(null, '', `#${slug}`);

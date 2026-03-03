@@ -206,7 +206,6 @@
             background: #f4f4f4;
             padding: 0.2rem 0.4rem;
             border-radius: 3px;
-            font-family: 'Courier New', monospace;
             font-size: 0.9em;
         }
 

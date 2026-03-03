@@ -22,8 +22,7 @@
 
 <div
     class="event-card"
-    // onclick={handleCardClick}
-    // YOU ARE FUCKING USELESS, SVELTE, WHY THE FUCK CAN'T I USE ONCLICK ON A DIV WITHOUT IT BEING A FUCKING BUTTON OR LINK
+    onclick={handleCardClick}
     role="button"
     tabindex="0"
     onkeydown={(e) => e.key === 'Enter' && handleCardClick()}
@@ -36,7 +35,7 @@
     <div class="event-content">
         <div class="event-header">
             <h3 class="event-title">
-            <a href={resolve(`/events/${event.slug}`)}>{event.title}</a>
+                {event.title}
             </h3>
             {#if event.time}
                 <p class="event-time">{event.time}</p>
@@ -75,7 +74,6 @@
         display: flex;
         gap: 1.5rem;
         padding: 1.5rem;
-        margin-bottom: 1.5rem;
         background: #ffffff;
         border: 1px solid #e5e7eb;
         border-radius: 12px;

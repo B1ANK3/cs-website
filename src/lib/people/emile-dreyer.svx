@@ -3,6 +3,5 @@ name: "Emile Dreyer"
 title: ""
 email: "edreyer@sun.ac.za"
 about: "Administrative support"
-image: "/images/people/emile_dreyer.jpg"
 type: "staff"
 ---

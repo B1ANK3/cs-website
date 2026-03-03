@@ -1,4 +1,4 @@
-import { compile } from 'mdsvex';
+// import { compile } from 'mdsvex';
 
 export interface SearchResult {
     title: string;
@@ -64,20 +64,42 @@ function slugify(text: string): string {
         .replace(/-+/g, '-')
         .replace(/^-+|-+$/g, '');
 }
-
+// TODO: precompile content searching and frontmatter
 async function parseFrontmatter(
     content: string
 ): Promise<{ metadata: ContentMetadata; body: string }> {
-    // const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
-    // const match = content.match(frontmatterRegex);
-    const match = await compile(content);
+    const normalizedContent = content.replace(/^\uFEFF/, '');
+    const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/;
+    const match = normalizedContent.match(frontmatterRegex);
 
     if (!match) {
-        return { metadata: {}, body: content };
+        return { metadata: {}, body: normalizedContent };
     }
 
-    const { data, code } = match;
-    const metadata: ContentMetadata = (data?.fm as ContentMetadata) || {};
+    const [, fmContent, code] = match;
+    const fmLines = fmContent.split(/\r?\n/);
+    const metadata: ContentMetadata = {};
+
+    for (const line of fmLines) {
+        const [key, ...rest] = line.split(':');
+        if (key && rest.length > 0) {
+            const rawValue = rest.join(':').trim();
+            let parsedValue: string | number | boolean = rawValue;
+
+            if (
+                (rawValue.startsWith('"') && rawValue.endsWith('"')) ||
+                (rawValue.startsWith("'") && rawValue.endsWith("'"))
+            ) {
+                parsedValue = rawValue.slice(1, -1);
+            } else if (/^(true|false)$/i.test(rawValue)) {
+                parsedValue = rawValue.toLowerCase() === 'true';
+            } else if (/^-?\d+(?:\.\d+)?$/.test(rawValue)) {
+                parsedValue = Number(rawValue);
+            }
+
+            metadata[key.trim()] = parsedValue;
+        }
+    }
 
     return { metadata, body: code };
 }

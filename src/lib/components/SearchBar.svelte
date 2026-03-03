@@ -1,3 +1,4 @@
+<!-- TODO: Implement fuzzy searching -->
 <script lang="ts">
     import { search, type SearchResult } from '$lib/search';
     import { goto } from '$app/navigation';
@@ -98,7 +99,7 @@
                         <span class="result-type">{getTypeLabel(result.type)}</span>
                     </div>
                     <div class="result-excerpt">
-                        {result.excerpt}
+                        {@html result.excerpt}
                     </div>
                 </button>
             {/each}
@@ -153,7 +154,7 @@
         top: calc(100% + 0.5rem);
         left: 0;
         right: 0;
-        max-height: 400px;
+        max-height: 60vh;
         overflow-y: auto;
         background: white;
         border: 1px solid #ddd;

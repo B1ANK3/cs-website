@@ -1,7 +1,8 @@
 import { getAllPeople } from '$lib/people';
 import { error, redirect } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
-export async function load({ params }) {
+export const load: PageLoad = async ({ params }) => {
     const allPeople = await getAllPeople();
     const person = allPeople.find((p) => p.slug === params.slug);
 

@@ -1,37 +1,21 @@
-<!-- TODO: Update to runes mode -->
 <script lang="ts">
     import { filterArticles, sortArticles } from '$lib/articles';
     import type { Article } from '$lib/articles';
-    import { onMount } from 'svelte';
+    import type { PageProps } from './$types';
 
-    export let data;
+    let { data }: PageProps = $props();
+    const heroBackgroundImage: string | null = null;
 
-    let articles: Article[] = data.articles;
-    let filteredArticles: Article[] = articles;
-    let searchQuery = '';
-    let sortBy: 'date' | 'title' | 'author' = 'date';
-    let sortOrder: 'asc' | 'desc' = 'desc';
+    let articles: Article[] = $derived(data.articles);
+    let searchQuery = $state('');
+    let sortBy: 'date' | 'title' | 'author' = $state('date');
+    let sortOrder: 'asc' | 'desc' = $state('desc');
 
-    function updateArticles() {
+    let filteredArticles: Article[] = $derived.by(() => {
         let result = filterArticles(articles, searchQuery);
         result = sortArticles(result, sortBy, sortOrder);
-        filteredArticles = result;
-    }
-
-    function handleSearch(e: Event) {
-        searchQuery = (e.target as HTMLInputElement).value;
-        updateArticles();
-    }
-
-    function handleSort(e: Event) {
-        sortBy = (e.target as HTMLSelectElement).value as 'date' | 'title' | 'author';
-        updateArticles();
-    }
-
-    function handleSortOrder(e: Event) {
-        sortOrder = (e.target as HTMLInputElement).checked ? 'asc' : 'desc';
-        updateArticles();
-    }
+        return result;
+    });
 
     function getAuthorPath(author: string): string {
         return author.toLowerCase().replace(/\s+/g, '-');
@@ -41,13 +25,27 @@
         return `/news/${getAuthorPath(article.author)}/${article.slug}`;
     }
 
-    onMount(() => {
-        updateArticles();
-    });
+    function resetFilters() {
+        searchQuery = '';
+        sortBy = 'date';
+        sortOrder = 'desc';
+    }
 </script>
 
-<main class="news-page">
-    <section class="news-hero">
+<svelte:head>
+    <title>News | CS Department</title>
+    <meta
+        name="description"
+        content="Latest stories, updates, and highlights from the Computer Science division."
+    />
+</svelte:head>
+
+<main class="news-page page-shell">
+    <section
+        class="news-hero hero-section"
+        class:has-image={Boolean(heroBackgroundImage)}
+        style={heroBackgroundImage ? `--hero-image: url('${heroBackgroundImage}')` : undefined}
+    >
         <div class="container">
             <h1>News</h1>
             <p class="subtitle">
@@ -56,24 +54,29 @@
         </div>
     </section>
 
-    <section class="news-content">
+    <section class="news-content content-section">
         <div class="container">
-            <div class="news-layout">
+            <div class="news-layout page-layout">
                 <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h2>Filters</h2>
+                        <button class="reset-btn" onclick={resetFilters}>Reset</button>
+                    </div>
+
                     <div class="filter-section">
-                        <h2>Search</h2>
+                        <label for="news-search">Search</label>
                         <input
+                            id="news-search"
                             type="text"
                             placeholder="Search articles..."
-                            value={searchQuery}
-                            on:input={handleSearch}
+                            bind:value={searchQuery}
                             class="search-input"
                         />
                     </div>
 
                     <div class="filter-section">
-                        <h2>Sort By</h2>
-                        <select value={sortBy} on:change={handleSort} class="sort-select">
+                        <label for="news-sort">Sort By</label>
+                        <select id="news-sort" bind:value={sortBy} class="sort-select">
                             <option value="date">Date</option>
                             <option value="title">Title</option>
                             <option value="author">Author</option>
@@ -85,13 +88,13 @@
                             <input
                                 type="checkbox"
                                 checked={sortOrder === 'asc'}
-                                on:change={handleSortOrder}
+                                onchange={(e) => (sortOrder = e.currentTarget.checked ? 'asc' : 'desc')}
                             />
                             Ascending Order
                         </label>
                     </div>
 
-                    <div class="filter-info">
+                    <div class="results-count">
                         <p>
                             {filteredArticles.length} article{filteredArticles.length !== 1
                                 ? 's'
@@ -102,17 +105,16 @@
 
                 <div class="articles-main">
                     {#if filteredArticles.length === 0}
-                        <div class="no-articles">
+                        <div class="no-articles no-results">
                             <p>No articles found matching your search.</p>
+                            <button class="reset-btn" onclick={resetFilters}>Reset Filters</button>
                         </div>
                     {:else}
                         <div class="articles-grid">
                             {#each filteredArticles as article (article.slug)}
-                                <article class="article-card">
+                                <a href={getArticleLink(article)} class="article-card">
                                     <h3 class="article-title">
-                                        <a href={getArticleLink(article)}>
-                                            {article.title}
-                                        </a>
+                                        {article.title}
                                     </h3>
                                     <p class="article-summary">{article.summary}</p>
                                     <div class="article-meta">
@@ -125,10 +127,8 @@
                                         </span>
                                         <span class="article-author">{article.author}</span>
                                     </div>
-                                    <a href={getArticleLink(article)} class="read-more"
-                                        >Read More →</a
-                                    >
-                                </article>
+                                    <span class="read-more">Read More →</span>
+                                </a>
                             {/each}
                         </div>
                     {/if}
@@ -139,32 +139,53 @@
 </main>
 
 <style lang="scss">
+    @use '$lib/styles/globals.scss' as *;
+
     .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
     }
 
-    .news-page {
+    .page-shell {
         min-height: 100vh;
         background: #f8f9fa;
     }
 
-    .news-hero {
-        background: #61223b;
+    .hero-section {
+        background: linear-gradient(135deg, $primary-color 0%, #8b2f4a 100%);
         color: white;
-        padding: 4rem 0;
+        padding: 4rem 0 3rem;
         position: relative;
-        text-align: center;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--hero-image);
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
 
         &::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #d22730;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(97, 34, 59, 0.9) 0%, rgba(139, 47, 74, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        &.has-image::before {
+            opacity: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
@@ -178,17 +199,19 @@
             font-size: 1.125rem;
             line-height: 1.6;
             opacity: 0.95;
+            max-width: 800px;
         }
     }
 
-    .news-content {
+    .content-section {
         padding: 3rem 0;
     }
 
-    .news-layout {
+    .page-layout {
         display: grid;
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 300px 1fr;
         gap: 2rem;
+        align-items: start;
 
         @media (max-width: 1024px) {
             grid-template-columns: 1fr;
@@ -197,22 +220,34 @@
 
     .filters-sidebar {
         background: white;
-        padding: 1.5rem;
+        padding: 2rem;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        height: fit-content;
         position: sticky;
         top: 2rem;
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+            h2 {
+                font-size: 1.5rem;
+                color: #333;
+                margin: 0;
+            }
+        }
 
         .filter-section {
             margin-bottom: 1.5rem;
 
-            h2 {
-                font-size: 0.9rem;
+            label {
+                display: block;
+                font-size: 0.95rem;
                 font-weight: 600;
-                text-transform: uppercase;
                 margin-bottom: 0.5rem;
-                color: #61223b;
+                color: #333;
             }
         }
     }
@@ -221,15 +256,32 @@
     .sort-select {
         width: 100%;
         padding: 0.75rem;
-        border: 1px solid #ddd;
+        border: 1px solid $border-color;
         border-radius: 8px;
         font-size: 0.9rem;
         background: #fff;
 
         &:focus {
             outline: none;
-            border-color: #d22730;
-            box-shadow: 0 0 0 3px rgba(210, 39, 48, 0.15);
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba(97, 34, 59, 0.15);
+        }
+    }
+
+    .reset-btn {
+        background: none;
+        border: 1px solid $accent-color;
+        color: $accent-color;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+
+        &:hover {
+            background: $accent-color;
+            color: white;
         }
     }
 
@@ -242,29 +294,39 @@
 
         input {
             cursor: pointer;
+            accent-color: $primary-color;
         }
     }
 
-    .filter-info {
+    .results-count {
         margin-top: 1rem;
         padding-top: 1rem;
-        border-top: 1px solid #ddd;
-        font-size: 0.85rem;
+        border-top: 1px solid #e0e0e0;
+        font-size: 0.9rem;
         color: #666;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
     }
 
     .articles-main {
         min-height: 400px;
     }
 
-    .no-articles {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: #666;
-        font-size: 1.1rem;
+    .no-results {
         background: white;
+        padding: 3rem;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px $shadow-color;
+        text-align: center;
+
+        p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
     }
 
     .articles-grid {
@@ -281,10 +343,11 @@
         transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
-        border-left: 4px solid transparent;
+        text-decoration: none;
+        color: inherit;
 
         &:hover {
-            border-left-color: #d22730;
+            border: 1px solid $accent-color;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
         }
@@ -295,15 +358,7 @@
         font-weight: 600;
         margin: 0 0 0.5rem 0;
         line-height: 1.4;
-
-        a {
-            color: #333;
-            text-decoration: none;
-
-            &:hover {
-                color: #61223b;
-            }
-        }
+        color: #333;
     }
 
     .article-summary {
@@ -331,19 +386,20 @@
     }
 
     .read-more {
-        color: #d22730;
-        text-decoration: none;
+        color: $accent-color;
         font-weight: 500;
         margin-top: 0.75rem;
-        transition: color 0.3s ease;
+        display: inline-block;
+    }
 
-        &:hover {
-            color: #61223b;
+    @media (max-width: 1024px) {
+        .filters-sidebar {
+            position: static;
         }
     }
 
     @media (max-width: 768px) {
-        .news-hero {
+        .hero-section {
             h1 {
                 font-size: 2rem;
             }
@@ -355,6 +411,10 @@
 
         .container {
             padding: 0 1rem;
+        }
+
+        .filters-sidebar {
+            padding: 1.5rem;
         }
     }
 </style>
