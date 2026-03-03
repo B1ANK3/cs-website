@@ -72,11 +72,15 @@
                                         <div class="module-header">
                                             <div>
                                                 <h4>{course.code} - {course.title}</h4>
-                                                <p class="module-description">{course.description}</p>
+                                                <p class="module-description">
+                                                    {course.description}
+                                                </p>
                                             </div>
                                             <div class="module-tags">
                                                 <span class="tag tag-elective">Elective</span>
-                                                <span class="tag tag-undergraduate">Undergraduate</span>
+                                                <span class="tag tag-undergraduate"
+                                                    >Undergraduate</span
+                                                >
                                             </div>
                                         </div>
                                     </a>
@@ -187,7 +191,8 @@
                 }
             }
 
-            h3, h4 {
+            h3,
+            h4 {
                 color: $primary-color;
                 font-size: 1.25rem;
                 margin: 0 0 0.75rem 0;
@@ -276,7 +281,8 @@
                     padding: 1.25rem;
                 }
 
-                h3, h4 {
+                h3,
+                h4 {
                     font-size: 1.1rem;
                 }
             }

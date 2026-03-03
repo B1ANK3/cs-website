@@ -26,7 +26,7 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             # Always run these checks so that all errors are accounted for
-            # Don't want any error to manifest in prod 
+            # Don't want any error to manifest in prod
             - name: Check code
               run: pnpm run check
 
@@ -34,7 +34,7 @@ jobs:
               run: pnpm run lint
 
             - name: Build project
-              env: 
+              env:
                   BASE_PATH: '/${{ github.event.repository.name }}'
               run: |
                   pnpm run build

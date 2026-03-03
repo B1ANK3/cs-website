@@ -14,7 +14,8 @@
         "format": "prettier --write .",
         "test:unit": "vitest",
         "test": "pnpm run test:unit -- --run && pnpm run test:e2e",
-        "test:e2e": "playwright test"
+        "test:e2e": "playwright test",
+        "predeploy": "pnpm run format && pnpm run lint && pnpm run check"
     },
     "devDependencies": {
         "@eslint/compat": "^2.0.2",
