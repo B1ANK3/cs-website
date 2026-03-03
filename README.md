@@ -1,5 +1,27 @@
 # CS website
 
+## Notes update
+
+Svelte has some problems with routing. I suspect this is due to compilers for javascript still being
+discovered and made useful. It also probably has to do with the design of this repo and how data is structured.
+Data is mostly generated from markdown and '.svx' files (Markdown with Svelte preprocessor).
+We don't expect the user to manually add all different paths to markdown files. Therefore most of the
+processing is done after the files have been rendered. Typescript and Svelte complain about the
+types of this because they can't validate the string is correct. Neither can we but its up to the
+webmaster to make sure links are not broken.
+
+## Future Plans
+
+Depending on the amount of time available, either complete the TODOs, make some better graphics or follow
+the branding theme a little closer.
+In the long term, figure out a way to manage content better. Currently pushing content straight into $lib works but needs to be very precise about what goes in.
+The types are arbitrary to the current use case. Theres no room for error else rendering might break.
+
+### For CS division
+
+Need some new photos and content for the site. Most of it is placeholders. There is some cool stuff that can be added but
+linking to external sites is also allowed and does happen. It would be nice to have everything under one layout though.
+
 ## Use of AI
 
 This project heavily relied on the use of AI to produce this website in the time frame of 5 days.
@@ -8,17 +30,15 @@ FYI: Went through all copilot tokens for the month the day I got copilot.
 
 ## TODOs
 
-### DO NOW!
-
-- [ ] Github Pipeline
-    - [ ] Git pages up
+- [x] Github Pipeline
+    - [x] Git pages up
 - [ ] Theming - secondary colors and highlights
 - [ ] Fix dialog boxes
 - [ ] Add cs character (a drone or something IDK)
 - [ ] Theming - Add images instead of gradients in hero sections
 - [ ] Theming - Make contact area consistent
 - [ ] Theming - Background consistency
-- [ ] Send in application
+- [x] Send in application
 
 ### High
 

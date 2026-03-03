@@ -130,9 +130,11 @@
 </div>
 
 <style lang="scss">
+    @use '$lib/styles/globals' as *;
+
     .contact-page {
         min-height: 100vh;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background: $light-bg;
         padding: 2rem 1rem;
     }
 
@@ -140,22 +142,19 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .page-title {
         font-size: 2.5rem;
         font-weight: 700;
         text-align: center;
-        color: #1a202c;
+        color: $primary-color;
         margin-bottom: 0.5rem;
     }
 
     .subtitle {
         text-align: center;
-        color: #718096;
+        color: $light-text-color;
         font-size: 1.125rem;
         margin-bottom: 3rem;
     }
@@ -168,92 +167,93 @@
     }
 
     .contact-section {
-        background: #f7fafc;
-        padding: 1.5rem;
-        border-radius: 8px;
-        border-left: 4px solid #4299e1;
-        transition:
-            transform 0.2s,
-            box-shadow 0.2s;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
 
         &:hover {
+            border-color: $accent-color;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
     }
 
-    .qr-section {
-        border-left-color: #48bb78;
+    .qr-section:hover {
+        border-color: $accent-color;
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #e2e8f0;
+        color: $primary-color;
+        margin: 0 0 1.5rem 0;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid $accent-color;
     }
 
     .contact-list {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.25rem;
     }
 
     .contact-item {
         h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 0.5rem;
+            color: $text-color;
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         p {
             margin: 0.25rem 0;
-            color: #4a5568;
+            color: $light-text-color;
             line-height: 1.6;
         }
     }
 
     .contact-link {
-        color: #3182ce;
+        color: $accent-color;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.2s;
+        transition: all 0.2s;
 
         &:hover {
-            color: #2c5282;
+            color: $primary-color;
             text-decoration: underline;
         }
     }
 
     .address-line {
         margin: 0.25rem 0;
-        color: #4a5568;
+        color: $light-text-color;
         line-height: 1.6;
     }
 
     .coordinate-line {
         margin: 0.5rem 0;
-        color: #4a5568;
+        color: $light-text-color;
         line-height: 1.6;
 
         strong {
-            color: #2d3748;
+            color: $text-color;
         }
     }
 
     .map-link {
         display: inline-block;
         margin-top: 1rem;
-        color: #3182ce;
+        color: $accent-color;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.2s;
+        transition: all 0.2s;
 
         &:hover {
-            color: #2c5282;
+            color: $primary-color;
             text-decoration: underline;
         }
     }
@@ -269,9 +269,10 @@
         width: 200px;
         height: 200px;
         margin-bottom: 1rem;
-        border: 2px solid #e2e8f0;
+        border: 2px solid $accent-color;
         border-radius: 8px;
         overflow: hidden;
+        background: #f8f9fa;
     }
 
     .qr-code {
@@ -282,32 +283,37 @@
 
     .qr-description {
         font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.5rem;
+        color: $primary-color;
+        margin: 0;
     }
 
     .office-hours {
-        background: #edf2f7;
+        background: white;
         padding: 2rem;
-        border-radius: 8px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+
+        .section-title {
+            margin-top: 0;
+        }
     }
 
     .hours-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-        margin-top: 1rem;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
     }
 
     .hours-item {
-        background: white;
-        padding: 1rem;
-        border-radius: 6px;
-        color: #4a5568;
+        background: $light-bg;
+        padding: 1.25rem;
+        border-radius: 8px;
+        color: $light-text-color;
         text-align: center;
 
         strong {
-            color: #2d3748;
+            color: $primary-color;
         }
     }
 
