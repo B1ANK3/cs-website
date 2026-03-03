@@ -4,6 +4,10 @@ order: 2
 category: "Academic"
 ---
 
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 # What are the course requirements for a CS degree?
 
 Our Computer Science degree requires **120 credit hours** total, including:
@@ -30,4 +34,4 @@ Choose from specialized areas like:
 - Web Development
 - Machine Learning
 
-See our [complete course catalog](/courses) for more details.
+See our [complete course catalog]({resolve('/courses')}) for more details.

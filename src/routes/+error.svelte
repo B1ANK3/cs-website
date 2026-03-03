@@ -85,9 +85,9 @@
             <!-- Help Links -->
             <div class="help-links">
                 <p class="help-text">Need help?</p>
-                <a href="/faq" class="help-link">Visit FAQ</a>
+                <a href={resolve('/faq')} class="help-link">Visit FAQ</a>
                 <span class="separator">•</span>
-                <a href="/contact" class="help-link">Contact Us</a>
+                <a href={resolve('/contact')} class="help-link">Contact Us</a>
             </div>
         </div>
     </div>

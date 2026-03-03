@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { resolve } from '$app/paths';
     import { getPeopleByType, filterPeopleByName } from '$lib/people';
 
     let searchQuery = $state('');
@@ -13,10 +14,12 @@
 
     function getPersonLink(slug?: string): string {
         if (!slug) {
-            return '/people';
+            return resolve('/people');
         }
 
-        return `/people/${slug}`;
+        return resolve(`/people/[slug]`, {
+            slug
+        });
     }
 </script>
 

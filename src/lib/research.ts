@@ -3,6 +3,7 @@ import type { Component } from 'svelte';
 export interface ResearchLink {
     title: string;
     url: string;
+    // url: ResolvedPathname;
 }
 
 export interface ResearchMeta {

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { resolve } from '$app/paths';
     import { filterArticles, sortArticles } from '$lib/articles';
     import type { Article } from '$lib/articles';
     import type { PageProps } from './$types';
@@ -22,7 +23,7 @@
     }
 
     function getArticleLink(article: Article): string {
-        return `/news/${getAuthorPath(article.author)}/${article.slug}`;
+        return resolve(`/news/${getAuthorPath(article.author)}/${article.slug}`);
     }
 
     function resetFilters() {

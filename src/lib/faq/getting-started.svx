@@ -4,6 +4,10 @@ order: 1
 category: "General"
 ---
 
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 # How do I get started with the Computer Science program?
 
 To get started with our Computer Science program, follow these steps:
@@ -13,4 +17,4 @@ To get started with our Computer Science program, follow these steps:
 3. **Attend orientation** once you're accepted
 4. **Meet with your academic advisor** to plan your course schedule
 
-For more information, visit our [undergraduate programs page](/courses) or contact us at [cs-info@university.edu](mailto:cs-info@university.edu).
+For more information, visit our [undergraduate programs page]({resolve('/courses')}) or contact us at [cs-info@university.edu](mailto:cs-info@university.edu).

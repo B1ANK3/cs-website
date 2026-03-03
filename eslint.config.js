@@ -38,6 +38,8 @@ export default defineConfig(
     },
     {
         rules: {
+            // Some links are not internal and we don't want to enforce resolve for those.
+            // But also breaks when not using resolve so wtf.
             'svelte/no-navigation-without-resolve': 'off'
         }
     }
