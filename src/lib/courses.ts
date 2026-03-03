@@ -1,3 +1,4 @@
+import { resolve } from '$app/paths';
 import type { Component } from 'svelte';
 
 export type CourseType = 'core' | 'elective';
@@ -39,6 +40,8 @@ export async function getAllCourses(): Promise<Course[]> {
         if (meta) {
             courses.push({
                 ...meta,
+                // @ts-expect-error - Resolve can't infer type
+                link: resolve(meta.link),
                 component: mod.default
             });
         }
